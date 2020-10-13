@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		section {
+			height: 100vh;
+			background: rgb(199,199,199);
+			display: flex;
+			justify-content: space-around;
+			align-items: center;
+			flex-direction: column;
+		}
+
+		svg {
+			cursor: pointer;
+		}
+
+		body {
+			font-family: sans-serif;
+		}
+	</style>
+
+	<script>
+		const moonPath = "M55 94C55 145.915 94 188 94 188C42.0852 188 0 145.915 0 94C0 42.0852 42.0852 0 94 0C94 0 55 42.0852 55 94Z"
+		const sunPath = "M188 94C188 145.915 145.915 188 94 188C42.0852 188 0 145.915 0 94C0 42.0852 42.0852 0 94 0C145.915 0 188 42.0852 188 94Z"
+
+		const darkMode = document.querySelector("#darkMode");
+		let toggle = false;
+
+		//we need to click on the sun
+		//here we set up the timeline
+		darkMode.addEventListener('click', () => {
+			//we need to use anime.js
+			const timeline = anime.timeline({
+				duration : 750,
+				easing : "easeOutExpo"
+			});
+			//add different animations to the timeline
+			timeline.add({
+				targets: ".sun",
+				d: [
+					{value: moonPath}//can add a comma and another morph if you want
+				]
+			});
+		});
+
+	</script>
+
+	<head>
+		<meta charset = "UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<!-- <link rel="stylesheet" href="./style.css" /> -->
+		<title> morph practice </title>
+	</head>
+	<body>
+		<section>
+			<h1>Dark Mode</h1>
+			<svg id="darkMode" width="188" height="188" viewBox="0 0 188 188" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path class = "sun" d="M188 94C188 145.915 145.915 188 94 188C42.0852 188 0 145.915 0 94C0 42.0852 42.0852 0 94 0C145.915 0 188 42.0852 188 94Z" fill="#EED91A"/>
+			</svg>
+		</section>
+
+<!-- 		<script src="/anime.min.js"></script>
+		<script type = "application/javascript" src="/app.js"></script> -->
+	</body>
