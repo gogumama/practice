@@ -217,7 +217,7 @@
 
 				<g transform="translate(310,200)"><path class = "eyeball" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="#8B9F0F"/></g>
 
-				<g transform="translate(400,200)"><path class = "eyeball2" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="#8B9F0F"/></g>
+				<g transform="translate(350,180)"><path class = "eyeball2" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="#db8ced"/></g>
 
 				<g transform="translate(296,210)"><path id = "planetRings1" d="M12.5 0.5C-33 0.5 76.5 10.1905 33.5 1.99999C54.5 5.99999 -7.99999 1.99999 12.5 0.5Z" stroke="#93269C"/></g>
 
@@ -261,19 +261,19 @@
 				});
 				//add different animations to the timeline
 				timeline
-					//iris becomes a star
+					//planet becomes a bigger circle
 					.add({
 						targets: ".eyeball",
 						d: [{value: toggle ? planet : iris}],
 						//can add a comma and another morph if you want
 					})
-					//star goes in a little circle
+					//iris goes on a rotating path to the eye
 					.add({
 						targets: ".eyeball",
 						rotate: toggle ? 0 : 180,
 					}, "-=700"
 					)
-					//star changes color
+					//iris changes color
 					.add(
 					{
 						targets: ".eyeball",
@@ -318,10 +318,37 @@
 					easing : "easeOutExpo"
 				});
 				timeline2
+					//planet becomes a bigger circle
+					.add({
+						targets: ".eyeball2",
+						d: [{value: toggle2 ? planet : iris}],
+						//can add a comma and another morph if you want
+					})
+					//iris goes on a rotating path to the eye
+					.add({
+						targets: ".eyeball2",
+						rotate: toggle2 ? 0 : 170,
+					}, "-=700"
+					)
+					//iris changes color
+					.add(
+					{
+						targets: ".eyeball2",
+						fill: toggle2 ? "#db8ced" : "#40230a",
+					}, "-=500"
+					)
+					//eye opens
+					.add({
+			 			targets: ".eye-motion",
+			 			d: [{value: toggle2 ? asleep : awake}]
+			 		}, "-=500"
+			 		)
+			 		//background changes color
 					.add({
 						targets: "section",
-						backgroundColor: toggle2 ? "#000000" : "#FFFFFF"
-					});
+						backgroundColor: toggle2 ? "#000000" : "#db8ced"
+					}, "-=700"
+					);
 					toggle2 =!toggle2;
 			});
 
