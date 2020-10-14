@@ -251,6 +251,7 @@
 			const asleep = "M0 115.387C200 -100 377 40.3873 447 115.387C378 175.387 199 274.388 0 115.387Z"
 
 			const eyeball = document.querySelector(".eyeball");
+			const eyeball2 = document.querySelector(".eyeball2");
 			let toggle = false;
 
 			eyeball.addEventListener("click", () => {
@@ -304,12 +305,17 @@
 			 			stroke: toggle ? "#93269C" : "none"
 			 		}, "-=700"
 			 		)
+			 		//make other planets disappear
+			 		.add({
+			 			targets: ".eyeball2",
+			 			fill: toggle ? "#db8ced" : "none"
+			 		}, "-=700"
+			 		)
 			 		;
 
 			 		toggle = !toggle;
 			});
 
-			const eyeball2 = document.querySelector(".eyeball2");
 			let toggle2 = false;
 
 			eyeball2.addEventListener("click",() => {
@@ -348,7 +354,20 @@
 						targets: "section",
 						backgroundColor: toggle2 ? "#000000" : "#db8ced"
 					}, "-=700"
-					);
+					)
+					//make other planets disappear
+			 		.add({
+			 			targets: ".eyeball",
+			 			fill: toggle2 ? "#8B9F0F" : "none"
+			 		}, "-=700"
+			 		)
+			 		.add({
+			 			targets: "#planetRings1",
+			 			stroke: toggle2 ? "#93269C" : "none"
+			 		}, "-=700"
+			 		)
+			 		;
+
 					toggle2 =!toggle2;
 			});
 
