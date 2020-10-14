@@ -27,12 +27,42 @@
 			}
 
 			.star1{
-				animation: star1 3s ease-in-out infinite alternate;
+				animation: star1 37s ease-in-out infinite alternate;
 				transform-origin: center;
 			}
 
 			.star2{
-				animation: star2 3.5s ease-in-out infinite alternate;
+				animation: star2 34s ease-in-out infinite alternate;
+				transform-origin: center;
+			}
+
+			.star3{
+				animation: star3 40s ease-in-out infinite alternate;
+				transform-origin: center;
+			}
+
+			.star4{
+				animation: star4 43s ease-in-out infinite alternate;
+				transform-origin: center;
+			}
+
+			.star5{
+				animation: star5 32s ease-in-out infinite alternate;
+				transform-origin: center;
+			}
+
+			.star6{
+				animation: star6 28s ease-in-out infinite alternate;
+				transform-origin: center;
+			}
+
+			.star7{
+				animation: star7 50s ease-in-out infinite alternate;
+				transform-origin: center;
+			}
+
+			.star8{
+				animation: star8 48s ease-in-out infinite alternate;
 				transform-origin: center;
 			}
 
@@ -71,6 +101,66 @@
 
 			}
 
+			@keyframes star3{
+				from{
+					transform: rotateZ(0deg)
+				}
+				to{
+					transform: rotateZ(18deg)
+				}
+
+			}
+
+			@keyframes star4{
+				from{
+					transform: rotateZ(0deg)
+				}
+				to{
+					transform: rotateZ(-33deg)
+				}
+
+			}
+
+			@keyframes star5{
+				from{
+					transform: rotateZ(0deg)
+				}
+				to{
+					transform: rotateZ(14deg)
+				}
+
+			}
+
+			@keyframes star6{
+				from{
+					transform: rotateZ(0deg)
+				}
+				to{
+					transform: rotateZ(-19deg)
+				}
+
+			}
+
+			@keyframes star7{
+				from{
+					transform: rotateZ(0deg)
+				}
+				to{
+					transform: rotateZ(25deg)
+				}
+
+			}
+
+			@keyframes star8{
+				from{
+					transform: rotateZ(0deg)
+				}
+				to{
+					transform: rotateZ(-37deg)
+				}
+
+			}
+
 			@keyframes rectangle{
 				from{
 					transform: rotateZ(0deg)
@@ -103,27 +193,35 @@
 
 	<body>
 		<section>
-			<svg id="eyelid" width="449" height="187" viewBox="0 0 100 1000" fill="none" style="transform: scale(5) translate(40px, 120px)" xmlns="http://www.w3.org/2000/svg">
+			<svg id="stars" width="1000" height="600" viewBox="0 0 200 700" fill="none" style="transform: scale(1.5) translate(-150px, 150px)">
+				<g transform="translate(20,20)"><path class ="star1" d="M14.2682 0L13.755 16.9091L4.72185 7L13.2417 17.2727L0 18.3636L13.2417 18.0909L8.72517 25.1818L13.755 18.3636L14.2682 32L14.9868 18.3636L20.3245 25.1818L15.346 17.8182L31 17.2727H15.8079L22.4801 7L14.9868 17.2727L14.2682 0Z" fill="white"/></g>
+
+				<g transform="translate(140,250)"><path class="star2" d="M14.2682 0L13.755 16.9091L4.72185 7L13.2417 17.2727L0 18.3636L13.2417 18.0909L8.72517 25.1818L13.755 18.3636L14.2682 32L14.9868 18.3636L20.3245 25.1818L15.346 17.8182L31 17.2727H15.8079L22.4801 7L14.9868 17.2727L14.2682 0Z" fill="white"/></g>
+
+				<g transform="translate(300,5)"><path class="star3" d="M14.2682 0L13.755 16.9091L4.72185 7L13.2417 17.2727L0 18.3636L13.2417 18.0909L8.72517 25.1818L13.755 18.3636L14.2682 32L14.9868 18.3636L20.3245 25.1818L15.346 17.8182L31 17.2727H15.8079L22.4801 7L14.9868 17.2727L14.2682 0Z" fill="white"/></g>
+
+				<g transform="translate(50,300)"><path class="star4" d="M14.2682 0L13.755 16.9091L4.72185 7L13.2417 17.2727L0 18.3636L13.2417 18.0909L8.72517 25.1818L13.755 18.3636L14.2682 32L14.9868 18.3636L20.3245 25.1818L15.346 17.8182L31 17.2727H15.8079L22.4801 7L14.9868 17.2727L14.2682 0Z" fill="white"/></g>
+
+				<g transform="translate(450,60)"><path class="star5" d="M14.2682 0L13.755 16.9091L4.72185 7L13.2417 17.2727L0 18.3636L13.2417 18.0909L8.72517 25.1818L13.755 18.3636L14.2682 32L14.9868 18.3636L20.3245 25.1818L15.346 17.8182L31 17.2727H15.8079L22.4801 7L14.9868 17.2727L14.2682 0Z" fill="white"/></g>
+
+				<g transform="translate(500,300)"><path class="star6" d="M14.2682 0L13.755 16.9091L4.72185 7L13.2417 17.2727L0 18.3636L13.2417 18.0909L8.72517 25.1818L13.755 18.3636L14.2682 32L14.9868 18.3636L20.3245 25.1818L15.346 17.8182L31 17.2727H15.8079L22.4801 7L14.9868 17.2727L14.2682 0Z" fill="white"/></g>
+
+				<g transform="translate(520,270)"><path class="star7" d="M14.2682 0L13.755 16.9091L4.72185 7L13.2417 17.2727L0 18.3636L13.2417 18.0909L8.72517 25.1818L13.755 18.3636L14.2682 32L14.9868 18.3636L20.3245 25.1818L15.346 17.8182L31 17.2727H15.8079L22.4801 7L14.9868 17.2727L14.2682 0Z" fill="white"/></g>
+
+				<g transform="translate(570,60)"><path class="star8" d="M14.2682 0L13.755 16.9091L4.72185 7L13.2417 17.2727L0 18.3636L13.2417 18.0909L8.72517 25.1818L13.755 18.3636L14.2682 32L14.9868 18.3636L20.3245 25.1818L15.346 17.8182L31 17.2727H15.8079L22.4801 7L14.9868 17.2727L14.2682 0Z" fill="white"/></g>
+			</svg>
+
+			<svg id="eyelid" width="700" height="500" viewBox="0 0 100 800" fill="none" style="transform: scale(2) translate(0px, -100px)" xmlns="http://www.w3.org/2000/svg">
 
 				<g transform="translate(-1,15)"><path class = "eye" d="M1 99.9998C190.6 -80.0002 378 24.9998 448 99.9998C379 160 200 259 1 99.9998Z" fill="white"/></g>
 
 				<g transform="translate(310,200)"><path class = "eyeball" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="#8B9F0F"/></g>
 
+				<g transform="translate(400,200)"><path class = "eyeball2" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="#8B9F0F"/></g>
+
 				<g transform="translate(296,210)"><path id = "planetRings1" d="M12.5 0.5C-33 0.5 76.5 10.1905 33.5 1.99999C54.5 5.99999 -7.99999 1.99999 12.5 0.5Z" stroke="#93269C"/></g>
 
-				<path class ="star1" d="M139 0L134 186L46 77L129 190L0 202L129 199L85 277L134 202L139 352L146 202L198 277L149.5 196L302 190H154L219 77L146 190L139 0Z" fill="white"/>
-
-				<path class="star2" d="M139 0L134 186L46 77L129 190L0 202L129 199L85 277L134 202L139 352L146 202L198 277L149.5 196L302 190H154L219 77L146 190L139 0Z" fill="white"/>
-
-				<path class="star2" d="M139 0L134 186L46 77L129 190L0 202L129 199L85 277L134 202L139 352L146 202L198 277L149.5 196L302 190H154L219 77L146 190L139 0Z" fill="white"/>
-
-				<path class="star2" d="M139 0L134 186L46 77L129 190L0 202L129 199L85 277L134 202L139 352L146 202L198 277L149.5 196L302 190H154L219 77L146 190L139 0Z" fill="white"/>
-
-				<path class="star1" d="M139 0L134 186L46 77L129 190L0 202L129 199L85 277L134 202L139 352L146 202L198 277L149.5 196L302 190H154L219 77L146 190L139 0Z" fill="white"/>
-
-				<path class="star2" d="M139 0L134 186L46 77L129 190L0 202L129 199L85 277L134 202L139 352L146 202L198 277L149.5 196L302 190H154L219 77L146 190L139 0Z" fill="white"/>
-
-				<g	transform="translate(175,60)
+				<g transform="translate(175,60)
 								scale(0.4 0.4)">
 
 					<path id = "big" class="rectangle" d="M1 1H139V238H1V1Z" stroke="none" stroke-width="7" fill="none"/>
@@ -210,5 +308,22 @@
 
 			 		toggle = !toggle;
 			});
+
+			const eyeball2 = document.querySelector(".eyeball2");
+			let toggle2 = false;
+
+			eyeball2.addEventListener("click",() => {
+				const timeline2 = anime.timeline({
+					duration : 750,
+					easing : "easeOutExpo"
+				});
+				timeline2
+					.add({
+						targets: "section",
+						backgroundColor: toggle2 ? "#000000" : "#FFFFFF"
+					});
+					toggle2 =!toggle2;
+			});
+
 		</script>
 	</body>
