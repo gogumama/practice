@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset = "UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<!-- <link rel="stylesheet" href="./style.css" /> -->
+		<title>morph trial 1</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			section {
+				height: 100vh;
+				background: rgb(0,0,0);
+			}
+
+			svg {
+				cursor: pointer;
+			}
+
+			body {
+				font-family: sans-serif;
+			}
+
+			.star1{
+				animation: star1 3s ease-in-out infinite alternate;
+				transform-origin: center;
+			}
+
+			.star2{
+				animation: star2 3.5s ease-in-out infinite alternate;
+				transform-origin: center;
+			}
+
+			.rectangle{
+				animation: rectangle 3s ease-in-out infinite alternate;
+				transform-origin: center;
+			}
+
+			#big{
+				animation: big 1.5s ease-in-out infinite alternate;
+				transform-origin: center;
+			}
+
+			#small{
+				animation: small 6s ease-in-out infinite alternate;
+				transform-origin: center;
+			}
+
+			@keyframes star1{
+				from{
+					transform: rotateZ(0deg)
+				}
+				to{
+					transform: rotateZ(20deg)
+				}
+
+			}
+
+			@keyframes star2{
+				from{
+					transform: rotateZ(0deg)
+				}
+				to{
+					transform: rotateZ(-20deg)
+				}
+
+			}
+
+			@keyframes rectangle{
+				from{
+					transform: rotateZ(0deg)
+				}
+				to{
+					transform: rotateZ(20deg)
+				}
+			}
+
+			@keyframes big{
+				from{
+					transform: rotateX(0deg)
+				}
+				to{
+					transform: rotateX(30deg)
+				}
+			}
+
+			@keyframes small{
+				from{
+					transform: rotateZ(0deg)
+				}
+				to{
+					transform: rotateZ(50deg)
+				}
+			}
+
+		</style>
+	</head>
+
+	<body>
+		<section>
+			<svg id="eyelid" width="449" height="187" viewBox="0 0 100 1000" fill="none" style="transform: scale(5) translate(40px, 120px)" xmlns="http://www.w3.org/2000/svg">
+
+				<g transform="translate(-1,15)"><path class = "eye" d="M1 99.9998C190.6 -80.0002 378 24.9998 448 99.9998C379 160 200 259 1 99.9998Z" fill="white"/></g>
+
+				<g transform="translate(310,200)"><path class = "eyeball" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="#8B9F0F"/></g>
+
+				<g transform="translate(296,210)"><path id = "planetRings1" d="M12.5 0.5C-33 0.5 76.5 10.1905 33.5 1.99999C54.5 5.99999 -7.99999 1.99999 12.5 0.5Z" stroke="#93269C"/></g>
+
+				<path class ="star1" d="M139 0L134 186L46 77L129 190L0 202L129 199L85 277L134 202L139 352L146 202L198 277L149.5 196L302 190H154L219 77L146 190L139 0Z" fill="white"/>
+
+				<path class="star2" d="M139 0L134 186L46 77L129 190L0 202L129 199L85 277L134 202L139 352L146 202L198 277L149.5 196L302 190H154L219 77L146 190L139 0Z" fill="white"/>
+
+				<path class="star2" d="M139 0L134 186L46 77L129 190L0 202L129 199L85 277L134 202L139 352L146 202L198 277L149.5 196L302 190H154L219 77L146 190L139 0Z" fill="white"/>
+
+				<path class="star2" d="M139 0L134 186L46 77L129 190L0 202L129 199L85 277L134 202L139 352L146 202L198 277L149.5 196L302 190H154L219 77L146 190L139 0Z" fill="white"/>
+
+				<path class="star1" d="M139 0L134 186L46 77L129 190L0 202L129 199L85 277L134 202L139 352L146 202L198 277L149.5 196L302 190H154L219 77L146 190L139 0Z" fill="white"/>
+
+				<path class="star2" d="M139 0L134 186L46 77L129 190L0 202L129 199L85 277L134 202L139 352L146 202L198 277L149.5 196L302 190H154L219 77L146 190L139 0Z" fill="white"/>
+
+				<g	transform="translate(175,60)
+								scale(0.4 0.4)">
+
+					<path id = "big" class="rectangle" d="M1 1H139V238H1V1Z" stroke="none" stroke-width="7" fill="none"/>
+
+					<path id = "medium" class="rectangle" d="M1 172L1 1H96L96 172H1Z" stroke="none" stroke-width="7" fill="none"/>
+
+					<path id = "small" class="rectangle" d="M1 123L1 1H62L62 123H1Z" stroke="none" stroke-width="7" fill="none"/>
+
+				</g>
+
+				<path class = "eye-motion" d="M0 115.387C200 -100 377 40.3873 447 115.387C378 175.387 199 274.388 0 115.387Z" fill="#93269C"/>
+
+			</svg>
+
+		</section>
+
+		<script src="anime.min.js"></script>
+		<script src="zepto.js"></script>
+		<script src="app.min.js"></script>
+		<script>
+			const planet = "M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z"
+			const iris = "M188 94C188 145.915 145.915 188 94 188C42.0852 188 0 145.915 0 94C0 42.0852 42.0852 0 94 0C145.915 0 188 42.0852 188 94Z"
+
+
+
+			const awake = "M0 115.387C200 -99.9999 377 40.3874 447 115.387C353 50 223 -68 0 115.387Z"
+			const asleep = "M0 115.387C200 -100 377 40.3873 447 115.387C378 175.387 199 274.388 0 115.387Z"
+
+			const eyeball = document.querySelector(".eyeball");
+			let toggle = false;
+
+			eyeball.addEventListener("click", () => {
+				//we need to use anime.js
+				const timeline = anime.timeline({
+					duration : 750,
+					easing : "easeOutExpo"
+				});
+				//add different animations to the timeline
+				timeline
+					//iris becomes a star
+					.add({
+						targets: ".eyeball",
+						d: [{value: toggle ? planet : iris}],
+						//can add a comma and another morph if you want
+					})
+					//star goes in a little circle
+					.add({
+						targets: ".eyeball",
+						rotate: toggle ? 0 : 180,
+					}, "-=700"
+					)
+					//star changes color
+					.add(
+					{
+						targets: ".eyeball",
+						fill: toggle ? "#8B9F0F" : "#FAEB89",
+					}, "-=500"
+					)
+					//eye opens
+					.add({
+			 			targets: ".eye-motion",
+			 			d: [{value: toggle ? asleep : awake}]
+			 		}, "-=500"
+			 		)
+			 		//background changes color
+			 		.add({
+			 			targets: "section",
+			 			backgroundColor: toggle ? "#000000" : "#8B9F0F"
+			 		}, "-=700"
+			 		)
+			 		//make animation appear
+			 		.add({
+			 			targets: ".rectangle",
+			 			stroke: toggle ? "none" : "#8B9F0F"
+			 		}, "-=700"
+			 		)
+			 		//make planet rings disappear
+			 		.add({
+			 			targets: "#planetRings1",
+			 			stroke: toggle ? "#93269C" : "none"
+			 		}, "-=700"
+			 		)
+			 		;
+
+			 		toggle = !toggle;
+			});
+		</script>
+	</body>
