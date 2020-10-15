@@ -13,6 +13,15 @@
 				box-sizing: border-box;
 			}
 
+			@media screen and (max-width: 800px) {
+  			#eyelid {
+    			width: 200%;
+  				}
+  			#stars {
+    			width: 200%;
+  				}
+			}
+
 			section {
 				width: 100%;
 				height: 100%;
@@ -21,8 +30,8 @@
 
 			#eyelid {
 				display: flex;
-				flex-direction: row;
-				justify-content: flex-start;
+				flex-direction: safe column;
+				justify-content: safe center;
 			}
 
 			svg {
