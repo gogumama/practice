@@ -81,6 +81,11 @@
 				transform-origin: center;
 			}
 
+			.polymorph{
+				animation: polymorph 10s ease-in-out infinite;
+				transform-origin: center;
+			}
+
 			@keyframes star1{
 				from{
 					transform: rotateZ(0deg)
@@ -188,6 +193,15 @@
 				}
 			}
 
+			@keyframes polymorph{
+				from{
+					transform: rotateZ(0deg);
+				}
+				to{
+					transform: rotateZ(360deg);
+				}
+			}
+
 		</style>
 	</head>
 
@@ -234,7 +248,9 @@
 
 				<path class = "eye-motion" d="M0 115.387C200 -100 377 40.3873 447 115.387C378 175.387 199 274.388 0 115.387Z" fill="#93269C"/>
 
-			</svg>
+	      		<g transform="translate(180,25) scale (0.4 0.4)"><path class = "polymorph" d="M44 71.5C18.1789 106.507 -4.00002 114 1.99998 216C7.99998 318 130.5 343.5 221.5 330C302.031 318.053 384 216 367.5 147C350.484 75.842 337.5 33.5 256 9.00003C191.358 -10.4323 96 1 44 71.5Z" fill="none" stroke="none" stroke-width="5"/></g>
+	      	</svg>
+
 
 		</section>
 
@@ -252,6 +268,8 @@
 
 			const eyeball = document.querySelector(".eyeball");
 			const eyeball2 = document.querySelector(".eyeball2");
+			const polymorph = document.querySelector(".polymorph");
+			const polymorph2 = document.querySelector(".polymorph2");
 			let toggle = false;
 
 			eyeball.addEventListener("click", () => {
@@ -340,7 +358,7 @@
 					.add(
 					{
 						targets: ".eyeball2",
-						fill: toggle2 ? "#db8ced" : "#40230a",
+						fill: toggle2 ? "#db8ced" : "#1d2069",
 					}, "-=500"
 					)
 					//eye opens
@@ -366,10 +384,31 @@
 			 			stroke: toggle2 ? "#93269C" : "none"
 			 		}, "-=700"
 			 		)
-			 		;
+			 		//make animation appear
+			 		.add({
+			 			targets: ".polymorph",
+			 			fill: toggle2 ? "none" : "#db8ced"
+			 		}, "-=625"
+			 		);
 
 					toggle2 =!toggle2;
 			});
+
+			var stretchingPolymorph = anime({
+				targets: ".polymorph",
+				d: [
+					{value: "M34 75C12.3408 106.478 -3.99998 127 2.00002 229C9.76473 361 184.907 359.702 228.5 319C326.5 227.5 337.5 196 322.5 121.5C308.059 49.7752 223 1 166 1C98.5 1 71.5 20.5 34 75Z"},
+					{value: "M0.999969 72.5C1 118.5 53 124 59 226C65 328 173 306.958 216.5 284C288.5 246 303.5 185 288.5 110.5C274.059 38.7752 177 0.5 120 0.5C52.5 0.500002 0.999926 6.3449 0.999969 72.5Z"},
+					{value: "M27.5 96.5C27.5 140 -3.99999 154.5 2.00001 256.5C8.00001 358.5 214 347.958 257.5 325C329.5 287 336.5 197.5 284.5 153C228.912 105.429 250 66 209 19.5001C164.359 -31.1299 27.5 28.6141 27.5 96.5Z"},
+					{value: "M3.49999 50.5C-14.0507 90.3023 66.5 115 72.5 217C78.5 319 212.5 312.458 256 289.5C328 251.5 324.5 144 272.5 99.5C216.912 51.9294 200.5 83.4999 159.5 37C114.859 -13.63 31.5 -13 3.49999 50.5Z"},
+					{value: "M47.5 88.5C29.9494 128.302 -4 151 2 253C8 355 185.5 362 272 325C346.852 292.982 414.5 133 362.5 88.5C306.912 40.9294 274.5 67 233.5 20.5C188.859 -30.1299 75.5001 25 47.5 88.5Z"}
+				],
+				easing: 'easeInOutQuad',
+				duration: 5000,
+				loop: true,
+				direction: 'alternate'
+			});
+
 
 		</script>
 	</body>
