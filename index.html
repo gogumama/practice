@@ -252,6 +252,10 @@
 
 			<svg id="eyelid" width="1700" height="500" viewBox="0 0 130 800" fill="none" style="transform: scale(2) translate(-250px, -100px)" xmlns="http://www.w3.org/2000/svg">
 
+				<filter id='noise' x='0%' y='0%' width='100%' height='100%'>
+      			<feTurbulence baseFrequency="0.01 0.1" result="NOISE"/> 
+				</filter>
+
 				<g transform="translate(-1,15)"><path class = "eye" d="M1 99.9998C190.6 -80.0002 378 24.9998 448 99.9998C379 160 200 259 1 99.9998Z" fill="white"/></g>
 
 				<g transform="translate(310,200)"><path class = "eyeball" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="#8B9F0F"/></g>
@@ -271,9 +275,10 @@
 
 				</g>
 
+				<g transform="translate(180,25) scale (0.2 0.2)"><path class = "polymorph" d="M44 71.5C18.1789 106.507 -4.00002 114 1.99998 216C7.99998 318 130.5 343.5 221.5 330C302.031 318.053 384 216 367.5 147C350.484 75.842 337.5 33.5 256 9.00003C191.358 -10.4323 96 1 44 71.5Z" fill="none" stroke="none" stroke-width="5"/></g>
+
 				<path class = "eye-motion" d="M0 115.387C200 -100 377 40.3873 447 115.387C378 175.387 199 274.388 0 115.387Z" fill="#93269C"/>
 
-	      		<g transform="translate(180,25) scale (0.2 0.2)"><path class = "polymorph" d="M44 71.5C18.1789 106.507 -4.00002 114 1.99998 216C7.99998 318 130.5 343.5 221.5 330C302.031 318.053 384 216 367.5 147C350.484 75.842 337.5 33.5 256 9.00003C191.358 -10.4323 96 1 44 71.5Z" fill="none" stroke="none" stroke-width="5"/></g>
 	      	</svg>
 
 
@@ -291,12 +296,26 @@
 			const awake = "M0 115.387C200 -99.9999 377 40.3874 447 115.387C353 50 223 -68 0 115.387Z"
 			const asleep = "M0 115.387C200 -100 377 40.3873 447 115.387C378 175.387 199 274.388 0 115.387Z"
 
+			const eyeMotion = document.querySelector(".eye-motion");
 			const eyeball = document.querySelector(".eyeball");
 			const eyeball2 = document.querySelector(".eyeball2");
 			const polymorph = document.querySelector(".polymorph");
-			const polymorph2 = document.querySelector(".polymorph2");
-			let toggle = false;
 
+			let toggle0 = false;
+			eyeMotion.addEventListener("click", () => {
+				const timeline0 = anime.timeline({
+					duration: 750,
+					easing: "easeOutExpo"
+				});
+				timeline0
+					.add({
+						targets: ".eye-motion",
+						d: [{value: toggle0 ? asleep : awake}],
+					});
+				toggle0 = !toggle0;
+			});
+
+			let toggle = false;
 			eyeball.addEventListener("click", () => {
 				//we need to use anime.js
 				const timeline = anime.timeline({
