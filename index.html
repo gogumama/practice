@@ -260,7 +260,7 @@
 
     				<linearGradient id="grad2" x1="0%" y1="0%" x2="0%" y2="100%">
       				<stop offset="0%" style="stop-color:#FAEB89;stop-opacity:1" />
-      				<stop offset="100%" style="stop-color:#c79f1e;stop-opacity:1" />
+      				<stop offset="100%" style="stop-color:#fa9a2d;stop-opacity:1" />
     				</linearGradient>
 
     				<!--texture library-->
@@ -274,15 +274,24 @@
 					</pattern>
 					<image id="image1" width="220" height="220" href="asfalt-dark.png"/>
 
+					<pattern id="pattern2" patternContentUnits="objectBoundingBox" width="1" height="1">
+					<use href="#image2" transform="translate(0,0) scale(0.01)"/>
+					</pattern>
+					<image id="image2" width="315" height="315" href="soft-wallpaper.png"/>
+
   				</defs>
 
 				<g transform="translate(-1,17.4)"><path class = "eye" d="M1 99.9998C190.6 -80.0002 378 24.9998 448 99.9998C379 160 200 259 1 99.9998Z" fill="white" stroke="#910503" stroke-width="2"/></g>
 
-				<g transform="translate(310,200)"><path class = "eyeball" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="#ba4120"/></g>
+				<g transform="translate(310,200)">
+					<path id = "eyeball" class = "eyeball" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="#ba4120"/>
+					<path id = "eyeballNoise" class = "eyeball" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="url(#pattern2)"/>
+				</g>
 
-				<g transform="translate(350,180)"><path id = "eyeball2" class = "eyeball2" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="#db8ced"/></g>
-
-				<g transform="translate(350,180)"><path id = "eyeball2noise" class = "eyeball2" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="url(#pattern0)"/></g>
+				<g transform="translate(350,180)">
+					<path id = "eyeball2" class = "eyeball2" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="#db8ced"/>
+					<path id = "eyeball2noise" class = "eyeball2" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="url(#pattern2)"/>
+				</g>
 
 				<g transform="translate(296,210)"><path id = "planetRings1" d="M12.5 0.5C-33 0.5 76.5 10.1905 33.5 1.99999C54.5 5.99999 -7.99999 1.99999 12.5 0.5Z" stroke="#93269C"/></g>
 
@@ -323,7 +332,7 @@
 
 			const eyeMotion = document.querySelector(".eye-motion");
 			const idEyeMotion = document.querySelector("#eye-motion");
-			const eyeball = document.querySelector(".eyeball");
+			const eyeballNoise = document.querySelector("#eyeballNoise");
 			const eyeball2noise = document.querySelector("#eyeball2noise");
 			const polymorph = document.querySelector(".polymorph");
 
@@ -342,7 +351,7 @@
 			});
 
 			let toggle = false;
-			eyeball.addEventListener("click", () => {
+			eyeballNoise.addEventListener("click", () => {
 				//we need to use anime.js
 				const timeline = anime.timeline({
 					duration : 750,
@@ -389,7 +398,7 @@
 			 		//make other planet noise disappear
 			 		.add({
 			 			targets: "#eyeball2noise",
-			 			fill: toggle ? "url(#pattern0)" : "none"
+			 			fill: toggle ? "url(#pattern2)" : "none"
 			 		}, "-=700"
 			 		)
 			 		;
@@ -425,13 +434,19 @@
 			 		)
 					//make other planets disappear
 			 		.add({
-			 			targets: ".eyeball",
+			 			targets: "#eyeball",
 			 			fill: toggle2 ? "#ba4120" : "none"
 			 		}, "-=700"
 			 		)
 			 		.add({
 			 			targets: "#planetRings1",
 			 			stroke: toggle2 ? "#93269C" : "none"
+			 		}, "-=700"
+			 		)
+			 		//make other planet noise disappear
+			 		.add({
+			 			targets: "#eyeballNoise",
+			 			fill: toggle2 ? "url(#pattern2)" : "none"
 			 		}, "-=700"
 			 		)
 			 		//make noise for animation appear
