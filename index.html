@@ -28,7 +28,7 @@
 			}
 
 			body {
-				background-color: rgb(0,0,0);
+				background: linear-gradient(#e66465, #9198e5);
 			}
 
 			section {
@@ -96,12 +96,12 @@
 			}
 
 			#big{
-				animation: big 1.5s ease-in-out infinite alternate;
+				animation: big 9s ease-in-out infinite alternate;
 				transform-origin: center;
 			}
 
 			#small{
-				animation: small 6s ease-in-out infinite alternate;
+				animation: small 4.5s ease-in-out infinite alternate;
 				transform-origin: center;
 			}
 
@@ -202,10 +202,10 @@
 
 			@keyframes big{
 				from{
-					transform: rotateX(0deg)
+					transform: rotateZ(0deg)
 				}
 				to{
-					transform: rotateX(30deg)
+					transform: rotateZ(-15deg)
 				}
 			}
 
@@ -251,16 +251,38 @@
 			</svg>
 
 			<svg id="eyelid" width="1700" height="500" viewBox="0 0 130 800" fill="none" style="transform: scale(2) translate(-250px, -100px)" xmlns="http://www.w3.org/2000/svg">
+				<defs>
+					<!--gradient library-->
+    				<linearGradient id="grad1" x1="0%" y1="0%" x2="0%" y2="100%">
+      				<stop offset="0%" style="stop-color:#93269C;stop-opacity:1" />
+      				<stop offset="100%" style="stop-color:#68abfc;stop-opacity:1" />
+    				</linearGradient>
 
-				<filter id='noise' x='0%' y='0%' width='100%' height='100%'>
-      			<feTurbulence baseFrequency="0.01 0.1" result="NOISE"/> 
-				</filter>
+    				<linearGradient id="grad2" x1="0%" y1="0%" x2="0%" y2="100%">
+      				<stop offset="0%" style="stop-color:#FAEB89;stop-opacity:1" />
+      				<stop offset="100%" style="stop-color:#c79f1e;stop-opacity:1" />
+    				</linearGradient>
 
-				<g transform="translate(-1,15)"><path class = "eye" d="M1 99.9998C190.6 -80.0002 378 24.9998 448 99.9998C379 160 200 259 1 99.9998Z" fill="white"/></g>
+    				<!--texture library-->
+    				<pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
+					<use href="#image0" transform="translate(0,-0.4) scale(0.008)"/>
+					</pattern>
+					<image id="image0" width="220" height="220" href="bedge-grunge.png"/>
 
-				<g transform="translate(310,200)"><path class = "eyeball" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="#8B9F0F"/></g>
+    				<pattern id="pattern1" patternContentUnits="objectBoundingBox" width="1" height="1">
+					<use href="#image1" transform="translate(0,-0.4) scale(0.01)"/>
+					</pattern>
+					<image id="image1" width="220" height="220" href="asfalt-dark.png"/>
 
-				<g transform="translate(350,180)"><path class = "eyeball2" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="#db8ced"/></g>
+  				</defs>
+
+				<g transform="translate(-1,17.4)"><path class = "eye" d="M1 99.9998C190.6 -80.0002 378 24.9998 448 99.9998C379 160 200 259 1 99.9998Z" fill="white" stroke="#910503" stroke-width="2"/></g>
+
+				<g transform="translate(310,200)"><path class = "eyeball" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="#ba4120"/></g>
+
+				<g transform="translate(350,180)"><path id = "eyeball2" class = "eyeball2" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="#db8ced"/></g>
+
+				<g transform="translate(350,180)"><path id = "eyeball2noise" class = "eyeball2" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="url(#pattern0)"/></g>
 
 				<g transform="translate(296,210)"><path id = "planetRings1" d="M12.5 0.5C-33 0.5 76.5 10.1905 33.5 1.99999C54.5 5.99999 -7.99999 1.99999 12.5 0.5Z" stroke="#93269C"/></g>
 
@@ -275,12 +297,17 @@
 
 				</g>
 
-				<g transform="translate(180,25) scale (0.2 0.2)"><path class = "polymorph" d="M44 71.5C18.1789 106.507 -4.00002 114 1.99998 216C7.99998 318 130.5 343.5 221.5 330C302.031 318.053 384 216 367.5 147C350.484 75.842 337.5 33.5 256 9.00003C191.358 -10.4323 96 1 44 71.5Z" fill="none" stroke="none" stroke-width="5"/></g>
+				<g transform="translate(180,25) scale (0.2 0.2)">
+					<path id = "polymorph" class = "polymorph" d="M44 71.5C18.1789 106.507 -4.00002 114 1.99998 216C7.99998 318 130.5 343.5 221.5 330C302.031 318.053 384 216 367.5 147C350.484 75.842 337.5 33.5 256 9.00003C191.358 -10.4323 96 1 44 71.5Z" fill="none" stroke="none" />
+					<path id = "polymorphNoise" class = "polymorph" d="M44 71.5C18.1789 106.507 -4.00002 114 1.99998 216C7.99998 318 130.5 343.5 221.5 330C302.031 318.053 384 216 367.5 147C350.484 75.842 337.5 33.5 256 9.00003C191.358 -10.4323 96 1 44 71.5Z" fill="none" stroke="none" /></g>
 
-				<path class = "eye-motion" d="M0 115.387C200 -100 377 40.3873 447 115.387C378 175.387 199 274.388 0 115.387Z" fill="#93269C"/>
+				<g transform="translate(0,2)">
+					<path class = "eye-motion" d="M0 115.387C200 -100 377 40.3873 447 115.387C378 175.387 199 274.388 0 115.387Z" fill="url(#grad1)" stroke="#910503" stroke-width="2"/>
+
+					<path id = "eye-motion" class = "eye-motion" d="M0 115.387C200 -100 377 40.3873 447 115.387C378 175.387 199 274.388 0 115.387Z" fill="url(#pattern0)"/>
+				</g>
 
 	      	</svg>
-
 
 		</section>
 
@@ -291,18 +318,17 @@
 			const planet = "M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z"
 			const iris = "M188 94C188 145.915 145.915 188 94 188C42.0852 188 0 145.915 0 94C0 42.0852 42.0852 0 94 0C145.915 0 188 42.0852 188 94Z"
 
-
-
 			const awake = "M0 115.387C200 -99.9999 377 40.3874 447 115.387C353 50 223 -68 0 115.387Z"
 			const asleep = "M0 115.387C200 -100 377 40.3873 447 115.387C378 175.387 199 274.388 0 115.387Z"
 
 			const eyeMotion = document.querySelector(".eye-motion");
+			const idEyeMotion = document.querySelector("#eye-motion");
 			const eyeball = document.querySelector(".eyeball");
-			const eyeball2 = document.querySelector(".eyeball2");
+			const eyeball2noise = document.querySelector("#eyeball2noise");
 			const polymorph = document.querySelector(".polymorph");
 
 			let toggle0 = false;
-			eyeMotion.addEventListener("click", () => {
+			idEyeMotion.addEventListener("click", () => {
 				const timeline0 = anime.timeline({
 					duration: 750,
 					easing: "easeOutExpo"
@@ -336,29 +362,16 @@
 						rotate: toggle ? 0 : 180,
 					}, "-=700"
 					)
-					//iris changes color
-					.add(
-					{
-						targets: ".eyeball",
-						fill: toggle ? "#8B9F0F" : "#FAEB89",
-					}, "-=500"
-					)
 					//eye opens
 					.add({
 			 			targets: ".eye-motion",
 			 			d: [{value: toggle ? asleep : awake}]
 			 		}, "-=500"
 			 		)
-			 		//background changes color
-			 		.add({
-			 			targets: "body",
-			 			backgroundColor: toggle ? "#000000" : "#8B9F0F"
-			 		}, "-=700"
-			 		)
 			 		//make animation appear
 			 		.add({
 			 			targets: ".rectangle",
-			 			stroke: toggle ? "none" : "#8B9F0F"
+			 			stroke: toggle ? "none" : "url(#grad2)"
 			 		}, "-=700"
 			 		)
 			 		//make planet rings disappear
@@ -369,8 +382,14 @@
 			 		)
 			 		//make other planets disappear
 			 		.add({
-			 			targets: ".eyeball2",
+			 			targets: "#eyeball2",
 			 			fill: toggle ? "#db8ced" : "none"
+			 		}, "-=700"
+			 		)
+			 		//make other planet noise disappear
+			 		.add({
+			 			targets: "#eyeball2noise",
+			 			fill: toggle ? "url(#pattern0)" : "none"
 			 		}, "-=700"
 			 		)
 			 		;
@@ -380,7 +399,7 @@
 
 			let toggle2 = false;
 
-			eyeball2.addEventListener("click",() => {
+			eyeball2noise.addEventListener("click",() => {
 				const timeline2 = anime.timeline({
 					duration : 750,
 					easing : "easeOutExpo"
@@ -398,29 +417,16 @@
 						rotate: toggle2 ? 0 : 170,
 					}, "-=700"
 					)
-					//iris changes color
-					.add(
-					{
-						targets: ".eyeball2",
-						fill: toggle2 ? "#db8ced" : "#1d2069",
-					}, "-=500"
-					)
 					//eye opens
 					.add({
 			 			targets: ".eye-motion",
 			 			d: [{value: toggle2 ? asleep : awake}]
 			 		}, "-=500"
 			 		)
-			 		//background changes color
-					.add({
-						targets: "body",
-						backgroundColor: toggle2 ? "#000000" : "#db8ced"
-					}, "-=700"
-					)
 					//make other planets disappear
 			 		.add({
 			 			targets: ".eyeball",
-			 			fill: toggle2 ? "#8B9F0F" : "none"
+			 			fill: toggle2 ? "#ba4120" : "none"
 			 		}, "-=700"
 			 		)
 			 		.add({
@@ -428,11 +434,17 @@
 			 			stroke: toggle2 ? "#93269C" : "none"
 			 		}, "-=700"
 			 		)
+			 		//make noise for animation appear
+			 		.add({
+			 			targets: "#polymorphNoise",
+			 			fill: toggle2 ? "none" : "url(#pattern0)"
+			 		}, "+=500"
+			 		)
 			 		//make animation appear
 			 		.add({
-			 			targets: ".polymorph",
-			 			fill: toggle2 ? "none" : "#db8ced"
-			 		}, "-=625"
+			 			targets: "#polymorph",
+			 			fill: toggle2 ? "none" : "#f3c5fa"
+			 		}, "-=700"
 			 		);
 
 					toggle2 =!toggle2;
