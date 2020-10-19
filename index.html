@@ -227,7 +227,32 @@
 				}
 			}
 
+			/*This is why there's a pink band on the bottom. Because the position is absolute :(. Fix later.*/
+			.text1 {
+				font-family: arial;
+				font-style: italic;
+				font-size: 1.4em;
+				position: absolute;
+				left: 300px;
+				top: 450px;
+				}
+
+			.text1 .text-wrapper {
+			  position: relative;
+			  display: inline-block;
+			  padding-top: 0.1em;
+			  padding-right: 0.05em;
+			  padding-bottom: 0.15em;
+			}
+
+			.text1 .letter {
+			  display: inline-block;
+			  line-height: 1em;
+
+			}
+
 		</style>
+
 	</head>
 
 
@@ -315,11 +340,26 @@
 
 				<g transform="translate(0,2)">
 					<path class = "eye-motion" d="M0 115.387C200 -100 377 40.3873 447 115.387C378 175.387 199 274.388 0 115.387Z" fill="url(#grad1)" stroke="#910503" stroke-width="2"/>
-
+					<!--texture-->
 					<path id = "eye-motion" class = "eye-motion" d="M0 115.387C200 -100 377 40.3873 447 115.387C378 175.387 199 274.388 0 115.387Z" fill="url(#pattern0)"/>
 				</g>
 
 	      	</svg>
+
+	      	<text class="text1" style="color: #f7cb3b00; text-shadow: 2px 2px #91050300;">
+ 			 	<span class="text-wrapper">
+    			<span class="letters">
+    					&ndash; inside your earliest happy memory
+    			</span>
+  				</span>
+  				
+			</text>
+
+			<!--audio player 1-->
+			<audio id="audio1">
+  				<source src="LullabyForACat.mp3" type="audio/mp3"/>
+  				Sorry, the audio isn't working! Email jisusheen at gmail dot com to let her know.
+			</audio>
 
 		</section>
 
@@ -327,6 +367,7 @@
 		<script src="zepto.js"></script>
 		<script src="app.min.js"></script>
 		<script>
+
 			const planet = "M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z"
 			const iris = "M188 94C188 145.915 145.915 188 94 188C42.0852 188 0 145.915 0 94C0 42.0852 42.0852 0 94 0C145.915 0 188 42.0852 188 94Z"
 
@@ -338,6 +379,23 @@
 			const eyeballNoise = document.querySelector("#eyeballNoise");
 			const eyeball2noise = document.querySelector("#eyeball2noise");
 			const polymorph = document.querySelector(".polymorph");
+
+			// Wrap every letter in a span
+			var textWrapper = document.querySelector('.text1 .letters');
+			textWrapper.innerHTML = textWrapper.textContent.replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>");
+
+			//click for audio for Planet 1
+			eyeballNoise.addEventListener("click", function(e){
+			    let state = e.currentTarget.dataset.state;
+			    if (state == "play") {
+			    	document.querySelector("#audio1").pause();
+			        e.currentTarget.dataset.state = "pause";
+			    }
+			    else {
+			    	document.querySelector("#audio1").play();
+			        e.currentTarget.dataset.state = "play";
+			    }
+			});
 
 			let toggle0 = false;
 			idEyeMotion.addEventListener("click", () => {
@@ -404,7 +462,20 @@
 			 			fill: toggle ? "url(#pattern2)" : "none"
 			 		}, "-=700"
 			 		)
-			 		;
+			 		//make text appear
+			 		.add({
+			 			targets: '.text1 .letter',
+			 			color: toggle ? "#f7cb3b00" : "#f7cb3b",
+			 			textShadow: toggle ? " 2px 2px #91050300" : "2px 2px #910503"
+			 		}, "-=700")
+					.add({
+					    targets: '.text1 .letter',
+					    opacity: toggle ? 0 : [0,1],
+					    easing: "easeOutExpo",
+					    duration: 600,
+					    offset: '-=775',
+					    delay: (el, i) => 34 * (i+1)
+					}, "-=700");
 
 			 		toggle = !toggle;
 			});
