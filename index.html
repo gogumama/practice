@@ -216,7 +216,7 @@
 			}
 
 			/*This is why there's a pink band on the bottom. Because the position is absolute :(. Fix later.*/
-			.text1 {
+			.placeName {
 				font-family: arial;
 				font-style: italic;
 				font-size: 1.4em;
@@ -226,7 +226,7 @@
 				white-space: nowrap;
 				}
 
-			.text1 .text-wrapper {
+			.placeName .text-wrapper {
 			  position: relative;
 			  display: inline-block;
 			  padding-top: 0.1em;
@@ -234,7 +234,7 @@
 			  padding-bottom: 0.15em;
 			}
 
-			.text1 .letter {
+			.placeName .letter {
 			  display: inline-block;
 			  line-height: 1em;
 
@@ -335,7 +335,7 @@
 
 	      	</svg>
 
-	      	<text class="text1" style="color: #f7cb3b00; text-shadow: 2px 2px #91050300;">
+	      	<text id = "text1" class="placeName" style="color: #f7cb3b00; text-shadow: 2px 2px #91050300;">
  			 	<span class="text-wrapper">
     			<span class="letters">
     					&ndash; inside your earliest happy memory
@@ -370,7 +370,7 @@
 			const polymorph = document.querySelector(".polymorph");
 
 			// Wrap every letter in a span
-			var textWrapper = document.querySelector('.text1 .letters');
+			var textWrapper = document.querySelector('.placeName .letters');
 			textWrapper.innerHTML = textWrapper.textContent.replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>");
 
 			//click for audio for Planet 1
@@ -453,12 +453,12 @@
 			 		)
 			 		//make text appear
 			 		.add({
-			 			targets: '.text1 .letter',
+			 			targets: '#text1 .letter',
 			 			color: toggle ? "#f7cb3b00" : "#f7cb3b",
 			 			textShadow: toggle ? " 2px 2px #91050300" : "2px 2px #910503"
 			 		}, "-=700")
 					.add({
-					    targets: '.text1 .letter',
+					    targets: '#text1 .letter',
 					    opacity: toggle ? 0 : [0,1],
 					    easing: "easeOutExpo",
 					    duration: 600,
