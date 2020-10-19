@@ -118,7 +118,6 @@
 				to{
 					transform: rotateZ(10deg)
 				}
-
 			}
 
 			@keyframes star2{
@@ -425,7 +424,7 @@
 						targets: ".eyeball",
 						d: [{value: toggle ? planet : iris}],
 						//can add a comma and another morph if you want
-					})
+					}, "-=100")
 					//iris goes on a rotating path to the eye
 					.add({
 						targets: ".eyeball",
@@ -527,13 +526,13 @@
 			 		.add({
 			 			targets: "#polymorphNoise",
 			 			fill: toggle2 ? "none" : "url(#pattern0)"
-			 		}, "+=500"
+			 		}, "-=750"
 			 		)
 			 		//make animation appear
 			 		.add({
 			 			targets: "#polymorph",
 			 			fill: toggle2 ? "none" : "#f3c5fa"
-			 		}, "-=700"
+			 		}, "-=750"
 			 		);
 
 					toggle2 =!toggle2;
