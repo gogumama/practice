@@ -1,0 +1,39 @@
+<head>
+	<style>
+		body {
+			background: linear-gradient(#e66465, #9198e5);
+		}
+		#tv {
+			position: relative;
+			left: 670px;
+			top: -1170px;
+		}
+		#desert {
+			position: relative;
+			left: 0px;
+		}
+	</style>
+</head>
+
+<body>
+	<img
+		id = "desert"
+		src = "desert-background.PNG"
+		usemap="#image-map"
+	/>
+
+	<map name="image-map">
+	    <area target="_blank" alt="cactus" title="cactus" href="http://google.com" coords="590,1498,617,1505,611,1449,626,1424,638,1388,622,1368,608,1395,602,1309,584,1316,586,1368,572,1359,563,1374,581,1413,581,1458" shape="poly">
+	    <area target="_blank" alt="cloud" title="cloud" href="http://google.com" coords="559,608,575,631,629,633,698,703,795,721,881,721,964,680,1032,689,1257,665,1253,633,1158,624,1122,570,1086,599,1021,566,964,599,915,570,840,570,827,539,777,559,741,541,696,561,662,588,642,575" shape="poly">
+	</map>
+
+	<iframe
+		id = "tv"
+		width="622"
+		height="350"
+		src="https://www.youtube.com/embed/5qap5aO4i9A"
+		frameborder="0"
+		allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+		allowfullscreen>
+	</iframe>
+</body>
