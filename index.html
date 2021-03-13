@@ -39,6 +39,13 @@
 				font-family: sans-serif;
 			}
 
+			#rocketship {
+				width: 100px;
+				top: -500px;
+				left: 200px;
+				position: relative;
+			}
+
 			.star1{
 				animation: star1 57s ease-in-out infinite alternate;
 				transform-origin: center;
@@ -222,7 +229,7 @@
 				font-size: 1.4em;
 				position: absolute;
 				left: 300px;
-				top: 450px;
+				top: 550px;
 				white-space: nowrap;
 				}
 
@@ -267,6 +274,11 @@
 				</g>
 			</svg>
 
+			<img
+				id = "rocketship"
+				src = "rocketship.png"
+				/>
+
 			<svg id="eyelid" width="1700" height="500" viewBox="0 0 130 800" fill="none" style="transform: scale(2) translate(-280px, -100px)" xmlns="http://www.w3.org/2000/svg">
 				<defs>
 					<!--gradient library-->
@@ -295,6 +307,12 @@
 					<use href="#image2" transform="translate(0,0) scale(0.01)"/>
 					</pattern>
 					<image id="image2" width="315" height="315" href="soft-wallpaper.png"/>
+
+					<!--place images library-->
+					<pattern id="place0" patternContentUnits="objectBoundingBox" width="1" height="1">
+					<use href="#background0" transform="translate(0,0) scale(0.008)" />
+					</pattern>
+					<image id="background0" width="100%" href="desert-background.png"/>
 
   				</defs>
 
@@ -412,13 +430,14 @@
 					//planet becomes a bigger circle
 					.add({
 						targets: ".eyeball",
-						d: [{value: toggle ? planet : iris}],
+						d: [{value: toggle ? planet : iris}]
 						//can add a comma and another morph if you want
 					}, "-=100")
 					//iris goes on a rotating path to the eye
 					.add({
 						targets: ".eyeball",
 						rotate: toggle ? 0 : 180,
+
 					}, "-=700"
 					)
 					//eye opens
