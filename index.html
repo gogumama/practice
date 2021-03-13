@@ -274,10 +274,14 @@
 				</g>
 			</svg>
 
-			<img
-				id = "rocketship"
-				src = "/images/rocketship.png"
+			<a 
+				id = "rocket-button"
+				href="https://www.wikipedia.org">
+				<img
+					id = "rocketship"
+					src = "rocketship.png"
 				/>
+			</a>
 
 			<svg id="eyelid" width="1700" height="500" viewBox="0 0 130 800" fill="none" style="transform: scale(2) translate(-280px, -100px)" xmlns="http://www.w3.org/2000/svg">
 				<defs>
@@ -483,7 +487,14 @@
 					    duration: 600,
 					    offset: '-=775',
 					    delay: (el, i) => 34 * (i+1)
-					}, "-=700");
+					}, "-=700")
+
+					//make rocketship appear
+			 		.add({
+			 			targets: "#rocket-button",
+			 			href: toggle ? "http://www.wikipedia.org/" : "http://www.google.com/"
+			 		}, "-=700"
+			 		);
 
 			 		toggle = !toggle;
 			});
