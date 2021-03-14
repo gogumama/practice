@@ -109,7 +109,7 @@
 				transform-origin: center;
 				transform-box: fill-box;
 			}
-			
+
 			@keyframes rocketship{
 				from{
 					transform: rotateZ(0deg);
@@ -304,7 +304,7 @@
 				<img
 					id = "rocketship"
 					src = "/images/rocketship.png"
-				     	style = "visibility: hidden"
+					style = "visibility: hidden"
 				/>
 			</a>
 
@@ -383,20 +383,20 @@
 	      	</svg>
 
 	      	<text id = "text1" class="placeName" style="color: #f7cb3b00; text-shadow: 2px 2px #91050300;">
- 			<span class="text-wrapper1">
-    				<span class="letters1">
+ 			 	<span class="text-wrapper1">
+    			<span class="letters1">
     					&ndash; inside your earliest happy memory
-    				</span>
-  			</span>
-		</text>
-			
-		<text id = "text2" class="placeName" style="color: #f7cb3b00; text-shadow: 2px 2px #91050300;">
- 			<span class="text-wrapper2">
-    				<span class="letters2">
+    			</span>
+  				</span>
+			</text>
+
+			<text id = "text2" class="placeName" style="color: #f7cb3b00; text-shadow: 2px 2px #91050300;">
+ 			 	<span class="text-wrapper2">
+    			<span class="letters2">
     					&ndash; deeper into a close relationship
-    				</span>
-  			</span>
-		</text>
+    			</span>
+  				</span>
+			</text>
 
 			<!--audio player 1-->
 			<audio id="audio1" loop>
@@ -422,8 +422,9 @@
 			const eyeballNoise = document.querySelector("#eyeballNoise");
 			const eyeball2noise = document.querySelector("#eyeball2noise");
 			const polymorph = document.querySelector(".polymorph");
-			
+
 			const rocketButton = document.querySelector("#rocket-button");
+			const rocketship = document.querySelector("#rocketship");
 
 			// Wrap every letter from text1 in a span
 			var textWrapper1 = document.querySelector('.placeName .letters1');
@@ -516,7 +517,7 @@
 			 		.add({
 			 			targets: '#text1 .letter1',
 			 			color: toggle ? "#f7cb3b00" : "#f7cb3b",
-			 			textShadow: toggle ? " 2px 2px #91050300" : "2px 2px #910503"
+			 			textShadow: toggle ? "2px 2px #91050300" : "2px 2px #910503"
 			 		}, "-=700")
 					.add({
 					    targets: '#text1 .letter1',
@@ -528,17 +529,17 @@
 					}, "-=700");
 
 			 		toggle = !toggle;
-				
-					//rocket now links to the Place
-					rocketButton.setAttribute("href", "http://placestogo.art/desert");
-				
-					//manual toggle for rocketship to appear and disappear
+
+			 		//rocket now links to the Place
+			 		rocketButton.setAttribute("href", "http://placestogo.art/desert");
+
+			 		//manual toggle for rocketship to appear and disappear
 			 		if(toggle){
 			 			rocketship.style.visibility = "visible"
 			 		}
 			 		else {
 			 			rocketship.style.visibility = "hidden"
-			 		}
+			 		};
 			});
 
 			let toggle2 = false;
@@ -595,9 +596,9 @@
 			 			targets: "#polymorph",
 			 			fill: toggle2 ? "none" : "#f3c5fa"
 			 		}, "-=750"
-			 		);
-				
-					//make text appear
+			 		)
+
+			 		//make text appear
 			 		.add({
 			 			targets: '#text2 .letter2',
 			 			color: toggle2 ? "#f7cb3b00" : "#f7cb3b",
@@ -613,7 +614,7 @@
 					}, "-=700");
 
 					toggle2 =!toggle2;
-				
+
 					//rocket now links to the Place
 					rocketButton.setAttribute("href", "http://wikipedia.org");
 
@@ -623,7 +624,7 @@
 			 		}
 			 		else {
 			 			rocketship.style.visibility = "hidden"
-			 		}
+			 		};
 			});
 
 			var stretchingPolymorph = anime({
