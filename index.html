@@ -245,7 +245,7 @@
 				white-space: nowrap;
 				}
 
-			.placeName .text-wrapper {
+			.placeName .text-wrapper1 {
 			  position: relative;
 			  display: inline-block;
 			  padding-top: 0.1em;
@@ -253,7 +253,21 @@
 			  padding-bottom: 0.15em;
 			}
 
-			.placeName .letter {
+			.placeName .text-wrapper2 {
+			  position: relative;
+			  display: inline-block;
+			  padding-top: 0.1em;
+			  padding-right: 0.05em;
+			  padding-bottom: 0.15em;
+			}
+
+			.placeName .letter1 {
+			  display: inline-block;
+			  line-height: 1em;
+
+			}
+
+			.placeName .letter2 {
 			  display: inline-block;
 			  line-height: 1em;
 
@@ -371,13 +385,20 @@
 	      	</svg>
 
 	      	<text id = "text1" class="placeName" style="color: #f7cb3b00; text-shadow: 2px 2px #91050300;">
- 			 	<span class="text-wrapper">
-    			<span class="letters">
+ 			<span class="text-wrapper">
+    				<span class="letters">
     					&ndash; inside your earliest happy memory
-    			</span>
-  				</span>
-  				
-			</text>
+    				</span>
+  			</span>
+		</text>
+			
+		<text id = "text2" class="placeName" style="color: #f7cb3b00; text-shadow: 2px 2px #91050300;">
+ 			<span class="text-wrapper2">
+    				<span class="letters2">
+    					&ndash; deeper into a close relationship
+    				</span>
+  			</span>
+		</text>
 
 			<!--audio player 1-->
 			<audio id="audio1" loop>
@@ -406,9 +427,13 @@
 			
 			const rocketButton = document.querySelector("#rocket-button");
 
-			// Wrap every letter in a span
-			var textWrapper = document.querySelector('.placeName .letters');
-			textWrapper.innerHTML = textWrapper.textContent.replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>");
+			// Wrap every letter from text1 in a span
+			var textWrapper1 = document.querySelector('.placeName .letters1');
+			textWrapper1.innerHTML = textWrapper1.textContent.replace(/([^\x00-\x80]|\w)/g, "<span class='letter1'>$&</span>");
+
+			// Wrap every letter from text2 in a span
+			var textWrapper2 = document.querySelector('.placeName .letters2');
+			textWrapper2.innerHTML = textWrapper2.textContent.replace(/([^\x00-\x80]|\w)/g, "<span class='letter2'>$&</span>");
 
 			//click for audio for Planet 1
 			eyeballNoise.addEventListener("click", function(e){
@@ -491,12 +516,12 @@
 			 		)
 			 		//make text appear
 			 		.add({
-			 			targets: '#text1 .letter',
+			 			targets: '#text1 .letter1',
 			 			color: toggle ? "#f7cb3b00" : "#f7cb3b",
 			 			textShadow: toggle ? " 2px 2px #91050300" : "2px 2px #910503"
 			 		}, "-=700")
 					.add({
-					    targets: '#text1 .letter',
+					    targets: '#text1 .letter1',
 					    opacity: toggle ? 0 : [0,1],
 					    easing: "easeOutExpo",
 					    duration: 600,
@@ -573,6 +598,21 @@
 			 			fill: toggle2 ? "none" : "#f3c5fa"
 			 		}, "-=750"
 			 		);
+				
+					//make text appear
+			 		.add({
+			 			targets: '#text2 .letter2',
+			 			color: toggle2 ? "#f7cb3b00" : "#f7cb3b",
+			 			textShadow: toggle2 ? "2px 2px #91050300" : "2px 2px #910503"
+			 		}, "-=700")
+					.add({
+					    targets: '#text2 .letter2',
+					    opacity: toggle2 ? 0 : [0,1],
+					    easing: "easeOutExpo",
+					    duration: 600,
+					    offset: '-=775',
+					    delay: (el, i) => 34 * (i+1)
+					}, "-=700");
 
 					toggle2 =!toggle2;
 				
