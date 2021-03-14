@@ -494,6 +494,8 @@
 					}, "-=700");
 
 			 		toggle = !toggle;
+				
+					//rocket now links to the Place
 					rocketButton.setAttribute("href", "http://placestogo.art/desert");
 				
 					//manual toggle for rocketship to appear and disappear
@@ -562,6 +564,17 @@
 			 		);
 
 					toggle2 =!toggle2;
+				
+					//rocket now links to the Place
+					rocketButton.setAttribute("href", "http://wikipedia.org");
+
+					//manual toggle for rocketship to appear and disappear
+			 		if(toggle2){
+			 			rocketship.style.visibility = "visible"
+			 		}
+			 		else {
+			 			rocketship.style.visibility = "hidden"
+			 		}
 			});
 
 			var stretchingPolymorph = anime({
