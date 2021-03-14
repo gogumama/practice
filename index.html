@@ -303,7 +303,7 @@
 				href="https://www.wikipedia.org">
 				<img
 					id = "rocketship"
-					src = "/images/rocketship.png"
+					src = "rocketship.png"
 					style = "visibility: hidden"
 				/>
 			</a>
@@ -352,9 +352,14 @@
 					<path id = "eyeballNoise" class = "eyeball" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="url(#pattern2)"/>
 				</g>
 
-				<g transform="translate(350,180)">
+				<g transform="translate(350,184)">
 					<path id = "eyeball2" class = "eyeball2" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="#db8ced"/>
 					<path id = "eyeball2noise" class = "eyeball2" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="url(#pattern2)"/>
+				</g>
+
+				<g transform="translate(384,165)">
+					<path id = "eyeball3" class = "eyeball3" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="#384a20"/>
+					<path id = "eyeball3noise" class = "eyeball3" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="url(#pattern2)"/>
 				</g>
 
 				<g transform="translate(296,210)"><path id = "planetRings1" d="M12.5 0.5C-33 0.5 76.5 10.1905 33.5 1.99999C54.5 5.99999 -7.99999 1.99999 12.5 0.5Z" stroke="#93269C"/></g>
@@ -421,6 +426,9 @@
 			const idEyeMotion = document.querySelector("#eye-motion");
 			const eyeballNoise = document.querySelector("#eyeballNoise");
 			const eyeball2noise = document.querySelector("#eyeball2noise");
+			const eyeball3noise = document.querySelector("#eyeball3noise");
+
+
 			const polymorph = document.querySelector(".polymorph");
 
 			const rocketButton = document.querySelector("#rocket-button");
@@ -620,6 +628,79 @@
 
 					//manual toggle for rocketship to appear and disappear
 			 		if(toggle2){
+			 			rocketship.style.visibility = "visible"
+			 		}
+			 		else {
+			 			rocketship.style.visibility = "hidden"
+			 		};
+			});
+
+			let toggle3 = false;
+
+			eyeball3noise.addEventListener("click",() => {
+				const timeline3 = anime.timeline({
+					duration : 750,
+					easing : "easeOutExpo"
+				});
+				timeline3
+					//planet becomes a bigger circle
+					.add({
+						targets: ".eyeball3",
+						d: [{value: toggle3 ? planet : iris}],
+						//can add a comma and another morph if you want
+					})
+					//iris goes on a rotating path to the eye
+					.add({
+						targets: ".eyeball3",
+						rotate: toggle3 ? 0 : 162,
+					}, "-=700"
+					)
+					//eye opens
+					.add({
+			 			targets: ".eye-motion",
+			 			d: [{value: toggle3 ? asleep : awake}]
+			 		}, "-=500"
+			 		)
+					//make other planets disappear
+			 		.add({
+			 			targets: "#eyeball",
+			 			fill: toggle3 ? "#ba4120" : "none"
+			 		}, "-=700"
+			 		)
+			 		.add({
+			 			targets: "#planetRings1",
+			 			stroke: toggle3 ? "#93269C" : "none"
+			 		}, "-=700"
+			 		)
+			 		//make other planet noise disappear
+			 		.add({
+			 			targets: "#eyeballNoise",
+			 			fill: toggle3 ? "url(#pattern2)" : "none"
+			 		}, "-=700"
+			 		)
+
+			 		//make text appear
+			 		.add({
+			 			targets: '#text3 .letter3',
+			 			color: toggle3 ? "#f7cb3b00" : "#f7cb3b",
+			 			textShadow: toggle3 ? "2px 2px #91050300" : "2px 2px #910503"
+			 		}, "-=700")
+					.add({
+					    targets: '#text3 .letter3',
+					    opacity: toggle3 ? 0 : [0,1],
+					    easing: "easeOutExpo",
+					    duration: 600,
+					    offset: '-=775',
+					    delay: (el, i) => 34 * (i+1)
+					}, "-=700");
+
+					toggle3 =!toggle3;
+
+					//rocket now links to the Place
+					rocketButton.setAttribute("href", "http://wikipedia.org");
+
+					//manual toggle for rocketship to appear and disappear
+			 		if(toggle3){
 			 			rocketship.style.visibility = "visible"
 			 		}
 			 		else {
