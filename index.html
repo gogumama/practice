@@ -45,6 +45,8 @@
 				left: 670px;
 				position: relative;
 				z-index: 2;
+				animation: rocketship 4s linear infinite alternate;
+				transform-origin: center;
 			}
 
 			.star1{
@@ -106,6 +108,15 @@
 				animation: polymorph 5s infinite;
 				transform-origin: center;
 				transform-box: fill-box;
+			}
+			
+			@keyframes rocketship{
+				from{
+					transform: rotateZ(0deg);
+				}
+				to{
+					transform: rotateZ(20deg);
+				}
 			}
 
 			@keyframes star1{
