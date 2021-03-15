@@ -261,12 +261,25 @@
 			  padding-bottom: 0.15em;
 			}
 
+			.placeName .text-wrapper3 {
+			  position: relative;
+			  display: inline-block;
+			  padding-top: 0.1em;
+			  padding-right: 0.05em;
+			  padding-bottom: 0.15em;
+			}
+
 			.placeName .letter1 {
 			  display: inline-block;
 			  line-height: 1em;
 			}
 
 			.placeName .letter2 {
+			  display: inline-block;
+			  line-height: 1em;
+			}
+
+			.placeName .letter3 {
 			  display: inline-block;
 			  line-height: 1em;
 			}
@@ -403,6 +416,14 @@
   				</span>
 			</text>
 
+			<text id = "text3" class="placeName" style="color: #f7cb3b00; text-shadow: 2px 2px #91050300;">
+ 			 	<span class="text-wrapper3">
+    			<span class="letters3">
+    					&ndash; place number 3
+    			</span>
+  				</span>
+			</text>
+
 			<!--audio player 1-->
 			<audio id="audio1" loop>
   				<source src="LullabyForACat.mp3" type="audio/mp3"/>
@@ -441,6 +462,10 @@
 			// Wrap every letter from text2 in a span
 			var textWrapper2 = document.querySelector('.placeName .letters2');
 			textWrapper2.innerHTML = textWrapper2.textContent.replace(/([^\x00-\x80]|\w)/g, "<span class='letter2'>$&</span>");
+
+			// Wrap every letter from text3 in a span
+			var textWrapper3 = document.querySelector('.placeName .letters3');
+			textWrapper3.innerHTML = textWrapper3.textContent.replace(/([^\x00-\x80]|\w)/g, "<span class='letter3'>$&</span>");
 
 			//click for audio for Planet 1
 			eyeballNoise.addEventListener("click", function(e){
