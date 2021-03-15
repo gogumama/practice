@@ -303,7 +303,7 @@
 				href="https://www.wikipedia.org">
 				<img
 					id = "rocketship"
-					src = "/images/rocketship.png"
+					src = "rocketship.png"
 					style = "visibility: hidden"
 				/>
 			</a>
@@ -515,9 +515,19 @@
 			 			fill: toggle ? "#db8ced" : "none"
 			 		}, "-=700"
 			 		)
+			 		.add({
+			 			targets: "#eyeball3",
+			 			fill: toggle ? "#384a20" : "none"
+			 		}, "-=700"
+			 		)
 			 		//make other planet noise disappear
 			 		.add({
 			 			targets: "#eyeball2noise",
+			 			fill: toggle ? "url(#pattern2)" : "none"
+			 		}, "-=700"
+			 		)
+			 		.add({
+			 			targets: "#eyeball3noise",
 			 			fill: toggle ? "url(#pattern2)" : "none"
 			 		}, "-=700"
 			 		)
@@ -587,9 +597,19 @@
 			 			stroke: toggle2 ? "#93269C" : "none"
 			 		}, "-=700"
 			 		)
+			 		.add({
+			 			targets: "#eyeball3",
+			 			fill: toggle2 ? "#384a20" : "none"
+			 		}, "-=700"
+			 		)
 			 		//make other planet noise disappear
 			 		.add({
 			 			targets: "#eyeballNoise",
+			 			fill: toggle2 ? "url(#pattern2)" : "none"
+			 		}, "-=700"
+			 		)
+			 		.add({
+			 			targets: "#eyeball3noise",
 			 			fill: toggle2 ? "url(#pattern2)" : "none"
 			 		}, "-=700"
 			 		)
@@ -672,9 +692,19 @@
 			 			stroke: toggle3 ? "#93269C" : "none"
 			 		}, "-=700"
 			 		)
+			 		.add({
+			 			targets: "#eyeball2",
+			 			fill: toggle3 ? "#db8ced" : "none"
+			 		}, "-=700"
+			 		)
 			 		//make other planet noise disappear
 			 		.add({
 			 			targets: "#eyeballNoise",
+			 			fill: toggle3 ? "url(#pattern2)" : "none"
+			 		}, "-=700"
+			 		)
+			 		.add({
+			 			targets: "#eyeball2noise",
 			 			fill: toggle3 ? "url(#pattern2)" : "none"
 			 		}, "-=700"
 			 		)
