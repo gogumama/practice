@@ -316,7 +316,7 @@
 				href="https://www.wikipedia.org">
 				<img
 					id = "rocketship"
-					src = "/images/rocketship.png"
+					src = "rocketship.png"
 					style = "visibility: hidden"
 				/>
 			</a>
@@ -375,6 +375,11 @@
 					<path id = "eyeball3noise" class = "eyeball3" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="url(#pattern2)"/>
 				</g>
 
+				<g transform="translate(265,211)">
+					<path id = "eyeball4" class = "eyeball4" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="#5450d4"/>
+					<path id = "eyeball4noise" class = "eyeball4" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="url(#pattern2)"/>
+				</g>
+
 				<g transform="translate(296,210)"><path id = "planetRings1" d="M12.5 0.5C-33 0.5 76.5 10.1905 33.5 1.99999C54.5 5.99999 -7.99999 1.99999 12.5 0.5Z" stroke="#93269C"/></g>
 
 				<g transform="translate(175,60)
@@ -424,6 +429,14 @@
   				</span>
 			</text>
 
+			<text id = "text4" class="placeName" style="color: #f7cb3b00; text-shadow: 2px 2px #91050300;">
+ 			 	<span class="text-wrapper4">
+    			<span class="letters4">
+    					&ndash; place number 4
+    			</span>
+  				</span>
+			</text>
+
 			<!--audio player 1-->
 			<audio id="audio1" loop>
   				<source src="LullabyForACat.mp3" type="audio/mp3"/>
@@ -448,6 +461,7 @@
 			const eyeballNoise = document.querySelector("#eyeballNoise");
 			const eyeball2noise = document.querySelector("#eyeball2noise");
 			const eyeball3noise = document.querySelector("#eyeball3noise");
+			const eyeball4noise = document.querySelector("#eyeball4noise");
 
 
 			const polymorph = document.querySelector(".polymorph");
@@ -466,6 +480,10 @@
 			// Wrap every letter from text3 in a span
 			var textWrapper3 = document.querySelector('.placeName .letters3');
 			textWrapper3.innerHTML = textWrapper3.textContent.replace(/([^\x00-\x80]|\w)/g, "<span class='letter3'>$&</span>");
+
+			// Wrap every letter from text4 in a span
+			var textWrapper4 = document.querySelector('.placeName .letters4');
+			textWrapper4.innerHTML = textWrapper4.textContent.replace(/([^\x00-\x80]|\w)/g, "<span class='letter4'>$&</span>");
 
 			//click for audio for Planet 1
 			eyeballNoise.addEventListener("click", function(e){
@@ -545,6 +563,11 @@
 			 			fill: toggle ? "#384a20" : "none"
 			 		}, "-=700"
 			 		)
+			 		.add({
+			 			targets: "#eyeball4",
+			 			fill: toggle ? "#5450d4" : "none"
+			 		}, "-=700"
+			 		)
 			 		//make other planet noise disappear
 			 		.add({
 			 			targets: "#eyeball2noise",
@@ -553,6 +576,11 @@
 			 		)
 			 		.add({
 			 			targets: "#eyeball3noise",
+			 			fill: toggle ? "url(#pattern2)" : "none"
+			 		}, "-=700"
+			 		)
+			 		.add({
+			 			targets: "#eyeball4noise",
 			 			fill: toggle ? "url(#pattern2)" : "none"
 			 		}, "-=700"
 			 		)
@@ -627,6 +655,11 @@
 			 			fill: toggle2 ? "#384a20" : "none"
 			 		}, "-=700"
 			 		)
+			 		.add({
+			 			targets: "#eyeball4",
+			 			fill: toggle2 ? "#5450d4" : "none"
+			 		}, "-=700"
+			 		)
 			 		//make other planet noise disappear
 			 		.add({
 			 			targets: "#eyeballNoise",
@@ -635,6 +668,11 @@
 			 		)
 			 		.add({
 			 			targets: "#eyeball3noise",
+			 			fill: toggle2 ? "url(#pattern2)" : "none"
+			 		}, "-=700"
+			 		)
+			 		.add({
+			 			targets: "#eyeball4noise",
 			 			fill: toggle2 ? "url(#pattern2)" : "none"
 			 		}, "-=700"
 			 		)
@@ -697,7 +735,7 @@
 					//iris goes on a rotating path to the eye
 					.add({
 						targets: ".eyeball3",
-						rotate: toggle3 ? 0 : 162,
+						rotate: toggle3 ? 0 : 162.5,
 					}, "-=700"
 					)
 					//eye opens
@@ -722,6 +760,11 @@
 			 			fill: toggle3 ? "#db8ced" : "none"
 			 		}, "-=700"
 			 		)
+			 		.add({
+			 			targets: "#eyeball4",
+			 			fill: toggle3 ? "#5450d4" : "none"
+			 		}, "-=700"
+			 		)
 			 		//make other planet noise disappear
 			 		.add({
 			 			targets: "#eyeballNoise",
@@ -733,7 +776,11 @@
 			 			fill: toggle3 ? "url(#pattern2)" : "none"
 			 		}, "-=700"
 			 		)
-
+			 		.add({
+			 			targets: "#eyeball4noise",
+			 			fill: toggle3 ? "url(#pattern2)" : "none"
+			 		}, "-=700"
+			 		)
 			 		//make text appear
 			 		.add({
 			 			targets: '#text3 .letter3',
@@ -756,6 +803,98 @@
 
 					//manual toggle for rocketship to appear and disappear
 			 		if(toggle3){
+			 			rocketship.style.visibility = "visible"
+			 		}
+			 		else {
+			 			rocketship.style.visibility = "hidden"
+			 		};
+			});
+
+			let toggle4 = false;
+
+			eyeball4noise.addEventListener("click",() => {
+				const timeline4 = anime.timeline({
+					duration : 750,
+					easing : "easeOutExpo"
+				});
+				timeline4
+					//planet becomes a bigger circle
+					.add({
+						targets: ".eyeball4",
+						d: [{value: toggle4 ? planet : iris}],
+						//can add a comma and another morph if you want
+					})
+					//iris goes on a rotating path to the eye
+					.add({
+						targets: ".eyeball4",
+						rotate: toggle4 ? 0 : 189,
+					}, "-=700"
+					)
+					//eye opens
+					.add({
+			 			targets: ".eye-motion",
+			 			d: [{value: toggle4 ? asleep : awake}]
+			 		}, "-=500"
+			 		)
+					//make other planets disappear
+			 		.add({
+			 			targets: "#eyeball",
+			 			fill: toggle4 ? "#ba4120" : "none"
+			 		}, "-=700"
+			 		)
+			 		.add({
+			 			targets: "#planetRings1",
+			 			stroke: toggle4 ? "#93269C" : "none"
+			 		}, "-=700"
+			 		)
+			 		.add({
+			 			targets: "#eyeball2",
+			 			fill: toggle4 ? "#db8ced" : "none"
+			 		}, "-=700"
+			 		)
+			 		.add({
+			 			targets: "#eyeball3",
+			 			fill: toggle4 ? "#384a20" : "none"
+			 		}, "-=700"
+			 		)
+			 		//make other planet noise disappear
+			 		.add({
+			 			targets: "#eyeballNoise",
+			 			fill: toggle4 ? "url(#pattern2)" : "none"
+			 		}, "-=700"
+			 		)
+			 		.add({
+			 			targets: "#eyeball2noise",
+			 			fill: toggle4 ? "url(#pattern2)" : "none"
+			 		}, "-=700"
+			 		)
+			 		.add({
+			 			targets: "#eyeball3noise",
+			 			fill: toggle4 ? "url(#pattern2)" : "none"
+			 		}, "-=700"
+			 		)
+			 		//make text appear
+			 		.add({
+			 			targets: '#text4 .letter4',
+			 			color: toggle4 ? "#f7cb3b00" : "#f7cb3b",
+			 			textShadow: toggle4 ? "2px 2px #91050300" : "2px 2px #910503"
+			 		}, "-=700")
+					.add({
+					    targets: '#text4 .letter4',
+					    opacity: toggle4 ? 0 : [0,1],
+					    easing: "easeOutExpo",
+					    duration: 600,
+					    offset: '-=775',
+					    delay: (el, i) => 34 * (i+1)
+					}, "-=700");
+
+					toggle4 =!toggle4;
+
+					//rocket now links to the Place
+					rocketButton.setAttribute("href", "http://wikipedia.org");
+
+					//manual toggle for rocketship to appear and disappear
+			 		if(toggle4){
 			 			rocketship.style.visibility = "visible"
 			 		}
 			 		else {
