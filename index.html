@@ -15,9 +15,9 @@
 			@media screen and (max-width: 800px) {
   			
   			section {
-  				transform: scale(0.6, 0.6);
+  				transform: scale(0.55, 0.55);
   				position: relative;
-    			left: -190px;
+    			left: -170px;
     			top: -100px;
   			}
 			}
@@ -316,7 +316,7 @@
 				href="https://www.wikipedia.org">
 				<img
 					id = "rocketship"
-					src = "/images/rocketship.png"
+					src = "rocketship.png"
 					style = "visibility: hidden"
 				/>
 			</a>
@@ -467,6 +467,54 @@
   				</span>
 			</text>
 
+			<text id = "text5" class="placeName" style="color: #f7cb3b00; text-shadow: 2px 2px #91050300;">
+ 			 	<span class="text-wrapper5">
+    			<span class="letters5">
+    					&ndash; place number 5
+    			</span>
+  				</span>
+			</text>
+
+			<text id = "text6" class="placeName" style="color: #f7cb3b00; text-shadow: 2px 2px #91050300;">
+ 			 	<span class="text-wrapper6">
+    			<span class="letters6">
+    					&ndash; place number 6
+    			</span>
+  				</span>
+			</text>
+
+			<text id = "text7" class="placeName" style="color: #f7cb3b00; text-shadow: 2px 2px #91050300;">
+ 			 	<span class="text-wrapper7">
+    			<span class="letters7">
+    					&ndash; place number 7
+    			</span>
+  				</span>
+			</text>
+
+			<text id = "text8" class="placeName" style="color: #f7cb3b00; text-shadow: 2px 2px #91050300;">
+ 			 	<span class="text-wrapper8">
+    			<span class="letters8">
+    					&ndash; place number 8
+    			</span>
+  				</span>
+			</text>
+
+			<text id = "text9" class="placeName" style="color: #f7cb3b00; text-shadow: 2px 2px #91050300;">
+ 			 	<span class="text-wrapper9">
+    			<span class="letters9">
+    					&ndash; place number 9
+    			</span>
+  				</span>
+			</text>
+
+			<text id = "text10" class="placeName" style="color: #f7cb3b00; text-shadow: 2px 2px #91050300;">
+ 			 	<span class="text-wrapper10">
+    			<span class="letters10">
+    					&ndash; place number 10
+    			</span>
+  				</span>
+			</text>
+
 			<!--audio player 1-->
 			<audio id="audio1" loop>
   				<source src="LullabyForACat.mp3" type="audio/mp3"/>
@@ -524,6 +572,30 @@
 			// Wrap every letter from text4 in a span
 			var textWrapper4 = document.querySelector('.placeName .letters4');
 			textWrapper4.innerHTML = textWrapper4.textContent.replace(/([^\x00-\x80]|\w)/g, "<span class='letter4'>$&</span>");
+
+			// Wrap every letter from text5 in a span
+			var textWrapper5 = document.querySelector('.placeName .letters5');
+			textWrapper5.innerHTML = textWrapper5.textContent.replace(/([^\x00-\x80]|\w)/g, "<span class='letter5'>$&</span>");
+
+			// Wrap every letter from text6 in a span
+			var textWrapper6 = document.querySelector('.placeName .letters6');
+			textWrapper6.innerHTML = textWrapper6.textContent.replace(/([^\x00-\x80]|\w)/g, "<span class='letter6'>$&</span>");
+
+			// Wrap every letter from text7 in a span
+			var textWrapper7 = document.querySelector('.placeName .letters7');
+			textWrapper7.innerHTML = textWrapper7.textContent.replace(/([^\x00-\x80]|\w)/g, "<span class='letter7'>$&</span>");
+
+			// Wrap every letter from text8 in a span
+			var textWrapper8 = document.querySelector('.placeName .letters8');
+			textWrapper8.innerHTML = textWrapper8.textContent.replace(/([^\x00-\x80]|\w)/g, "<span class='letter8'>$&</span>");
+
+			// Wrap every letter from text9 in a span
+			var textWrapper9 = document.querySelector('.placeName .letters9');
+			textWrapper9.innerHTML = textWrapper9.textContent.replace(/([^\x00-\x80]|\w)/g, "<span class='letter9'>$&</span>");
+
+			// Wrap every letter from text10 in a span
+			var textWrapper10 = document.querySelector('.placeName .letters10');
+			textWrapper10.innerHTML = textWrapper10.textContent.replace(/([^\x00-\x80]|\w)/g, "<span class='letter10'>$&</span>");
 
 			//click for audio for Planet 1
 			eyeballNoise.addEventListener("click", function(e){
