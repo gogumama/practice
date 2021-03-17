@@ -45,7 +45,6 @@
 				left: 670px;
 				position: relative;
 				z-index: 2;
-				animation: rocketship 4s linear infinite alternate;
 				transform-origin: center;
 			}
 
@@ -87,12 +86,6 @@
 			.star8{
 				animation: star8 58s ease-in-out infinite alternate;
 				transform-origin: center;
-			}
-
-			.polymorph{
-				animation: polymorph 5s infinite;
-				transform-origin: center;
-				transform-box: fill-box;
 			}
 
 			@keyframes rocketship{
@@ -723,6 +716,11 @@
 				 			fill: toggle[2] ? "none" : "#f3c5fa"
 				 		}, "-=750"
 				 		)
+				 		.add({
+				 			targets: ".polymorph",
+				 			style: toggle[2] ? "animation: none" : "animation: polymorph 5s infinite; transform-origin: center; transform-box: fill-box;"
+				 		}, "-=750"
+				 		)
 
 				 		//make text appear
 				 		.add({
@@ -1128,7 +1126,8 @@
 
 				var i = 1;
 				if(active){ // if some planet is active
-					rocketship.style.visibility = "visible" // rocketship appears
+					rocketship.style.visibility = "visible"; // rocketship appears
+					rocketship.style.animation = "rocketship 4s linear infinite alternate"; // rocketship moves
 					planetRings1.setAttribute("stroke", "none"); // planet 1's rings disappear
 					if(!toggle[i]) { // if it's not planet 1
 						eyeball.setAttribute("fill", "none");
@@ -1136,7 +1135,8 @@
 					}
 				}
 				else { // if no planet is active
-					rocketship.style.visibility = "hidden" // rocketship disappears
+					rocketship.style.visibility = "hidden"; // rocketship disappears
+					rocketship.style.animation = "none";
 					eyeball.setAttribute("fill", color[i]);
 					eyeballNoise.setAttribute("fill", "url(#pattern2)");
 					planetRings1.setAttribute("stroke", "#93269C");
