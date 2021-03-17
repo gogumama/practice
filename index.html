@@ -316,7 +316,7 @@
 				href="https://www.wikipedia.org">
 				<img
 					id = "rocketship"
-					src = "/images/rocketship.png"
+					src = "rocketship.png"
 					style = "visibility: hidden"
 				/>
 			</a>
@@ -540,19 +540,33 @@
 			const eyeball2noise = document.querySelector("#eyeball2noise");
 			const eyeball3noise = document.querySelector("#eyeball3noise");
 			const eyeball4noise = document.querySelector("#eyeball4noise");
+			const eyeball5noise = document.querySelector("#eyeball5noise");
+			const eyeball6noise = document.querySelector("#eyeball6noise");
+			const eyeball7noise = document.querySelector("#eyeball7noise");
+			const eyeball8noise = document.querySelector("#eyeball8noise");
+			const eyeball9noise = document.querySelector("#eyeball9noise");
+			const eyeball10noise = document.querySelector("#eyeball10noise");
+
+			const eyeball = document.querySelector("#eyeball");
+			const eyeball2 = document.querySelector("#eyeball2");
+			const eyeball3 = document.querySelector("#eyeball3");
+			const eyeball4 = document.querySelector("#eyeball4");
+			const eyeball5 = document.querySelector("#eyeball5");
+			const eyeball6 = document.querySelector("#eyeball6");
+			const eyeball7 = document.querySelector("#eyeball7");
+			const eyeball8 = document.querySelector("#eyeball8");
+			const eyeball9 = document.querySelector("#eyeball9");
+			const eyeball10 = document.querySelector("#eyeball10");
+
+			const planetRings1 = document.querySelector("#planetRings1");
+
+			let active = false;
 
 			const polymorph = document.querySelector(".polymorph");
 
-			const color1 = "#962c0e"
-			const color2 = "#dfa1ed"
-			const color3 = "#384a20"
-			const color4 = "#5450d4"
-			const color5 = "#751d72"
-			const color6 = "#e3bc30"
-			const color7 = "#ebe4a4"
-			const color8 = "#57250a"
-			const color9 = "#7a0540"
-			const color10 = "#055e53"
+			var color = ["black", "#962c0e", "#dfa1ed", "#384a20", "#5450d4", "#751d72", "#e3bc30", "#ebe4a4", "#57250a", "#7a0540", "#055e53"];
+
+			let toggle = [false, false, false, false, false, false, false, false, false, false, false];
 
 			const rocketButton = document.querySelector("#rocket-button");
 			const rocketship = document.querySelector("#rocketship");
@@ -610,7 +624,6 @@
 			    }
 			});
 
-			let toggle0 = false;
 			idEyeMotion.addEventListener("click", () => {
 				const timeline0 = anime.timeline({
 					duration: 750,
@@ -619,12 +632,11 @@
 				timeline0
 					.add({
 						targets: ".eye-motion",
-						d: [{value: toggle0 ? asleep : awake}],
+						d: [{value: toggle[0] ? asleep : awake}],
 					});
-				toggle0 = !toggle0;
+				toggle[0] = !toggle[0];
 			});
 
-			let toggle = false;
 			eyeballNoise.addEventListener("click", () => {
 				//we need to use anime.js
 				const timeline = anime.timeline({
@@ -636,156 +648,57 @@
 					//planet becomes a bigger circle
 					.add({
 						targets: ".eyeball",
-						d: [{value: toggle ? planet : iris}]
+						d: [{value: toggle[1] ? planet : iris}]
 						//can add a comma and another morph if you want
 					}, "-=100")
 					//iris goes on a rotating path to the eye
 					.add({
 						targets: ".eyeball",
-						rotate: toggle ? 0 : 180,
+						rotate: toggle[1] ? 0 : 180,
 
 					}, "-=700"
 					)
 					//eye opens
 					.add({
 			 			targets: ".eye-motion",
-			 			d: [{value: toggle ? asleep : awake}]
+			 			d: [{value: toggle[1] ? asleep : awake}]
 			 		}, "-=500"
 			 		)
 			 		//make animation appear
 			 		.add({
 			 			targets: ".rectangle",
-			 			stroke: toggle ? "none" : "url(#grad2)"
+			 			stroke: toggle[1] ? "none" : "url(#grad2)"
 			 		}, "-=700"
-			 		)
-			 		//make planet rings disappear
-			 		.add({
-			 			targets: "#planetRings1",
-			 			stroke: toggle ? "#93269C" : "none"
-			 		}, "-=700"
-			 		)
-			 		//make other planets disappear
-			 		.add({
-			 			targets: "#eyeball2",
-			 			fill: toggle ? color2 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball3",
-			 			fill: toggle ? color3 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball4",
-			 			fill: toggle ? color4 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball5",
-			 			fill: toggle ? color5 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball6",
-			 			fill: toggle ? color6 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball7",
-			 			fill: toggle ? color7 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball8",
-			 			fill: toggle ? color8 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball9",
-			 			fill: toggle ? color9 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball10",
-			 			fill: toggle ? color10 : "none"
-			 		}, "-=700"
-			 		)
-			 		//make other planet noise disappear
-			 		.add({
-			 			targets: "#eyeball2noise",
-			 			fill: toggle ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball3noise",
-			 			fill: toggle ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball4noise",
-			 			fill: toggle ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball5noise",
-			 			fill: toggle ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball6noise",
-			 			fill: toggle ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball7noise",
-			 			fill: toggle ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball8noise",
-			 			fill: toggle ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball9noise",
-			 			fill: toggle ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball10noise",
-			 			fill: toggle ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
 			 		)
 			 		//make text appear
 			 		.add({
 			 			targets: '#text1 .letter1',
-			 			color: toggle ? "#f7cb3b00" : "#f7cb3b",
-			 			textShadow: toggle ? "2px 2px #91050300" : "2px 2px #910503"
+			 			color: toggle[1] ? "#f7cb3b00" : "#f7cb3b",
+			 			textShadow: toggle[1] ? "2px 2px #91050300" : "2px 2px #910503"
 			 		}, "-=1500")
 					.add({
 					    targets: '#text1 .letter1',
-					    opacity: toggle ? 0 : [0,1],
+					    opacity: toggle[1] ? 0 : [0,1],
 					    easing: "easeOutExpo",
 					    duration: 600,
 					    offset: '-=775',
 					    delay: (el, i) => 34 * (i+1)
 					}, "-=1500");
 
-			 		toggle = !toggle;
+					//manual toggle for rocketship to appear and disappear
+			 		if(toggle[1]){
+			 			rocketship.style.visibility = "hidden"
+			 		}
+			 		else {
+			 			rocketship.style.visibility = "visible"
+			 		};
+
+			 		toggle[1] = !toggle[1];
+			 		active = !active;
 
 			 		//rocket now links to the Place
 			 		rocketButton.setAttribute("href", "http://placestogo.art/desert");
-
-			 		//manual toggle for rocketship to appear and disappear
-			 		if(toggle){
-			 			rocketship.style.visibility = "visible"
-			 		}
-			 		else {
-			 			rocketship.style.visibility = "hidden"
-			 		};
 			});
-
-			let toggle2 = false;
 
 			eyeball2noise.addEventListener("click",() => {
 				const timeline2 = anime.timeline({
@@ -796,161 +709,63 @@
 					//planet becomes a bigger circle
 					.add({
 						targets: ".eyeball2",
-						d: [{value: toggle2 ? planet : iris}],
+						d: [{value: toggle[2] ? planet : iris}],
 						//can add a comma and another morph if you want
 					})
 					//iris goes on a rotating path to the eye
 					.add({
 						targets: ".eyeball2",
-						rotate: toggle2 ? 0 : 170,
+						rotate: toggle[2] ? 0 : 170,
 					}, "-=700"
 					)
 					//eye opens
 					.add({
 			 			targets: ".eye-motion",
-			 			d: [{value: toggle2 ? asleep : awake}]
+			 			d: [{value: toggle[2] ? asleep : awake}]
 			 		}, "-=500"
-			 		)
-					//make other planets disappear
-			 		.add({
-			 			targets: "#eyeball",
-			 			fill: toggle2 ? color1 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#planetRings1",
-			 			stroke: toggle2 ? "#93269C" : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball3",
-			 			fill: toggle2 ? color3 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball4",
-			 			fill: toggle2 ? color4 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball5",
-			 			fill: toggle2 ? color5 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball6",
-			 			fill: toggle2 ? color6 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball7",
-			 			fill: toggle2 ? color7 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball8",
-			 			fill: toggle2 ? color8 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball9",
-			 			fill: toggle2 ? color9 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball10",
-			 			fill: toggle2 ? color10 : "none"
-			 		}, "-=700"
-			 		)
-			 		//make other planet noise disappear
-			 		.add({
-			 			targets: "#eyeballNoise",
-			 			fill: toggle2 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball3noise",
-			 			fill: toggle2 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball4noise",
-			 			fill: toggle2 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball5noise",
-			 			fill: toggle2 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball6noise",
-			 			fill: toggle2 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball7noise",
-			 			fill: toggle2 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball8noise",
-			 			fill: toggle2 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball9noise",
-			 			fill: toggle2 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball10noise",
-			 			fill: toggle2 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
 			 		)
 			 		//make noise for animation appear
 			 		.add({
 			 			targets: "#polymorphNoise",
-			 			fill: toggle2 ? "none" : "url(#pattern0)"
+			 			fill: toggle[2] ? "none" : "url(#pattern0)"
 			 		}, "-=750"
 			 		)
 			 		//make animation appear
 			 		.add({
 			 			targets: "#polymorph",
-			 			fill: toggle2 ? "none" : "#f3c5fa"
+			 			fill: toggle[2] ? "none" : "#f3c5fa"
 			 		}, "-=750"
 			 		)
 
 			 		//make text appear
 			 		.add({
 			 			targets: '#text2 .letter2',
-			 			color: toggle2 ? "#f7cb3b00" : "#f7cb3b",
-			 			textShadow: toggle2 ? "2px 2px #91050300" : "2px 2px #910503"
+			 			color: toggle[2] ? "#f7cb3b00" : "#f7cb3b",
+			 			textShadow: toggle[2] ? "2px 2px #91050300" : "2px 2px #910503"
 			 		}, "-=1500")
 					.add({
 					    targets: '#text2 .letter2',
-					    opacity: toggle2 ? 0 : [0,1],
+					    opacity: toggle[2] ? 0 : [0,1],
 					    easing: "easeOutExpo",
 					    duration: 600,
 					    offset: '-=775',
 					    delay: (el, i) => 34 * (i+1)
 					}, "-=1500");
 
-					toggle2 =!toggle2;
+					//manual toggle for rocketship to appear and disappear
+			 		if(toggle[2]){
+			 			rocketship.style.visibility = "hidden"
+			 		}
+			 		else {
+			 			rocketship.style.visibility = "visible"
+			 		};
+
+					toggle[2] =!toggle[2];
+					active = !active;
 
 					//rocket now links to the Place
 					rocketButton.setAttribute("href", "http://wikipedia.org");
-
-					//manual toggle for rocketship to appear and disappear
-			 		if(toggle2){
-			 			rocketship.style.visibility = "visible"
-			 		}
-			 		else {
-			 			rocketship.style.visibility = "hidden"
-			 		};
 			});
-
-			let toggle3 = false;
 
 			eyeball3noise.addEventListener("click",() => {
 				const timeline3 = anime.timeline({
@@ -961,149 +776,51 @@
 					//planet becomes a bigger circle
 					.add({
 						targets: ".eyeball3",
-						d: [{value: toggle3 ? planet : iris}],
+						d: [{value: toggle[3] ? planet : iris}],
 						//can add a comma and another morph if you want
 					})
 					//iris goes on a rotating path to the eye
 					.add({
 						targets: ".eyeball3",
-						rotate: toggle3 ? 0 : 167,
-						translateX: toggle3 ? 0 : 50
+						rotate: toggle[3] ? 0 : 167,
+						translateX: toggle[3] ? 0 : 50
 					}, "-=700"
 					)
 					//eye opens
 					.add({
 			 			targets: ".eye-motion",
-			 			d: [{value: toggle3 ? asleep : awake}]
+			 			d: [{value: toggle[3] ? asleep : awake}]
 			 		}, "-=500"
-			 		)
-					//make other planets disappear
-			 		.add({
-			 			targets: "#eyeball",
-			 			fill: toggle3 ? color1 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#planetRings1",
-			 			stroke: toggle3 ? "#93269C" : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball2",
-			 			fill: toggle3 ? color2 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball4",
-			 			fill: toggle3 ? color4 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball5",
-			 			fill: toggle3 ? color5 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball6",
-			 			fill: toggle3 ? color6 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball7",
-			 			fill: toggle3 ? color7 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball8",
-			 			fill: toggle3 ? color8 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball9",
-			 			fill: toggle3 ? color9 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball10",
-			 			fill: toggle3 ? color10 : "none"
-			 		}, "-=700"
-			 		)
-			 		//make other planet noise disappear
-			 		.add({
-			 			targets: "#eyeballNoise",
-			 			fill: toggle3 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball2noise",
-			 			fill: toggle3 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball4noise",
-			 			fill: toggle3 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball5noise",
-			 			fill: toggle3 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball6noise",
-			 			fill: toggle3 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball7noise",
-			 			fill: toggle3 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball8noise",
-			 			fill: toggle3 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball9noise",
-			 			fill: toggle3 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball10noise",
-			 			fill: toggle3 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
 			 		)
 			 		//make text appear
 			 		.add({
 			 			targets: '#text3 .letter3',
-			 			color: toggle3 ? "#f7cb3b00" : "#f7cb3b",
-			 			textShadow: toggle3 ? "2px 2px #91050300" : "2px 2px #910503"
+			 			color: toggle[3] ? "#f7cb3b00" : "#f7cb3b",
+			 			textShadow: toggle[3] ? "2px 2px #91050300" : "2px 2px #910503"
 			 		}, "-=1500")
 					.add({
 					    targets: '#text3 .letter3',
-					    opacity: toggle3 ? 0 : [0,1],
+					    opacity: toggle[3] ? 0 : [0,1],
 					    easing: "easeOutExpo",
 					    duration: 600,
 					    offset: '-=775',
 					    delay: (el, i) => 34 * (i+1)
 					}, "-=1500");
 
-					toggle3 =!toggle3;
+					//manual toggle for rocketship to appear and disappear
+			 		if(toggle[3]){
+			 			rocketship.style.visibility = "hidden"
+			 		}
+			 		else {
+			 			rocketship.style.visibility = "visible"
+			 		};
+
+					toggle[3] =!toggle[3];
+					active = !active;
 
 					//rocket now links to the Place
 					rocketButton.setAttribute("href", "http://wikipedia.org");
-
-					//manual toggle for rocketship to appear and disappear
-			 		if(toggle3){
-			 			rocketship.style.visibility = "visible"
-			 		}
-			 		else {
-			 			rocketship.style.visibility = "hidden"
-			 		};
 			});
-
-			let toggle4 = false;
 
 			eyeball4noise.addEventListener("click",() => {
 				const timeline4 = anime.timeline({
@@ -1114,149 +831,51 @@
 					//planet becomes a bigger circle
 					.add({
 						targets: ".eyeball4",
-						d: [{value: toggle4 ? planet : iris}],
+						d: [{value: toggle[4] ? planet : iris}],
 						//can add a comma and another morph if you want
 					})
 					//iris goes on a rotating path to the eye
 					.add({
 						targets: ".eyeball4",
-						rotate: toggle4 ? 0 : 191,
-						translateX: toggle4 ? 0 : -30
+						rotate: toggle[4] ? 0 : 191,
+						translateX: toggle[4] ? 0 : -30
 					}, "-=700"
 					)
 					//eye opens
 					.add({
 			 			targets: ".eye-motion",
-			 			d: [{value: toggle4 ? asleep : awake}]
+			 			d: [{value: toggle[4] ? asleep : awake}]
 			 		}, "-=500"
-			 		)
-					//make other planets disappear
-			 		.add({
-			 			targets: "#eyeball",
-			 			fill: toggle4 ? color1 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#planetRings1",
-			 			stroke: toggle4 ? "#93269C" : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball2",
-			 			fill: toggle4 ? color2 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball3",
-			 			fill: toggle4 ? color3 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball5",
-			 			fill: toggle4 ? color5 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball6",
-			 			fill: toggle4 ? color6 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball7",
-			 			fill: toggle4 ? color7 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball8",
-			 			fill: toggle4 ? color8 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball9",
-			 			fill: toggle4 ? color9 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball10",
-			 			fill: toggle4 ? color10 : "none"
-			 		}, "-=700"
-			 		)
-			 		//make other planet noise disappear
-			 		.add({
-			 			targets: "#eyeballNoise",
-			 			fill: toggle4 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball2noise",
-			 			fill: toggle4 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball3noise",
-			 			fill: toggle4 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball5noise",
-			 			fill: toggle4 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball6noise",
-			 			fill: toggle4 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball7noise",
-			 			fill: toggle4 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball8noise",
-			 			fill: toggle4 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball9noise",
-			 			fill: toggle4 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball10noise",
-			 			fill: toggle4 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
 			 		)
 			 		//make text appear
 			 		.add({
 			 			targets: '#text4 .letter4',
-			 			color: toggle4 ? "#f7cb3b00" : "#f7cb3b",
-			 			textShadow: toggle4 ? "2px 2px #91050300" : "2px 2px #910503"
+			 			color: toggle[4] ? "#f7cb3b00" : "#f7cb3b",
+			 			textShadow: toggle[4] ? "2px 2px #91050300" : "2px 2px #910503"
 			 		}, "-=1500")
 					.add({
 					    targets: '#text4 .letter4',
-					    opacity: toggle4 ? 0 : [0,1],
+					    opacity: toggle[4] ? 0 : [0,1],
 					    easing: "easeOutExpo",
 					    duration: 600,
 					    offset: '-=775',
 					    delay: (el, i) => 34 * (i+1)
 					}, "-=1500");
 
-					toggle4 =!toggle4;
+					//manual toggle for rocketship to appear and disappear
+			 		if(toggle[4]){
+			 			rocketship.style.visibility = "hidden"
+			 		}
+			 		else {
+			 			rocketship.style.visibility = "visible"
+			 		};
+
+					toggle[4] =!toggle[4];
+					active = !active;
 
 					//rocket now links to the Place
 					rocketButton.setAttribute("href", "http://wikipedia.org");
-
-					//manual toggle for rocketship to appear and disappear
-			 		if(toggle4){
-			 			rocketship.style.visibility = "visible"
-			 		}
-			 		else {
-			 			rocketship.style.visibility = "hidden"
-			 		};
 			});
-
-			let toggle5 = false;
 
 			eyeball5noise.addEventListener("click",() => {
 				const timeline5 = anime.timeline({
@@ -1267,149 +886,51 @@
 					//planet becomes a bigger circle
 					.add({
 						targets: ".eyeball5",
-						d: [{value: toggle5 ? planet : iris}],
+						d: [{value: toggle[5] ? planet : iris}],
 						//can add a comma and another morph if you want
 					})
 					//iris goes on a rotating path to the eye
 					.add({
 						targets: ".eyeball5",
-						rotate: toggle5 ? 0 : -140,
-						translateX: toggle5 ? 0 : -30
+						rotate: toggle[5] ? 0 : -140,
+						translateX: toggle[5] ? 0 : -30
 					}, "-=700"
 					)
 					//eye opens
 					.add({
 			 			targets: ".eye-motion",
-			 			d: [{value: toggle5 ? asleep : awake}]
+			 			d: [{value: toggle[5] ? asleep : awake}]
 			 		}, "-=500"
-			 		)
-					//make other planets disappear
-			 		.add({
-			 			targets: "#eyeball",
-			 			fill: toggle5 ? color1 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#planetRings1",
-			 			stroke: toggle5 ? "#93269C" : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball2",
-			 			fill: toggle5 ? color2 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball3",
-			 			fill: toggle5 ? color3 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball4",
-			 			fill: toggle5 ? color4 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball6",
-			 			fill: toggle5 ? color6 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball7",
-			 			fill: toggle5 ? color7 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball8",
-			 			fill: toggle5 ? color8 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball9",
-			 			fill: toggle5 ? color9 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball10",
-			 			fill: toggle5 ? color10 : "none"
-			 		}, "-=700"
-			 		)
-			 		//make other planet noise disappear
-			 		.add({
-			 			targets: "#eyeballNoise",
-			 			fill: toggle5 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball2noise",
-			 			fill: toggle5 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball3noise",
-			 			fill: toggle5 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball4noise",
-			 			fill: toggle5 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball6noise",
-			 			fill: toggle5 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball7noise",
-			 			fill: toggle5 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball8noise",
-			 			fill: toggle5 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball9noise",
-			 			fill: toggle5 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball10noise",
-			 			fill: toggle5 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
 			 		)
 			 		//make text appear
 			 		.add({
 			 			targets: '#text5 .letter5',
-			 			color: toggle5 ? "#f7cb3b00" : "#f7cb3b",
-			 			textShadow: toggle5 ? "2px 2px #91050300" : "2px 2px #910503"
+			 			color: toggle[5] ? "#f7cb3b00" : "#f7cb3b",
+			 			textShadow: toggle[5] ? "2px 2px #91050300" : "2px 2px #910503"
 			 		}, "-=1500")
 					.add({
 					    targets: '#text5 .letter5',
-					    opacity: toggle5 ? 0 : [0,1],
+					    opacity: toggle[5] ? 0 : [0,1],
 					    easing: "easeOutExpo",
 					    duration: 600,
 					    offset: '-=775',
 					    delay: (el, i) => 34 * (i+1)
 					}, "-=1500");
 
-					toggle5 =!toggle5;
+					//manual toggle for rocketship to appear and disappear
+			 		if(toggle[5]){
+			 			rocketship.style.visibility = "hidden"
+			 		}
+			 		else {
+			 			rocketship.style.visibility = "visible"
+			 		};
+
+					toggle[5] =!toggle[5];
+					active = !active;
 
 					//rocket now links to the Place
 					rocketButton.setAttribute("href", "http://wikipedia.org");
-
-					//manual toggle for rocketship to appear and disappear
-			 		if(toggle5){
-			 			rocketship.style.visibility = "visible"
-			 		}
-			 		else {
-			 			rocketship.style.visibility = "hidden"
-			 		};
 			});
-
-			let toggle6 = false;
 
 			eyeball6noise.addEventListener("click",() => {
 				const timeline6 = anime.timeline({
@@ -1420,149 +941,51 @@
 					//planet becomes a bigger circle
 					.add({
 						targets: ".eyeball6",
-						d: [{value: toggle6 ? planet : iris}],
+						d: [{value: toggle[6] ? planet : iris}],
 						//can add a comma and another morph if you want
 					})
 					//iris goes on a rotating path to the eye
 					.add({
 						targets: ".eyeball6",
-						rotate: toggle6 ? 0 : -130,
-						translateX: toggle6 ? 0 : -30
+						rotate: toggle[6] ? 0 : -130,
+						translateX: toggle[6] ? 0 : -30
 					}, "-=700"
 					)
 					//eye opens
 					.add({
 			 			targets: ".eye-motion",
-			 			d: [{value: toggle6 ? asleep : awake}]
+			 			d: [{value: toggle[6] ? asleep : awake}]
 			 		}, "-=500"
-			 		)
-					//make other planets disappear
-			 		.add({
-			 			targets: "#eyeball",
-			 			fill: toggle6 ? color1 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#planetRings1",
-			 			stroke: toggle6 ? "#93269C" : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball2",
-			 			fill: toggle6 ? color2 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball3",
-			 			fill: toggle6 ? color3 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball4",
-			 			fill: toggle6 ? color4 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball5",
-			 			fill: toggle6 ? color5 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball7",
-			 			fill: toggle6 ? color7 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball8",
-			 			fill: toggle6 ? color8 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball9",
-			 			fill: toggle6 ? color9 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball10",
-			 			fill: toggle6 ? color10 : "none"
-			 		}, "-=700"
-			 		)
-			 		//make other planet noise disappear
-			 		.add({
-			 			targets: "#eyeballNoise",
-			 			fill: toggle6 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball2noise",
-			 			fill: toggle6 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball3noise",
-			 			fill: toggle6 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball4noise",
-			 			fill: toggle6 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball5noise",
-			 			fill: toggle6 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball7noise",
-			 			fill: toggle6 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball8noise",
-			 			fill: toggle6 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball9noise",
-			 			fill: toggle6 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball10noise",
-			 			fill: toggle6 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
 			 		)
 			 		//make text appear
 			 		.add({
 			 			targets: '#text6 .letter6',
-			 			color: toggle6 ? "#f7cb3b00" : "#f7cb3b",
-			 			textShadow: toggle6 ? "2px 2px #91050300" : "2px 2px #910503"
+			 			color: toggle[6] ? "#f7cb3b00" : "#f7cb3b",
+			 			textShadow: toggle[6] ? "2px 2px #91050300" : "2px 2px #910503"
 			 		}, "-=1500")
 					.add({
 					    targets: '#text6 .letter6',
-					    opacity: toggle6 ? 0 : [0,1],
+					    opacity: toggle[6] ? 0 : [0,1],
 					    easing: "easeOutExpo",
 					    duration: 600,
 					    offset: '-=775',
 					    delay: (el, i) => 34 * (i+1)
 					}, "-=1500");
 
-					toggle6 =!toggle6;
+					//manual toggle for rocketship to appear and disappear
+			 		if(toggle[6]){
+			 			rocketship.style.visibility = "hidden"
+			 		}
+			 		else {
+			 			rocketship.style.visibility = "visible"
+			 		};
+
+					toggle[6] =!toggle[6];
+					active = !active;
 
 					//rocket now links to the Place
 					rocketButton.setAttribute("href", "http://wikipedia.org");
-
-					//manual toggle for rocketship to appear and disappear
-			 		if(toggle6){
-			 			rocketship.style.visibility = "visible"
-			 		}
-			 		else {
-			 			rocketship.style.visibility = "hidden"
-			 		};
 			});
-
-			let toggle7 = false;
 
 			eyeball7noise.addEventListener("click",() => {
 				const timeline7 = anime.timeline({
@@ -1573,150 +996,52 @@
 					//planet becomes a bigger circle
 					.add({
 						targets: ".eyeball7",
-						d: [{value: toggle7 ? planet : iris}],
+						d: [{value: toggle[7] ? planet : iris}],
 						//can add a comma and another morph if you want
 					})
 					//iris goes on a rotating path to the eye
 					.add({
 						targets: ".eyeball7",
-						rotate: toggle7 ? 0 : -140,
-						translateX: toggle7 ? 0 : -100,
-						translateY: toggle7 ? 0 : 50
+						rotate: toggle[7] ? 0 : -140,
+						translateX: toggle[7] ? 0 : -100,
+						translateY: toggle[7] ? 0 : 50
 					}, "-=700"
 					)
 					//eye opens
 					.add({
 			 			targets: ".eye-motion",
-			 			d: [{value: toggle7 ? asleep : awake}]
+			 			d: [{value: toggle[7] ? asleep : awake}]
 			 		}, "-=500"
-			 		)
-					//make other planets disappear
-			 		.add({
-			 			targets: "#eyeball",
-			 			fill: toggle7 ? color1 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#planetRings1",
-			 			stroke: toggle7 ? "#93269C" : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball2",
-			 			fill: toggle7 ? color2 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball3",
-			 			fill: toggle7 ? color3 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball4",
-			 			fill: toggle7 ? color4 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball5",
-			 			fill: toggle7 ? color5 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball6",
-			 			fill: toggle7 ? color6 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball8",
-			 			fill: toggle7 ? color8 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball9",
-			 			fill: toggle7 ? color9 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball10",
-			 			fill: toggle7 ? color10 : "none"
-			 		}, "-=700"
-			 		)
-			 		//make other planet noise disappear
-			 		.add({
-			 			targets: "#eyeballNoise",
-			 			fill: toggle7 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball2noise",
-			 			fill: toggle7 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball3noise",
-			 			fill: toggle7 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball4noise",
-			 			fill: toggle7 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball5noise",
-			 			fill: toggle7 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball6noise",
-			 			fill: toggle7 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball8noise",
-			 			fill: toggle7 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball9noise",
-			 			fill: toggle7 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball10noise",
-			 			fill: toggle7 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
 			 		)
 			 		//make text appear
 			 		.add({
 			 			targets: '#text7 .letter7',
-			 			color: toggle7 ? "#f7cb3b00" : "#f7cb3b",
-			 			textShadow: toggle7 ? "2px 2px #91050300" : "2px 2px #910503"
+			 			color: toggle[7] ? "#f7cb3b00" : "#f7cb3b",
+			 			textShadow: toggle[7] ? "2px 2px #91050300" : "2px 2px #910503"
 			 		}, "-=1500")
 					.add({
 					    targets: '#text7 .letter7',
-					    opacity: toggle7 ? 0 : [0,1],
+					    opacity: toggle[7] ? 0 : [0,1],
 					    easing: "easeOutExpo",
 					    duration: 600,
 					    offset: '-=775',
 					    delay: (el, i) => 34 * (i+1)
 					}, "-=1500");
 
-					toggle7 =!toggle7;
+					//manual toggle for rocketship to appear and disappear
+			 		if(toggle[7]){
+			 			rocketship.style.visibility = "hidden"
+			 		}
+			 		else {
+			 			rocketship.style.visibility = "visible"
+			 		};
+
+					toggle[7] =!toggle[7];
+					active = !active;
 
 					//rocket now links to the Place
 					rocketButton.setAttribute("href", "http://wikipedia.org");
-
-					//manual toggle for rocketship to appear and disappear
-			 		if(toggle7){
-			 			rocketship.style.visibility = "visible"
-			 		}
-			 		else {
-			 			rocketship.style.visibility = "hidden"
-			 		};
 			});
-
-			let toggle8 = false;
 
 			eyeball8noise.addEventListener("click",() => {
 				const timeline8 = anime.timeline({
@@ -1727,150 +1052,52 @@
 					//planet becomes a bigger circle
 					.add({
 						targets: ".eyeball8",
-						d: [{value: toggle8 ? planet : iris}],
+						d: [{value: toggle[8] ? planet : iris}],
 						//can add a comma and another morph if you want
 					})
 					//iris goes on a rotating path to the eye
 					.add({
 						targets: ".eyeball8",
-						rotate: toggle8 ? 0 : -133,
-						translateX: toggle8 ? 0 : -100,
-						translateY: toggle8 ? 0 : 50
+						rotate: toggle[8] ? 0 : -133,
+						translateX: toggle[8] ? 0 : -100,
+						translateY: toggle[8] ? 0 : 50
 					}, "-=700"
 					)
 					//eye opens
 					.add({
 			 			targets: ".eye-motion",
-			 			d: [{value: toggle8 ? asleep : awake}]
+			 			d: [{value: toggle[8] ? asleep : awake}]
 			 		}, "-=500"
-			 		)
-					//make other planets disappear
-			 		.add({
-			 			targets: "#eyeball",
-			 			fill: toggle8 ? color1 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#planetRings1",
-			 			stroke: toggle8 ? "#93269C" : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball2",
-			 			fill: toggle8 ? color2 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball3",
-			 			fill: toggle8 ? color3 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball4",
-			 			fill: toggle8 ? color4 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball5",
-			 			fill: toggle8 ? color5 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball6",
-			 			fill: toggle8 ? color6 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball7",
-			 			fill: toggle8 ? color7 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball9",
-			 			fill: toggle8 ? color9 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball10",
-			 			fill: toggle8 ? color10 : "none"
-			 		}, "-=700"
-			 		)
-			 		//make other planet noise disappear
-			 		.add({
-			 			targets: "#eyeballNoise",
-			 			fill: toggle8 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball2noise",
-			 			fill: toggle8 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball3noise",
-			 			fill: toggle8 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball4noise",
-			 			fill: toggle8 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball5noise",
-			 			fill: toggle8 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball6noise",
-			 			fill: toggle8 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball7noise",
-			 			fill: toggle8 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball9noise",
-			 			fill: toggle8 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball10noise",
-			 			fill: toggle8 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
 			 		)
 			 		//make text appear
 			 		.add({
 			 			targets: '#text8 .letter8',
-			 			color: toggle8 ? "#f7cb3b00" : "#f7cb3b",
-			 			textShadow: toggle8 ? "2px 2px #91050300" : "2px 2px #910503"
+			 			color: toggle[8] ? "#f7cb3b00" : "#f7cb3b",
+			 			textShadow: toggle[8] ? "2px 2px #91050300" : "2px 2px #910503"
 			 		}, "-=1500")
 					.add({
 					    targets: '#text8 .letter8',
-					    opacity: toggle8 ? 0 : [0,1],
+					    opacity: toggle[8] ? 0 : [0,1],
 					    easing: "easeOutExpo",
 					    duration: 600,
 					    offset: '-=775',
 					    delay: (el, i) => 34 * (i+1)
 					}, "-=1500");
 
-					toggle8 =!toggle8;
+					//manual toggle for rocketship to appear and disappear
+			 		if(toggle[8]){
+			 			rocketship.style.visibility = "hidden"
+			 		}
+			 		else {
+			 			rocketship.style.visibility = "visible"
+			 		};
+
+					toggle[8] =!toggle[8];
+					active = !active;
 
 					//rocket now links to the Place
 					rocketButton.setAttribute("href", "http://wikipedia.org");
-
-					//manual toggle for rocketship to appear and disappear
-			 		if(toggle8){
-			 			rocketship.style.visibility = "visible"
-			 		}
-			 		else {
-			 			rocketship.style.visibility = "hidden"
-			 		};
 			});
-
-			let toggle9 = false;
 
 			eyeball9noise.addEventListener("click",() => {
 				const timeline9 = anime.timeline({
@@ -1881,150 +1108,52 @@
 					//planet becomes a bigger circle
 					.add({
 						targets: ".eyeball9",
-						d: [{value: toggle9 ? planet : iris}],
+						d: [{value: toggle[9] ? planet : iris}],
 						//can add a comma and another morph if you want
 					})
 					//iris goes on a rotating path to the eye
 					.add({
 						targets: ".eyeball9",
-						rotate: toggle9 ? 0 : -147,
-						translateX: toggle9 ? 0 : -180,
-						translateY: toggle9 ? 0 : 50
+						rotate: toggle[9] ? 0 : -147,
+						translateX: toggle[9] ? 0 : -180,
+						translateY: toggle[9] ? 0 : 50
 					}, "-=700"
 					)
 					//eye opens
 					.add({
 			 			targets: ".eye-motion",
-			 			d: [{value: toggle9 ? asleep : awake}]
+			 			d: [{value: toggle[9] ? asleep : awake}]
 			 		}, "-=500"
-			 		)
-					//make other planets disappear
-			 		.add({
-			 			targets: "#eyeball",
-			 			fill: toggle9 ? color1 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#planetRings1",
-			 			stroke: toggle9 ? "#93269C" : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball2",
-			 			fill: toggle9 ? color2 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball3",
-			 			fill: toggle9 ? color3 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball4",
-			 			fill: toggle9 ? color4 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball5",
-			 			fill: toggle9 ? color5 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball6",
-			 			fill: toggle9 ? color6 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball7",
-			 			fill: toggle9 ? color7 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball8",
-			 			fill: toggle9 ? color8 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball10",
-			 			fill: toggle9 ? color10 : "none"
-			 		}, "-=700"
-			 		)
-			 		//make other planet noise disappear
-			 		.add({
-			 			targets: "#eyeballNoise",
-			 			fill: toggle9 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball2noise",
-			 			fill: toggle9 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball3noise",
-			 			fill: toggle9 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball4noise",
-			 			fill: toggle9 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball5noise",
-			 			fill: toggle9 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball6noise",
-			 			fill: toggle9 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball7noise",
-			 			fill: toggle9 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball8noise",
-			 			fill: toggle9 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball10noise",
-			 			fill: toggle9 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
 			 		)
 			 		//make text appear
 			 		.add({
 			 			targets: '#text9 .letter9',
-			 			color: toggle9 ? "#f7cb3b00" : "#f7cb3b",
-			 			textShadow: toggle9 ? "2px 2px #91050300" : "2px 2px #910503"
+			 			color: toggle[9] ? "#f7cb3b00" : "#f7cb3b",
+			 			textShadow: toggle[9] ? "2px 2px #91050300" : "2px 2px #910503"
 			 		}, "-=1500")
 					.add({
 					    targets: '#text9 .letter9',
-					    opacity: toggle9 ? 0 : [0,1],
+					    opacity: toggle[9] ? 0 : [0,1],
 					    easing: "easeOutExpo",
 					    duration: 600,
 					    offset: '-=775',
 					    delay: (el, i) => 34 * (i+1)
 					}, "-=1500");
 
-					toggle9 =!toggle9;
+					//manual toggle for rocketship to appear and disappear
+			 		if(toggle[9]){
+			 			rocketship.style.visibility = "hidden"
+			 		}
+			 		else {
+			 			rocketship.style.visibility = "visible"
+			 		};
+
+					toggle[9] =!toggle[9];
+					active = !active;
 
 					//rocket now links to the Place
 					rocketButton.setAttribute("href", "http://wikipedia.org");
-
-					//manual toggle for rocketship to appear and disappear
-			 		if(toggle9){
-			 			rocketship.style.visibility = "visible"
-			 		}
-			 		else {
-			 			rocketship.style.visibility = "hidden"
-			 		};
 			});
-
-			let toggle10 = false;
 
 			eyeball10noise.addEventListener("click",() => {
 				const timeline10 = anime.timeline({
@@ -2035,147 +1164,150 @@
 					//planet becomes a bigger circle
 					.add({
 						targets: ".eyeball10",
-						d: [{value: toggle10 ? planet : iris}],
+						d: [{value: toggle[10] ? planet : iris}],
 						//can add a comma and another morph if you want
 					})
 					//iris goes on a rotating path to the eye
 					.add({
 						targets: ".eyeball10",
-						rotate: toggle10 ? 0 : -149,
-						translateX: toggle10 ? 0 : -220,
-						translateY: toggle10 ? 0 : 50
+						rotate: toggle[10] ? 0 : -149,
+						translateX: toggle[10] ? 0 : -220,
+						translateY: toggle[10] ? 0 : 50
 					}, "-=700"
 					)
 					//eye opens
 					.add({
 			 			targets: ".eye-motion",
-			 			d: [{value: toggle10 ? asleep : awake}]
+			 			d: [{value: toggle[10] ? asleep : awake}]
 			 		}, "-=500"
-			 		)
-					//make other planets disappear
-			 		.add({
-			 			targets: "#eyeball",
-			 			fill: toggle10 ? color1 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#planetRings1",
-			 			stroke: toggle10 ? "#93269C" : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball2",
-			 			fill: toggle10 ? color2 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball3",
-			 			fill: toggle10 ? color3 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball4",
-			 			fill: toggle10 ? color4 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball5",
-			 			fill: toggle10 ? color5 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball6",
-			 			fill: toggle10 ? color6 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball7",
-			 			fill: toggle10 ? color7 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball8",
-			 			fill: toggle10 ? color8 : "none"
-			 		}, "-=700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball9",
-			 			fill: toggle10 ? color9 : "none"
-			 		}, "-=700"
-			 		)
-			 		//make other planet noise disappear
-			 		.add({
-			 			targets: "#eyeballNoise",
-			 			fill: toggle10 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball2noise",
-			 			fill: toggle10 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball3noise",
-			 			fill: toggle10 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball4noise",
-			 			fill: toggle10 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball5noise",
-			 			fill: toggle10 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball6noise",
-			 			fill: toggle10 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball7noise",
-			 			fill: toggle10 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball8noise",
-			 			fill: toggle10 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
-			 		)
-			 		.add({
-			 			targets: "#eyeball9noise",
-			 			fill: toggle10 ? "url(#pattern2)" : "none"
-			 		}, "-=1700"
 			 		)
 			 		//make text appear
 			 		.add({
 			 			targets: '#text10 .letter10',
-			 			color: toggle10 ? "#f7cb3b00" : "#f7cb3b",
-			 			textShadow: toggle10 ? "2px 2px #91050300" : "2px 2px #910503"
+			 			color: toggle[10] ? "#f7cb3b00" : "#f7cb3b",
+			 			textShadow: toggle[10] ? "2px 2px #91050300" : "2px 2px #910503"
 			 		}, "-=1500")
 					.add({
 					    targets: '#text10 .letter10',
-					    opacity: toggle10 ? 0 : [0,1],
+					    opacity: toggle[10] ? 0 : [0,1],
 					    easing: "easeOutExpo",
 					    duration: 600,
 					    offset: '-=775',
 					    delay: (el, i) => 34 * (i+1)
 					}, "-=1500");
 
-					toggle10 =!toggle10;
+					//manual toggle for rocketship to appear and disappear
+			 		if(toggle[10]){
+			 			rocketship.style.visibility = "hidden"
+			 		}
+			 		else {
+			 			rocketship.style.visibility = "visible"
+			 		};
+
+					toggle[10] =!toggle[10];
+					active = !active;
 
 					//rocket now links to the Place
 					rocketButton.setAttribute("href", "http://wikipedia.org");
 
-					//manual toggle for rocketship to appear and disappear
-			 		if(toggle10){
-			 			rocketship.style.visibility = "visible"
-			 		}
-			 		else {
-			 			rocketship.style.visibility = "hidden"
-			 		};
+			});
+
+			//planet disappears if a planet besides itself is active
+			document.addEventListener("click", function(){
+				var i = 1;
+				if(active){ // if some planet is active
+					planetRings1.setAttribute("stroke", "none");
+					if(!toggle[i]) { // if it's not planet 1
+						eyeball.setAttribute("fill", "none");
+						eyeballNoise.setAttribute("fill", "none");
+					}
+				}
+				else { // if no planet is active
+					eyeball.setAttribute("fill", color[i]);
+					eyeballNoise.setAttribute("fill", "url(#pattern2)");
+					planetRings1.setAttribute("stroke", "#93269C");
+				}
+				i++;
+				if(active && !toggle[i]){
+					eyeball2.setAttribute("fill", "none");
+					eyeball2noise.setAttribute("fill", "none");
+				}
+				else {
+					eyeball2.setAttribute("fill", color[i]);
+					eyeball2noise.setAttribute("fill", "url(#pattern2)");
+				}
+				i++;
+				if(active && !toggle[i]){
+					eyeball3.setAttribute("fill", "none");
+					eyeball3noise.setAttribute("fill", "none");
+				}
+				else {
+					eyeball3.setAttribute("fill", color[i]);
+					eyeball3noise.setAttribute("fill", "url(#pattern2)");
+				}
+				i++;
+				if(active && !toggle[i]){
+					eyeball4.setAttribute("fill", "none");
+					eyeball4noise.setAttribute("fill", "none");
+				}
+				else {
+					eyeball4.setAttribute("fill", color[i]);
+					eyeball4noise.setAttribute("fill", "url(#pattern2)");
+				}
+				i++;
+				if(active && !toggle[i]){
+					eyeball5.setAttribute("fill", "none");
+					eyeball5noise.setAttribute("fill", "none");
+				}
+				else {
+					eyeball5.setAttribute("fill", color[i]);
+					eyeball5noise.setAttribute("fill", "url(#pattern2)");
+				}
+				i++;
+				if(active && !toggle[i]){
+					eyeball6.setAttribute("fill", "none");
+					eyeball6noise.setAttribute("fill", "none");
+				}
+				else {
+					eyeball6.setAttribute("fill", color[i]);
+					eyeball6noise.setAttribute("fill", "url(#pattern2)");
+				}
+				i++;
+				if(active && !toggle[i]){
+					eyeball7.setAttribute("fill", "none");
+					eyeball7noise.setAttribute("fill", "none");
+				}
+				else {
+					eyeball7.setAttribute("fill", color[i]);
+					eyeball7noise.setAttribute("fill", "url(#pattern2)");
+				}
+				i++;
+				if(active && !toggle[i]){
+					eyeball8.setAttribute("fill", "none");
+					eyeball8noise.setAttribute("fill", "none");
+				}
+				else {
+					eyeball8.setAttribute("fill", color[i]);
+					eyeball8noise.setAttribute("fill", "url(#pattern2)");
+				}
+				i++;
+				if(active && !toggle[i]){
+					eyeball9.setAttribute("fill", "none");
+					eyeball9noise.setAttribute("fill", "none");
+				}
+				else {
+					eyeball9.setAttribute("fill", color[i]);
+					eyeball9noise.setAttribute("fill", "url(#pattern2)");
+				}
+				i++;
+				if(active && !toggle[i]){
+					eyeball10.setAttribute("fill", "none");
+					eyeball10noise.setAttribute("fill", "none");
+				}
+				else {
+					eyeball10.setAttribute("fill", color[i]);
+					eyeball10noise.setAttribute("fill", "url(#pattern2)");
+				}
 			});
 
 			var stretchingPolymorph = anime({
