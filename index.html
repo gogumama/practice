@@ -45,7 +45,6 @@
 				left: 670px;
 				position: relative;
 				z-index: 2;
-				transform-origin: center;
 			}
 
 			.star1{
@@ -1127,7 +1126,6 @@
 				var i = 1;
 				if(active){ // if some planet is active
 					rocketship.style.visibility = "visible"; // rocketship appears
-					rocketship.style.animation = "rocketship 4s linear infinite alternate"; // rocketship moves
 					planetRings1.setAttribute("stroke", "none"); // planet 1's rings disappear
 					if(!toggle[i]) { // if it's not planet 1
 						eyeball.setAttribute("fill", "none");
@@ -1136,7 +1134,6 @@
 				}
 				else { // if no planet is active
 					rocketship.style.visibility = "hidden"; // rocketship disappears
-					rocketship.style.animation = "none";
 					eyeball.setAttribute("fill", color[i]);
 					eyeballNoise.setAttribute("fill", "url(#pattern2)");
 					planetRings1.setAttribute("stroke", "#93269C");
