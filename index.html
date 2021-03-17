@@ -611,21 +611,11 @@
 			var textWrapper10 = document.querySelector('.placeName .letters10');
 			textWrapper10.innerHTML = textWrapper10.textContent.replace(/([^\x00-\x80]|\w)/g, "<span class='letter10'>$&</span>");
 
-			//click for audio for Planet 1
-			eyeballNoise.addEventListener("click", function(e){
-			    let state = e.currentTarget.dataset.state;
-			    if (state == "play") {
-			    	document.querySelector("#audio1").pause();
-			        e.currentTarget.dataset.state = "pause";
-			    }
-			    else {
-			    	document.querySelector("#audio1").play();
-			        e.currentTarget.dataset.state = "play";
-			    }
-			});
+			//planet disappears if a planet besides itself is active
+			document.addEventListener("click", function(event){
 
-			idEyeMotion.addEventListener("click", () => {
-				const timeline0 = anime.timeline({
+				if(event.target.matches("#eye-motion")){
+					const timeline0 = anime.timeline({
 					duration: 750,
 					easing: "easeOutExpo"
 				});
@@ -635,594 +625,522 @@
 						d: [{value: toggle[0] ? asleep : awake}],
 					});
 				toggle[0] = !toggle[0];
-			});
+				}
 
-			eyeballNoise.addEventListener("click", () => {
-				//we need to use anime.js
-				const timeline = anime.timeline({
-					duration : 750,
-					easing : "easeOutExpo"
-				});
-				//add different animations to the timeline
-				timeline
-					//planet becomes a bigger circle
-					.add({
-						targets: ".eyeball",
-						d: [{value: toggle[1] ? planet : iris}]
-						//can add a comma and another morph if you want
-					}, "-=100")
-					//iris goes on a rotating path to the eye
-					.add({
-						targets: ".eyeball",
-						rotate: toggle[1] ? 0 : 180,
+				else if(event.target.matches("#eyeballNoise")){
+					let state = event.target.dataset.state; // pause and play audio
+				    if (state == "play") {
+				    	document.querySelector("#audio1").pause();
+				        event.target.dataset.state = "pause";
+				    }
+				    else {
+				    	document.querySelector("#audio1").play();
+				        event.target.dataset.state = "play";
+				    }
 
-					}, "-=700"
-					)
-					//eye opens
-					.add({
-			 			targets: ".eye-motion",
-			 			d: [{value: toggle[1] ? asleep : awake}]
-			 		}, "-=500"
-			 		)
-			 		//make animation appear
-			 		.add({
-			 			targets: ".rectangle",
-			 			stroke: toggle[1] ? "none" : "url(#grad2)"
-			 		}, "-=700"
-			 		)
-			 		//make text appear
-			 		.add({
-			 			targets: '#text1 .letter1',
-			 			color: toggle[1] ? "#f7cb3b00" : "#f7cb3b",
-			 			textShadow: toggle[1] ? "2px 2px #91050300" : "2px 2px #910503"
-			 		}, "-=1500")
-					.add({
-					    targets: '#text1 .letter1',
-					    opacity: toggle[1] ? 0 : [0,1],
-					    easing: "easeOutExpo",
-					    duration: 600,
-					    offset: '-=775',
-					    delay: (el, i) => 34 * (i+1)
-					}, "-=1500");
+					const timeline = anime.timeline({
+						duration : 750,
+						easing : "easeOutExpo"
+					});
+					//add different animations to the timeline
+					timeline
+						//planet becomes a bigger circle
+						.add({
+							targets: ".eyeball",
+							d: [{value: toggle[1] ? planet : iris}]
+							//can add a comma and another morph if you want
+						}, "-=100")
+						//iris goes on a rotating path to the eye
+						.add({
+							targets: ".eyeball",
+							rotate: toggle[1] ? 0 : 180,
 
-					//manual toggle for rocketship to appear and disappear
-			 		if(toggle[1]){
-			 			rocketship.style.visibility = "hidden"
-			 		}
-			 		else {
-			 			rocketship.style.visibility = "visible"
-			 		};
+						}, "-=700"
+						)
+						//eye opens
+						.add({
+				 			targets: ".eye-motion",
+				 			d: [{value: toggle[1] ? asleep : awake}]
+				 		}, "-=500"
+				 		)
+				 		//make animation appear
+				 		.add({
+				 			targets: ".rectangle",
+				 			stroke: toggle[1] ? "none" : "url(#grad2)"
+				 		}, "-=700"
+				 		)
+				 		//make text appear
+				 		.add({
+				 			targets: '#text1 .letter1',
+				 			color: toggle[1] ? "#f7cb3b00" : "#f7cb3b",
+				 			textShadow: toggle[1] ? "2px 2px #91050300" : "2px 2px #910503"
+				 		}, "-=1500")
+						.add({
+						    targets: '#text1 .letter1',
+						    opacity: toggle[1] ? 0 : [0,1],
+						    easing: "easeOutExpo",
+						    duration: 600,
+						    offset: '-=775',
+						    delay: (el, i) => 34 * (i+1)
+						}, "-=1500");
 
 			 		toggle[1] = !toggle[1];
 			 		active = !active;
 
 			 		//rocket now links to the Place
 			 		rocketButton.setAttribute("href", "http://placestogo.art/desert");
-			});
+				}
 
-			eyeball2noise.addEventListener("click",() => {
-				const timeline2 = anime.timeline({
-					duration : 750,
-					easing : "easeOutExpo"
-				});
-				timeline2
-					//planet becomes a bigger circle
-					.add({
-						targets: ".eyeball2",
-						d: [{value: toggle[2] ? planet : iris}],
-						//can add a comma and another morph if you want
-					})
-					//iris goes on a rotating path to the eye
-					.add({
-						targets: ".eyeball2",
-						rotate: toggle[2] ? 0 : 170,
-					}, "-=700"
-					)
-					//eye opens
-					.add({
-			 			targets: ".eye-motion",
-			 			d: [{value: toggle[2] ? asleep : awake}]
-			 		}, "-=500"
-			 		)
-			 		//make noise for animation appear
-			 		.add({
-			 			targets: "#polymorphNoise",
-			 			fill: toggle[2] ? "none" : "url(#pattern0)"
-			 		}, "-=750"
-			 		)
-			 		//make animation appear
-			 		.add({
-			 			targets: "#polymorph",
-			 			fill: toggle[2] ? "none" : "#f3c5fa"
-			 		}, "-=750"
-			 		)
+				else if(event.target.matches("#eyeball2noise")){
+					const timeline2 = anime.timeline({
+						duration : 750,
+						easing : "easeOutExpo"
+					});
+					timeline2
+						//planet becomes a bigger circle
+						.add({
+							targets: ".eyeball2",
+							d: [{value: toggle[2] ? planet : iris}],
+							//can add a comma and another morph if you want
+						})
+						//iris goes on a rotating path to the eye
+						.add({
+							targets: ".eyeball2",
+							rotate: toggle[2] ? 0 : 170,
+						}, "-=700"
+						)
+						//eye opens
+						.add({
+				 			targets: ".eye-motion",
+				 			d: [{value: toggle[2] ? asleep : awake}]
+				 		}, "-=500"
+				 		)
+				 		//make noise for animation appear
+				 		.add({
+				 			targets: "#polymorphNoise",
+				 			fill: toggle[2] ? "none" : "url(#pattern0)"
+				 		}, "-=750"
+				 		)
+				 		//make animation appear
+				 		.add({
+				 			targets: "#polymorph",
+				 			fill: toggle[2] ? "none" : "#f3c5fa"
+				 		}, "-=750"
+				 		)
 
-			 		//make text appear
-			 		.add({
-			 			targets: '#text2 .letter2',
-			 			color: toggle[2] ? "#f7cb3b00" : "#f7cb3b",
-			 			textShadow: toggle[2] ? "2px 2px #91050300" : "2px 2px #910503"
-			 		}, "-=1500")
-					.add({
-					    targets: '#text2 .letter2',
-					    opacity: toggle[2] ? 0 : [0,1],
-					    easing: "easeOutExpo",
-					    duration: 600,
-					    offset: '-=775',
-					    delay: (el, i) => 34 * (i+1)
-					}, "-=1500");
-
-					//manual toggle for rocketship to appear and disappear
-			 		if(toggle[2]){
-			 			rocketship.style.visibility = "hidden"
-			 		}
-			 		else {
-			 			rocketship.style.visibility = "visible"
-			 		};
+				 		//make text appear
+				 		.add({
+				 			targets: '#text2 .letter2',
+				 			color: toggle[2] ? "#f7cb3b00" : "#f7cb3b",
+				 			textShadow: toggle[2] ? "2px 2px #91050300" : "2px 2px #910503"
+				 		}, "-=1500")
+						.add({
+						    targets: '#text2 .letter2',
+						    opacity: toggle[2] ? 0 : [0,1],
+						    easing: "easeOutExpo",
+						    duration: 600,
+						    offset: '-=775',
+						    delay: (el, i) => 34 * (i+1)
+						}, "-=1500");
 
 					toggle[2] =!toggle[2];
 					active = !active;
 
 					//rocket now links to the Place
 					rocketButton.setAttribute("href", "http://wikipedia.org");
-			});
+				}
 
-			eyeball3noise.addEventListener("click",() => {
-				const timeline3 = anime.timeline({
-					duration : 750,
-					easing : "easeOutExpo"
-				});
-				timeline3
-					//planet becomes a bigger circle
-					.add({
-						targets: ".eyeball3",
-						d: [{value: toggle[3] ? planet : iris}],
-						//can add a comma and another morph if you want
-					})
-					//iris goes on a rotating path to the eye
-					.add({
-						targets: ".eyeball3",
-						rotate: toggle[3] ? 0 : 167,
-						translateX: toggle[3] ? 0 : 50
-					}, "-=700"
-					)
-					//eye opens
-					.add({
-			 			targets: ".eye-motion",
-			 			d: [{value: toggle[3] ? asleep : awake}]
-			 		}, "-=500"
-			 		)
-			 		//make text appear
-			 		.add({
-			 			targets: '#text3 .letter3',
-			 			color: toggle[3] ? "#f7cb3b00" : "#f7cb3b",
-			 			textShadow: toggle[3] ? "2px 2px #91050300" : "2px 2px #910503"
-			 		}, "-=1500")
-					.add({
-					    targets: '#text3 .letter3',
-					    opacity: toggle[3] ? 0 : [0,1],
-					    easing: "easeOutExpo",
-					    duration: 600,
-					    offset: '-=775',
-					    delay: (el, i) => 34 * (i+1)
-					}, "-=1500");
-
-					//manual toggle for rocketship to appear and disappear
-			 		if(toggle[3]){
-			 			rocketship.style.visibility = "hidden"
-			 		}
-			 		else {
-			 			rocketship.style.visibility = "visible"
-			 		};
+				else if(event.target.matches("#eyeball3noise")){
+					const timeline3 = anime.timeline({
+						duration : 750,
+						easing : "easeOutExpo"
+					});
+					timeline3
+						//planet becomes a bigger circle
+						.add({
+							targets: ".eyeball3",
+							d: [{value: toggle[3] ? planet : iris}],
+							//can add a comma and another morph if you want
+						})
+						//iris goes on a rotating path to the eye
+						.add({
+							targets: ".eyeball3",
+							rotate: toggle[3] ? 0 : 167,
+							translateX: toggle[3] ? 0 : 50
+						}, "-=700"
+						)
+						//eye opens
+						.add({
+				 			targets: ".eye-motion",
+				 			d: [{value: toggle[3] ? asleep : awake}]
+				 		}, "-=500"
+				 		)
+				 		//make text appear
+				 		.add({
+				 			targets: '#text3 .letter3',
+				 			color: toggle[3] ? "#f7cb3b00" : "#f7cb3b",
+				 			textShadow: toggle[3] ? "2px 2px #91050300" : "2px 2px #910503"
+				 		}, "-=1500")
+						.add({
+						    targets: '#text3 .letter3',
+						    opacity: toggle[3] ? 0 : [0,1],
+						    easing: "easeOutExpo",
+						    duration: 600,
+						    offset: '-=775',
+						    delay: (el, i) => 34 * (i+1)
+						}, "-=1500");
 
 					toggle[3] =!toggle[3];
 					active = !active;
 
 					//rocket now links to the Place
 					rocketButton.setAttribute("href", "http://wikipedia.org");
-			});
+				}
 
-			eyeball4noise.addEventListener("click",() => {
-				const timeline4 = anime.timeline({
-					duration : 750,
-					easing : "easeOutExpo"
-				});
-				timeline4
-					//planet becomes a bigger circle
-					.add({
-						targets: ".eyeball4",
-						d: [{value: toggle[4] ? planet : iris}],
-						//can add a comma and another morph if you want
-					})
-					//iris goes on a rotating path to the eye
-					.add({
-						targets: ".eyeball4",
-						rotate: toggle[4] ? 0 : 191,
-						translateX: toggle[4] ? 0 : -30
-					}, "-=700"
-					)
-					//eye opens
-					.add({
-			 			targets: ".eye-motion",
-			 			d: [{value: toggle[4] ? asleep : awake}]
-			 		}, "-=500"
-			 		)
-			 		//make text appear
-			 		.add({
-			 			targets: '#text4 .letter4',
-			 			color: toggle[4] ? "#f7cb3b00" : "#f7cb3b",
-			 			textShadow: toggle[4] ? "2px 2px #91050300" : "2px 2px #910503"
-			 		}, "-=1500")
-					.add({
-					    targets: '#text4 .letter4',
-					    opacity: toggle[4] ? 0 : [0,1],
-					    easing: "easeOutExpo",
-					    duration: 600,
-					    offset: '-=775',
-					    delay: (el, i) => 34 * (i+1)
-					}, "-=1500");
-
-					//manual toggle for rocketship to appear and disappear
-			 		if(toggle[4]){
-			 			rocketship.style.visibility = "hidden"
-			 		}
-			 		else {
-			 			rocketship.style.visibility = "visible"
-			 		};
+				else if(event.target.matches("#eyeball4noise")){
+					const timeline4 = anime.timeline({
+						duration : 750,
+						easing : "easeOutExpo"
+					});
+					timeline4
+						//planet becomes a bigger circle
+						.add({
+							targets: ".eyeball4",
+							d: [{value: toggle[4] ? planet : iris}],
+							//can add a comma and another morph if you want
+						})
+						//iris goes on a rotating path to the eye
+						.add({
+							targets: ".eyeball4",
+							rotate: toggle[4] ? 0 : 191,
+							translateX: toggle[4] ? 0 : -30
+						}, "-=700"
+						)
+						//eye opens
+						.add({
+				 			targets: ".eye-motion",
+				 			d: [{value: toggle[4] ? asleep : awake}]
+				 		}, "-=500"
+				 		)
+				 		//make text appear
+				 		.add({
+				 			targets: '#text4 .letter4',
+				 			color: toggle[4] ? "#f7cb3b00" : "#f7cb3b",
+				 			textShadow: toggle[4] ? "2px 2px #91050300" : "2px 2px #910503"
+				 		}, "-=1500")
+						.add({
+						    targets: '#text4 .letter4',
+						    opacity: toggle[4] ? 0 : [0,1],
+						    easing: "easeOutExpo",
+						    duration: 600,
+						    offset: '-=775',
+						    delay: (el, i) => 34 * (i+1)
+						}, "-=1500");
 
 					toggle[4] =!toggle[4];
 					active = !active;
 
 					//rocket now links to the Place
 					rocketButton.setAttribute("href", "http://wikipedia.org");
-			});
+				}
 
-			eyeball5noise.addEventListener("click",() => {
-				const timeline5 = anime.timeline({
-					duration : 750,
-					easing : "easeOutExpo"
-				});
-				timeline5
-					//planet becomes a bigger circle
-					.add({
-						targets: ".eyeball5",
-						d: [{value: toggle[5] ? planet : iris}],
-						//can add a comma and another morph if you want
-					})
-					//iris goes on a rotating path to the eye
-					.add({
-						targets: ".eyeball5",
-						rotate: toggle[5] ? 0 : -140,
-						translateX: toggle[5] ? 0 : -30
-					}, "-=700"
-					)
-					//eye opens
-					.add({
-			 			targets: ".eye-motion",
-			 			d: [{value: toggle[5] ? asleep : awake}]
-			 		}, "-=500"
-			 		)
-			 		//make text appear
-			 		.add({
-			 			targets: '#text5 .letter5',
-			 			color: toggle[5] ? "#f7cb3b00" : "#f7cb3b",
-			 			textShadow: toggle[5] ? "2px 2px #91050300" : "2px 2px #910503"
-			 		}, "-=1500")
-					.add({
-					    targets: '#text5 .letter5',
-					    opacity: toggle[5] ? 0 : [0,1],
-					    easing: "easeOutExpo",
-					    duration: 600,
-					    offset: '-=775',
-					    delay: (el, i) => 34 * (i+1)
-					}, "-=1500");
-
-					//manual toggle for rocketship to appear and disappear
-			 		if(toggle[5]){
-			 			rocketship.style.visibility = "hidden"
-			 		}
-			 		else {
-			 			rocketship.style.visibility = "visible"
-			 		};
+				else if(event.target.matches("#eyeball5noise")){
+					const timeline5 = anime.timeline({
+						duration : 750,
+						easing : "easeOutExpo"
+					});
+					timeline5
+						//planet becomes a bigger circle
+						.add({
+							targets: ".eyeball5",
+							d: [{value: toggle[5] ? planet : iris}],
+							//can add a comma and another morph if you want
+						})
+						//iris goes on a rotating path to the eye
+						.add({
+							targets: ".eyeball5",
+							rotate: toggle[5] ? 0 : -140,
+							translateX: toggle[5] ? 0 : -30
+						}, "-=700"
+						)
+						//eye opens
+						.add({
+				 			targets: ".eye-motion",
+				 			d: [{value: toggle[5] ? asleep : awake}]
+				 		}, "-=500"
+				 		)
+				 		//make text appear
+				 		.add({
+				 			targets: '#text5 .letter5',
+				 			color: toggle[5] ? "#f7cb3b00" : "#f7cb3b",
+				 			textShadow: toggle[5] ? "2px 2px #91050300" : "2px 2px #910503"
+				 		}, "-=1500")
+						.add({
+						    targets: '#text5 .letter5',
+						    opacity: toggle[5] ? 0 : [0,1],
+						    easing: "easeOutExpo",
+						    duration: 600,
+						    offset: '-=775',
+						    delay: (el, i) => 34 * (i+1)
+						}, "-=1500");
 
 					toggle[5] =!toggle[5];
 					active = !active;
 
 					//rocket now links to the Place
 					rocketButton.setAttribute("href", "http://wikipedia.org");
-			});
+				}
 
-			eyeball6noise.addEventListener("click",() => {
-				const timeline6 = anime.timeline({
-					duration : 750,
-					easing : "easeOutExpo"
-				});
-				timeline6
-					//planet becomes a bigger circle
-					.add({
-						targets: ".eyeball6",
-						d: [{value: toggle[6] ? planet : iris}],
-						//can add a comma and another morph if you want
-					})
-					//iris goes on a rotating path to the eye
-					.add({
-						targets: ".eyeball6",
-						rotate: toggle[6] ? 0 : -130,
-						translateX: toggle[6] ? 0 : -30
-					}, "-=700"
-					)
-					//eye opens
-					.add({
-			 			targets: ".eye-motion",
-			 			d: [{value: toggle[6] ? asleep : awake}]
-			 		}, "-=500"
-			 		)
-			 		//make text appear
-			 		.add({
-			 			targets: '#text6 .letter6',
-			 			color: toggle[6] ? "#f7cb3b00" : "#f7cb3b",
-			 			textShadow: toggle[6] ? "2px 2px #91050300" : "2px 2px #910503"
-			 		}, "-=1500")
-					.add({
-					    targets: '#text6 .letter6',
-					    opacity: toggle[6] ? 0 : [0,1],
-					    easing: "easeOutExpo",
-					    duration: 600,
-					    offset: '-=775',
-					    delay: (el, i) => 34 * (i+1)
-					}, "-=1500");
-
-					//manual toggle for rocketship to appear and disappear
-			 		if(toggle[6]){
-			 			rocketship.style.visibility = "hidden"
-			 		}
-			 		else {
-			 			rocketship.style.visibility = "visible"
-			 		};
+				else if(event.target.matches("#eyeball6noise")){
+					const timeline6 = anime.timeline({
+						duration : 750,
+						easing : "easeOutExpo"
+					});
+					timeline6
+						//planet becomes a bigger circle
+						.add({
+							targets: ".eyeball6",
+							d: [{value: toggle[6] ? planet : iris}],
+							//can add a comma and another morph if you want
+						})
+						//iris goes on a rotating path to the eye
+						.add({
+							targets: ".eyeball6",
+							rotate: toggle[6] ? 0 : -130,
+							translateX: toggle[6] ? 0 : -30
+						}, "-=700"
+						)
+						//eye opens
+						.add({
+				 			targets: ".eye-motion",
+				 			d: [{value: toggle[6] ? asleep : awake}]
+				 		}, "-=500"
+				 		)
+				 		//make text appear
+				 		.add({
+				 			targets: '#text6 .letter6',
+				 			color: toggle[6] ? "#f7cb3b00" : "#f7cb3b",
+				 			textShadow: toggle[6] ? "2px 2px #91050300" : "2px 2px #910503"
+				 		}, "-=1500")
+						.add({
+						    targets: '#text6 .letter6',
+						    opacity: toggle[6] ? 0 : [0,1],
+						    easing: "easeOutExpo",
+						    duration: 600,
+						    offset: '-=775',
+						    delay: (el, i) => 34 * (i+1)
+						}, "-=1500");
 
 					toggle[6] =!toggle[6];
 					active = !active;
 
 					//rocket now links to the Place
 					rocketButton.setAttribute("href", "http://wikipedia.org");
-			});
+				}
 
-			eyeball7noise.addEventListener("click",() => {
-				const timeline7 = anime.timeline({
-					duration : 750,
-					easing : "easeOutExpo"
-				});
-				timeline7
-					//planet becomes a bigger circle
-					.add({
-						targets: ".eyeball7",
-						d: [{value: toggle[7] ? planet : iris}],
-						//can add a comma and another morph if you want
-					})
-					//iris goes on a rotating path to the eye
-					.add({
-						targets: ".eyeball7",
-						rotate: toggle[7] ? 0 : -140,
-						translateX: toggle[7] ? 0 : -100,
-						translateY: toggle[7] ? 0 : 50
-					}, "-=700"
-					)
-					//eye opens
-					.add({
-			 			targets: ".eye-motion",
-			 			d: [{value: toggle[7] ? asleep : awake}]
-			 		}, "-=500"
-			 		)
-			 		//make text appear
-			 		.add({
-			 			targets: '#text7 .letter7',
-			 			color: toggle[7] ? "#f7cb3b00" : "#f7cb3b",
-			 			textShadow: toggle[7] ? "2px 2px #91050300" : "2px 2px #910503"
-			 		}, "-=1500")
-					.add({
-					    targets: '#text7 .letter7',
-					    opacity: toggle[7] ? 0 : [0,1],
-					    easing: "easeOutExpo",
-					    duration: 600,
-					    offset: '-=775',
-					    delay: (el, i) => 34 * (i+1)
-					}, "-=1500");
-
-					//manual toggle for rocketship to appear and disappear
-			 		if(toggle[7]){
-			 			rocketship.style.visibility = "hidden"
-			 		}
-			 		else {
-			 			rocketship.style.visibility = "visible"
-			 		};
+				else if(event.target.matches("#eyeball7noise")){
+					const timeline7 = anime.timeline({
+						duration : 750,
+						easing : "easeOutExpo"
+					});
+					timeline7
+						//planet becomes a bigger circle
+						.add({
+							targets: ".eyeball7",
+							d: [{value: toggle[7] ? planet : iris}],
+							//can add a comma and another morph if you want
+						})
+						//iris goes on a rotating path to the eye
+						.add({
+							targets: ".eyeball7",
+							rotate: toggle[7] ? 0 : -140,
+							translateX: toggle[7] ? 0 : -100,
+							translateY: toggle[7] ? 0 : 50
+						}, "-=700"
+						)
+						//eye opens
+						.add({
+				 			targets: ".eye-motion",
+				 			d: [{value: toggle[7] ? asleep : awake}]
+				 		}, "-=500"
+				 		)
+				 		//make text appear
+				 		.add({
+				 			targets: '#text7 .letter7',
+				 			color: toggle[7] ? "#f7cb3b00" : "#f7cb3b",
+				 			textShadow: toggle[7] ? "2px 2px #91050300" : "2px 2px #910503"
+				 		}, "-=1500")
+						.add({
+						    targets: '#text7 .letter7',
+						    opacity: toggle[7] ? 0 : [0,1],
+						    easing: "easeOutExpo",
+						    duration: 600,
+						    offset: '-=775',
+						    delay: (el, i) => 34 * (i+1)
+						}, "-=1500");
 
 					toggle[7] =!toggle[7];
 					active = !active;
 
 					//rocket now links to the Place
 					rocketButton.setAttribute("href", "http://wikipedia.org");
-			});
+				}
 
-			eyeball8noise.addEventListener("click",() => {
-				const timeline8 = anime.timeline({
-					duration : 750,
-					easing : "easeOutExpo"
-				});
-				timeline8
-					//planet becomes a bigger circle
-					.add({
-						targets: ".eyeball8",
-						d: [{value: toggle[8] ? planet : iris}],
-						//can add a comma and another morph if you want
-					})
-					//iris goes on a rotating path to the eye
-					.add({
-						targets: ".eyeball8",
-						rotate: toggle[8] ? 0 : -133,
-						translateX: toggle[8] ? 0 : -100,
-						translateY: toggle[8] ? 0 : 50
-					}, "-=700"
-					)
-					//eye opens
-					.add({
-			 			targets: ".eye-motion",
-			 			d: [{value: toggle[8] ? asleep : awake}]
-			 		}, "-=500"
-			 		)
-			 		//make text appear
-			 		.add({
-			 			targets: '#text8 .letter8',
-			 			color: toggle[8] ? "#f7cb3b00" : "#f7cb3b",
-			 			textShadow: toggle[8] ? "2px 2px #91050300" : "2px 2px #910503"
-			 		}, "-=1500")
-					.add({
-					    targets: '#text8 .letter8',
-					    opacity: toggle[8] ? 0 : [0,1],
-					    easing: "easeOutExpo",
-					    duration: 600,
-					    offset: '-=775',
-					    delay: (el, i) => 34 * (i+1)
-					}, "-=1500");
-
-					//manual toggle for rocketship to appear and disappear
-			 		if(toggle[8]){
-			 			rocketship.style.visibility = "hidden"
-			 		}
-			 		else {
-			 			rocketship.style.visibility = "visible"
-			 		};
+				else if(event.target.matches("#eyeball8noise")){
+					const timeline8 = anime.timeline({
+						duration : 750,
+						easing : "easeOutExpo"
+					});
+					timeline8
+						//planet becomes a bigger circle
+						.add({
+							targets: ".eyeball8",
+							d: [{value: toggle[8] ? planet : iris}],
+							//can add a comma and another morph if you want
+						})
+						//iris goes on a rotating path to the eye
+						.add({
+							targets: ".eyeball8",
+							rotate: toggle[8] ? 0 : -133,
+							translateX: toggle[8] ? 0 : -100,
+							translateY: toggle[8] ? 0 : 50
+						}, "-=700"
+						)
+						//eye opens
+						.add({
+				 			targets: ".eye-motion",
+				 			d: [{value: toggle[8] ? asleep : awake}]
+				 		}, "-=500"
+				 		)
+				 		//make text appear
+				 		.add({
+				 			targets: '#text8 .letter8',
+				 			color: toggle[8] ? "#f7cb3b00" : "#f7cb3b",
+				 			textShadow: toggle[8] ? "2px 2px #91050300" : "2px 2px #910503"
+				 		}, "-=1500")
+						.add({
+						    targets: '#text8 .letter8',
+						    opacity: toggle[8] ? 0 : [0,1],
+						    easing: "easeOutExpo",
+						    duration: 600,
+						    offset: '-=775',
+						    delay: (el, i) => 34 * (i+1)
+						}, "-=1500");
 
 					toggle[8] =!toggle[8];
 					active = !active;
 
 					//rocket now links to the Place
 					rocketButton.setAttribute("href", "http://wikipedia.org");
-			});
+				}
 
-			eyeball9noise.addEventListener("click",() => {
-				const timeline9 = anime.timeline({
-					duration : 750,
-					easing : "easeOutExpo"
-				});
-				timeline9
-					//planet becomes a bigger circle
-					.add({
-						targets: ".eyeball9",
-						d: [{value: toggle[9] ? planet : iris}],
-						//can add a comma and another morph if you want
-					})
-					//iris goes on a rotating path to the eye
-					.add({
-						targets: ".eyeball9",
-						rotate: toggle[9] ? 0 : -147,
-						translateX: toggle[9] ? 0 : -180,
-						translateY: toggle[9] ? 0 : 50
-					}, "-=700"
-					)
-					//eye opens
-					.add({
-			 			targets: ".eye-motion",
-			 			d: [{value: toggle[9] ? asleep : awake}]
-			 		}, "-=500"
-			 		)
-			 		//make text appear
-			 		.add({
-			 			targets: '#text9 .letter9',
-			 			color: toggle[9] ? "#f7cb3b00" : "#f7cb3b",
-			 			textShadow: toggle[9] ? "2px 2px #91050300" : "2px 2px #910503"
-			 		}, "-=1500")
-					.add({
-					    targets: '#text9 .letter9',
-					    opacity: toggle[9] ? 0 : [0,1],
-					    easing: "easeOutExpo",
-					    duration: 600,
-					    offset: '-=775',
-					    delay: (el, i) => 34 * (i+1)
-					}, "-=1500");
-
-					//manual toggle for rocketship to appear and disappear
-			 		if(toggle[9]){
-			 			rocketship.style.visibility = "hidden"
-			 		}
-			 		else {
-			 			rocketship.style.visibility = "visible"
-			 		};
+				else if(event.target.matches("#eyeball9noise")){
+					const timeline9 = anime.timeline({
+						duration : 750,
+						easing : "easeOutExpo"
+					});
+					timeline9
+						//planet becomes a bigger circle
+						.add({
+							targets: ".eyeball9",
+							d: [{value: toggle[9] ? planet : iris}],
+							//can add a comma and another morph if you want
+						})
+						//iris goes on a rotating path to the eye
+						.add({
+							targets: ".eyeball9",
+							rotate: toggle[9] ? 0 : -147,
+							translateX: toggle[9] ? 0 : -180,
+							translateY: toggle[9] ? 0 : 50
+						}, "-=700"
+						)
+						//eye opens
+						.add({
+				 			targets: ".eye-motion",
+				 			d: [{value: toggle[9] ? asleep : awake}]
+				 		}, "-=500"
+				 		)
+				 		//make text appear
+				 		.add({
+				 			targets: '#text9 .letter9',
+				 			color: toggle[9] ? "#f7cb3b00" : "#f7cb3b",
+				 			textShadow: toggle[9] ? "2px 2px #91050300" : "2px 2px #910503"
+				 		}, "-=1500")
+						.add({
+						    targets: '#text9 .letter9',
+						    opacity: toggle[9] ? 0 : [0,1],
+						    easing: "easeOutExpo",
+						    duration: 600,
+						    offset: '-=775',
+						    delay: (el, i) => 34 * (i+1)
+						}, "-=1500");
 
 					toggle[9] =!toggle[9];
 					active = !active;
 
 					//rocket now links to the Place
 					rocketButton.setAttribute("href", "http://wikipedia.org");
-			});
+				}
 
-			eyeball10noise.addEventListener("click",() => {
-				const timeline10 = anime.timeline({
-					duration : 750,
-					easing : "easeOutExpo"
-				});
-				timeline10
-					//planet becomes a bigger circle
-					.add({
-						targets: ".eyeball10",
-						d: [{value: toggle[10] ? planet : iris}],
-						//can add a comma and another morph if you want
-					})
-					//iris goes on a rotating path to the eye
-					.add({
-						targets: ".eyeball10",
-						rotate: toggle[10] ? 0 : -149,
-						translateX: toggle[10] ? 0 : -220,
-						translateY: toggle[10] ? 0 : 50
-					}, "-=700"
-					)
-					//eye opens
-					.add({
-			 			targets: ".eye-motion",
-			 			d: [{value: toggle[10] ? asleep : awake}]
-			 		}, "-=500"
-			 		)
-			 		//make text appear
-			 		.add({
-			 			targets: '#text10 .letter10',
-			 			color: toggle[10] ? "#f7cb3b00" : "#f7cb3b",
-			 			textShadow: toggle[10] ? "2px 2px #91050300" : "2px 2px #910503"
-			 		}, "-=1500")
-					.add({
-					    targets: '#text10 .letter10',
-					    opacity: toggle[10] ? 0 : [0,1],
-					    easing: "easeOutExpo",
-					    duration: 600,
-					    offset: '-=775',
-					    delay: (el, i) => 34 * (i+1)
-					}, "-=1500");
-
-					//manual toggle for rocketship to appear and disappear
-			 		if(toggle[10]){
-			 			rocketship.style.visibility = "hidden"
-			 		}
-			 		else {
-			 			rocketship.style.visibility = "visible"
-			 		};
+				else if(event.target.matches("#eyeball10noise")){
+					const timeline10 = anime.timeline({
+						duration : 750,
+						easing : "easeOutExpo"
+					});
+					timeline10
+						//planet becomes a bigger circle
+						.add({
+							targets: ".eyeball10",
+							d: [{value: toggle[10] ? planet : iris}],
+							//can add a comma and another morph if you want
+						})
+						//iris goes on a rotating path to the eye
+						.add({
+							targets: ".eyeball10",
+							rotate: toggle[10] ? 0 : -149,
+							translateX: toggle[10] ? 0 : -220,
+							translateY: toggle[10] ? 0 : 50
+						}, "-=700"
+						)
+						//eye opens
+						.add({
+				 			targets: ".eye-motion",
+				 			d: [{value: toggle[10] ? asleep : awake}]
+				 		}, "-=500"
+				 		)
+				 		//make text appear
+				 		.add({
+				 			targets: '#text10 .letter10',
+				 			color: toggle[10] ? "#f7cb3b00" : "#f7cb3b",
+				 			textShadow: toggle[10] ? "2px 2px #91050300" : "2px 2px #910503"
+				 		}, "-=1500")
+						.add({
+						    targets: '#text10 .letter10',
+						    opacity: toggle[10] ? 0 : [0,1],
+						    easing: "easeOutExpo",
+						    duration: 600,
+						    offset: '-=775',
+						    delay: (el, i) => 34 * (i+1)
+						}, "-=1500");
 
 					toggle[10] =!toggle[10];
 					active = !active;
 
 					//rocket now links to the Place
 					rocketButton.setAttribute("href", "http://wikipedia.org");
+				}
 
-			});
-
-			//planet disappears if a planet besides itself is active
-			document.addEventListener("click", function(){
 				var i = 1;
 				if(active){ // if some planet is active
-					planetRings1.setAttribute("stroke", "none");
+					rocketship.style.visibility = "visible" // rocketship appears
+					planetRings1.setAttribute("stroke", "none"); // planet 1's rings disappear
 					if(!toggle[i]) { // if it's not planet 1
 						eyeball.setAttribute("fill", "none");
 						eyeballNoise.setAttribute("fill", "none");
 					}
 				}
 				else { // if no planet is active
+					rocketship.style.visibility = "hidden" // rocketship disappears
 					eyeball.setAttribute("fill", color[i]);
 					eyeballNoise.setAttribute("fill", "url(#pattern2)");
 					planetRings1.setAttribute("stroke", "#93269C");
