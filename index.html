@@ -89,21 +89,6 @@
 				transform-origin: center;
 			}
 
-			.rectangle{
-				animation: rectangle 3s ease-in-out infinite alternate;
-				transform-origin: center;
-			}
-
-			#big{
-				animation: big 9s ease-in-out infinite alternate;
-				transform-origin: center;
-			}
-
-			#small{
-				animation: small 4.5s ease-in-out infinite alternate;
-				transform-origin: center;
-			}
-
 			.polymorph{
 				animation: polymorph 5s infinite;
 				transform-origin: center;
@@ -666,8 +651,19 @@
 				 		//make animation appear
 				 		.add({
 				 			targets: ".rectangle",
-				 			stroke: toggle[1] ? "none" : "url(#grad2)"
-				 		}, "-=700"
+				 			stroke: toggle[1] ? "none" : "url(#grad2)",
+				 			style: toggle[1] ? "animation: none" : "animation: rectangle 3s ease-in-out infinite alternate; transform-origin: center;"
+				 		}, "-=1500"
+				 		)
+				 		.add({
+				 			targets: "#big",
+				 			style: toggle[1] ? "animation: none" : "animation: big 9s ease-in-out infinite alternate; transform-origin: center;"
+				 		}, "-=1500"
+				 		)
+				 		.add({
+				 			targets: "#small",
+				 			style: toggle[1] ? "animation: none" : "animation: small 4.5s ease-in-out infinite alternate; transform-origin: center;"
+				 		}, "-=1500"
 				 		)
 				 		//make text appear
 				 		.add({
