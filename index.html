@@ -252,7 +252,7 @@
 				href="https://www.wikipedia.org">
 				<img
 					id = "rocketship"
-					src = "rocketship.png"
+					src = "/images/rocketship.png"
 					style = "visibility: hidden"
 				/>
 			</a>
@@ -270,7 +270,21 @@
       				<stop offset="100%" style="stop-color:#fa9a2d;stop-opacity:1" />
     				</linearGradient>
 
-    				<!--no textures-->
+    				<!--texture library-->
+    				<pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
+					<use href="#image0" transform="translate(0,-0.4) scale(0.008)"/>
+					</pattern>
+					<image id="image0" width="220" height="220" href="bedge-grunge.png"/>
+
+    				<pattern id="pattern1" patternContentUnits="objectBoundingBox" width="1" height="1">
+					<use href="#image1" transform="translate(0,-0.4) scale(0.01)"/>
+					</pattern>
+					<image id="image1" width="220" height="220" href="asfalt-dark.png"/>
+
+					<pattern id="pattern2" patternContentUnits="objectBoundingBox" width="1" height="1">
+					<use href="#image2" transform="translate(0,0) scale(0.01)"/>
+					</pattern>
+					<image id="image2" width="315" height="315" href="soft-wallpaper.png"/>
 
 					<!--place images library-->
 					<pattern id="place0" patternContentUnits="objectBoundingBox" width="1" height="1">
@@ -284,42 +298,52 @@
 
 				<g transform="translate(310,200)">
 					<path id = "eyeball" class = "eyeball" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="#962c0e"/>
+					<path id = "eyeballNoise" class = "eyeball" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="url(#pattern2)"/>
 				</g>
 
 				<g transform="translate(350,184)">
 					<path id = "eyeball2" class = "eyeball2" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="#dfa1ed"/>
+					<path id = "eyeball2noise" class = "eyeball2" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="url(#pattern2)"/>
 				</g>
 
 				<g transform="translate(384,165)">
 					<path id = "eyeball3" class = "eyeball3" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="#384a20"/>
+					<path id = "eyeball3noise" class = "eyeball3" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="url(#pattern2)"/>
 				</g>
 
 				<g transform="translate(265,211)">
 					<path id = "eyeball4" class = "eyeball4" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="#5450d4"/>
+					<path id = "eyeball4noise" class = "eyeball4" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="url(#pattern2)"/>
 				</g>
 
 				<g transform="translate(223,216)">
 					<path id = "eyeball5" class = "eyeball5" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="#751d72"/>
+					<path id = "eyeball5noise" class = "eyeball5" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="url(#pattern2)"/>
 				</g>
 
 				<g transform="translate(180,214.5)">
 					<path id = "eyeball6" class = "eyeball6" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="#e3bc30"/>
+					<path id = "eyeball6noise" class = "eyeball6" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="url(#pattern2)"/>
 				</g>
 
 				<g transform="translate(140,207)">
 					<path id = "eyeball7" class = "eyeball7" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="#ebe4a4"/>
+					<path id = "eyeball7noise" class = "eyeball7" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="url(#pattern2)"/>
 				</g>
 
 				<g transform="translate(103,196)">
 					<path id = "eyeball8" class = "eyeball8" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="#57250a"/>
+					<path id = "eyeball8noise" class = "eyeball8" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="url(#pattern2)"/>
 				</g>
 
 				<g transform="translate(67,180)">
 					<path id = "eyeball9" class = "eyeball9" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="#7a0540"/>
+					<path id = "eyeball9noise" class = "eyeball9" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="url(#pattern2)"/>
 				</g>
 
 				<g transform="translate(36,161)">
 					<path id = "eyeball10" class = "eyeball10" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="#055e53"/>
+					<path id = "eyeball10noise" class = "eyeball10" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="url(#pattern2)"/>
 				</g>
 
 				<g transform="translate(296,210)"><path id = "planetRings1" d="M12.5 0.5C-33 0.5 76.5 10.1905 33.5 1.99999C54.5 5.99999 -7.99999 1.99999 12.5 0.5Z" stroke="#93269C"/></g>
@@ -336,7 +360,9 @@
 				</g>
 
 				<g transform="translate(0,2)">
-					<path id = "eye-motion" d="M0 115.387C200 -100 377 40.3873 447 115.387C378 175.387 199 274.388 0 115.387Z" fill="url(#grad1)" stroke="#910503" stroke-width="2"/>
+					<path class = "eye-motion" d="M0 115.387C200 -100 377 40.3873 447 115.387C378 175.387 199 274.388 0 115.387Z" fill="url(#grad1)" stroke="#910503" stroke-width="2"/>
+					<!--texture-->
+					<path id = "eye-motion" class = "eye-motion" d="M0 115.387C200 -100 377 40.3873 447 115.387C378 175.387 199 274.388 0 115.387Z" fill="url(#pattern0)"/>
 				</g>
 
 	      	</svg>
@@ -487,6 +513,16 @@
 
 			const eyeMotion = document.querySelector(".eye-motion");
 			const idEyeMotion = document.querySelector("#eye-motion");
+			const eyeballNoise = document.querySelector("#eyeballNoise");
+			const eyeball2noise = document.querySelector("#eyeball2noise");
+			const eyeball3noise = document.querySelector("#eyeball3noise");
+			const eyeball4noise = document.querySelector("#eyeball4noise");
+			const eyeball5noise = document.querySelector("#eyeball5noise");
+			const eyeball6noise = document.querySelector("#eyeball6noise");
+			const eyeball7noise = document.querySelector("#eyeball7noise");
+			const eyeball8noise = document.querySelector("#eyeball8noise");
+			const eyeball9noise = document.querySelector("#eyeball9noise");
+			const eyeball10noise = document.querySelector("#eyeball10noise");
 
 			const eyeball = document.querySelector("#eyeball");
 			const eyeball2 = document.querySelector("#eyeball2");
@@ -560,13 +596,13 @@
 				});
 				timeline0
 					.add({
-						targets: "#eye-motion",
+						targets: ".eye-motion",
 						d: [{value: toggle[0] ? asleep : awake}],
 					});
 				toggle[0] = !toggle[0];
 				}
 
-				else if(event.target.matches("#eyeball")){
+				else if(event.target.matches("#eyeballNoise")){
 					//play and pause audio
 				    if (toggle[1]) {
 				    	document.querySelector("#audio1").pause();
@@ -596,7 +632,7 @@
 						)
 						//eye opens
 						.add({
-				 			targets: "#eye-motion",
+				 			targets: ".eye-motion",
 				 			d: [{value: toggle[1] ? asleep : awake}]
 				 		}, "-=500"
 				 		)
@@ -644,7 +680,7 @@
 			 		rocketButton.setAttribute("href", "http://placestogo.art/desert");
 				}
 
-				else if(event.target.matches("#eyeball2")){
+				else if(event.target.matches("#eyeball2noise")){
 					//play and pause audio
 				    if (toggle[2]) {
 				    	document.querySelector("#audio2").pause();
@@ -672,7 +708,7 @@
 						)
 						//eye opens
 						.add({
-				 			targets: "#eye-motion",
+				 			targets: ".eye-motion",
 				 			d: [{value: toggle[2] ? asleep : awake}]
 				 		}, "-=500"
 				 		)
@@ -704,7 +740,7 @@
 					rocketButton.setAttribute("href", "http://wikipedia.org");
 				}
 
-				else if(event.target.matches("#eyeball3")){
+				else if(event.target.matches("#eyeball3noise")){
 					//play and pause audio
 				    if (toggle[3]) {
 				    	document.querySelector("#audio3").pause();
@@ -733,7 +769,7 @@
 						)
 						//eye opens
 						.add({
-				 			targets: "#eye-motion",
+				 			targets: ".eye-motion",
 				 			d: [{value: toggle[3] ? asleep : awake}]
 				 		}, "-=500"
 				 		)
@@ -764,7 +800,7 @@
 					rocketButton.setAttribute("href", "http://wikipedia.org");
 				}
 
-				else if(event.target.matches("#eyeball4")){
+				else if(event.target.matches("#eyeball4noise")){
 					//play and pause audio
 				    if (toggle[4]) {
 				    	document.querySelector("#audio4").pause();
@@ -793,7 +829,7 @@
 						)
 						//eye opens
 						.add({
-				 			targets: "#eye-motion",
+				 			targets: ".eye-motion",
 				 			d: [{value: toggle[4] ? asleep : awake}]
 				 		}, "-=500"
 				 		)
@@ -824,7 +860,7 @@
 					rocketButton.setAttribute("href", "http://wikipedia.org");
 				}
 
-				else if(event.target.matches("#eyeball5")){
+				else if(event.target.matches("#eyeball5noise")){
 					//play and pause audio
 				    if (toggle[5]) {
 				    	document.querySelector("#audio5").pause();
@@ -853,7 +889,7 @@
 						)
 						//eye opens
 						.add({
-				 			targets: "#eye-motion",
+				 			targets: ".eye-motion",
 				 			d: [{value: toggle[5] ? asleep : awake}]
 				 		}, "-=500"
 				 		)
@@ -884,7 +920,7 @@
 					rocketButton.setAttribute("href", "http://wikipedia.org");
 				}
 
-				else if(event.target.matches("#eyeball6")){
+				else if(event.target.matches("#eyeball6noise")){
 					//play and pause audio
 				    if (toggle[6]) {
 				    	document.querySelector("#audio6").pause();
@@ -913,7 +949,7 @@
 						)
 						//eye opens
 						.add({
-				 			targets: "#eye-motion",
+				 			targets: ".eye-motion",
 				 			d: [{value: toggle[6] ? asleep : awake}]
 				 		}, "-=500"
 				 		)
@@ -944,7 +980,7 @@
 					rocketButton.setAttribute("href", "http://wikipedia.org");
 				}
 
-				else if(event.target.matches("#eyeball7")){
+				else if(event.target.matches("#eyeball7noise")){
 					//play and pause audio
 				    if (toggle[7]) {
 				    	document.querySelector("#audio7").pause();
@@ -974,7 +1010,7 @@
 						)
 						//eye opens
 						.add({
-				 			targets: "#eye-motion",
+				 			targets: ".eye-motion",
 				 			d: [{value: toggle[7] ? asleep : awake}]
 				 		}, "-=500"
 				 		)
@@ -1005,7 +1041,7 @@
 					rocketButton.setAttribute("href", "http://wikipedia.org");
 				}
 
-				else if(event.target.matches("#eyeball8")){
+				else if(event.target.matches("#eyeball8noise")){
 					//play and pause audio
 				    if (toggle[8]) {
 				    	document.querySelector("#audio8").pause();
@@ -1035,7 +1071,7 @@
 						)
 						//eye opens
 						.add({
-				 			targets: "#eye-motion",
+				 			targets: ".eye-motion",
 				 			d: [{value: toggle[8] ? asleep : awake}]
 				 		}, "-=500"
 				 		)
@@ -1066,7 +1102,7 @@
 					rocketButton.setAttribute("href", "http://wikipedia.org");
 				}
 
-				else if(event.target.matches("#eyeball9")){
+				else if(event.target.matches("#eyeball9noise")){
 					//play and pause audio
 				    if (toggle[9]) {
 				    	document.querySelector("#audio9").pause();
@@ -1096,7 +1132,7 @@
 						)
 						//eye opens
 						.add({
-				 			targets: "#eye-motion",
+				 			targets: ".eye-motion",
 				 			d: [{value: toggle[9] ? asleep : awake}]
 				 		}, "-=500"
 				 		)
@@ -1127,7 +1163,7 @@
 					rocketButton.setAttribute("href", "http://wikipedia.org");
 				}
 
-				else if(event.target.matches("#eyeball10")){
+				else if(event.target.matches("#eyeball10noise")){
 					//play and pause audio
 				    if (toggle[10]) {
 				    	document.querySelector("#audio10").pause();
@@ -1157,7 +1193,7 @@
 						)
 						//eye opens
 						.add({
-				 			targets: "#eye-motion",
+				 			targets: ".eye-motion",
 				 			d: [{value: toggle[10] ? asleep : awake}]
 				 		}, "-=500"
 				 		)
@@ -1194,75 +1230,95 @@
 					planetRings1.setAttribute("stroke", "none"); // planet 1's rings disappear
 					if(!toggle[i]) { // if it's not planet 1
 						eyeball.setAttribute("fill", "none");
+						eyeballNoise.setAttribute("fill", "none");
 					}
 				}
 				else { // if no planet is active
 					rocketship.style.visibility = "hidden"; // rocketship disappears
 					eyeball.setAttribute("fill", color[i]);
+					eyeballNoise.setAttribute("fill", "url(#pattern2)");
 					planetRings1.setAttribute("stroke", "#93269C");
 				}
 				i++;
 				if(active && !toggle[i]){
 					eyeball2.setAttribute("fill", "none");
+					eyeball2noise.setAttribute("fill", "none");
 				}
 				else {
 					eyeball2.setAttribute("fill", color[i]);
+					eyeball2noise.setAttribute("fill", "url(#pattern2)");
 				}
 				i++;
 				if(active && !toggle[i]){
 					eyeball3.setAttribute("fill", "none");
+					eyeball3noise.setAttribute("fill", "none");
 				}
 				else {
 					eyeball3.setAttribute("fill", color[i]);
+					eyeball3noise.setAttribute("fill", "url(#pattern2)");
 				}
 				i++;
 				if(active && !toggle[i]){
 					eyeball4.setAttribute("fill", "none");
+					eyeball4noise.setAttribute("fill", "none");
 				}
 				else {
 					eyeball4.setAttribute("fill", color[i]);
+					eyeball4noise.setAttribute("fill", "url(#pattern2)");
 				}
 				i++;
 				if(active && !toggle[i]){
 					eyeball5.setAttribute("fill", "none");
+					eyeball5noise.setAttribute("fill", "none");
 				}
 				else {
 					eyeball5.setAttribute("fill", color[i]);
+					eyeball5noise.setAttribute("fill", "url(#pattern2)");
 				}
 				i++;
 				if(active && !toggle[i]){
 					eyeball6.setAttribute("fill", "none");
+					eyeball6noise.setAttribute("fill", "none");
 				}
 				else {
 					eyeball6.setAttribute("fill", color[i]);
+					eyeball6noise.setAttribute("fill", "url(#pattern2)");
 				}
 				i++;
 				if(active && !toggle[i]){
 					eyeball7.setAttribute("fill", "none");
+					eyeball7noise.setAttribute("fill", "none");
 				}
 				else {
 					eyeball7.setAttribute("fill", color[i]);
+					eyeball7noise.setAttribute("fill", "url(#pattern2)");
 				}
 				i++;
 				if(active && !toggle[i]){
 					eyeball8.setAttribute("fill", "none");
+					eyeball8noise.setAttribute("fill", "none");
 				}
 				else {
 					eyeball8.setAttribute("fill", color[i]);
+					eyeball8noise.setAttribute("fill", "url(#pattern2)");
 				}
 				i++;
 				if(active && !toggle[i]){
 					eyeball9.setAttribute("fill", "none");
+					eyeball9noise.setAttribute("fill", "none");
 				}
 				else {
 					eyeball9.setAttribute("fill", color[i]);
+					eyeball9noise.setAttribute("fill", "url(#pattern2)");
 				}
 				i++;
 				if(active && !toggle[i]){
 					eyeball10.setAttribute("fill", "none");
+					eyeball10noise.setAttribute("fill", "none");
 				}
 				else {
 					eyeball10.setAttribute("fill", color[i]);
+					eyeball10noise.setAttribute("fill", "url(#pattern2)");
 				}
 			});
 
