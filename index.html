@@ -495,46 +495,6 @@
 			const rocketButton = document.querySelector("#rocket-button");
 			const rocketship = document.querySelector("#rocketship");
 
-			// Wrap every letter from text1 in a span
-			var textWrapper1 = document.querySelector('.placeName .letters1');
-			textWrapper1.innerHTML = textWrapper1.textContent.replace(/([^\x00-\x80]|\w)/g, "<span class='letter1'>$&</span>");
-
-			// Wrap every letter from text2 in a span
-			var textWrapper2 = document.querySelector('.placeName .letters2');
-			textWrapper2.innerHTML = textWrapper2.textContent.replace(/([^\x00-\x80]|\w)/g, "<span class='letter2'>$&</span>");
-
-			// Wrap every letter from text3 in a span
-			var textWrapper3 = document.querySelector('.placeName .letters3');
-			textWrapper3.innerHTML = textWrapper3.textContent.replace(/([^\x00-\x80]|\w)/g, "<span class='letter3'>$&</span>");
-
-			// Wrap every letter from text4 in a span
-			var textWrapper4 = document.querySelector('.placeName .letters4');
-			textWrapper4.innerHTML = textWrapper4.textContent.replace(/([^\x00-\x80]|\w)/g, "<span class='letter4'>$&</span>");
-
-			// Wrap every letter from text5 in a span
-			var textWrapper5 = document.querySelector('.placeName .letters5');
-			textWrapper5.innerHTML = textWrapper5.textContent.replace(/([^\x00-\x80]|\w)/g, "<span class='letter5'>$&</span>");
-
-			// Wrap every letter from text6 in a span
-			var textWrapper6 = document.querySelector('.placeName .letters6');
-			textWrapper6.innerHTML = textWrapper6.textContent.replace(/([^\x00-\x80]|\w)/g, "<span class='letter6'>$&</span>");
-
-			// Wrap every letter from text7 in a span
-			var textWrapper7 = document.querySelector('.placeName .letters7');
-			textWrapper7.innerHTML = textWrapper7.textContent.replace(/([^\x00-\x80]|\w)/g, "<span class='letter7'>$&</span>");
-
-			// Wrap every letter from text8 in a span
-			var textWrapper8 = document.querySelector('.placeName .letters8');
-			textWrapper8.innerHTML = textWrapper8.textContent.replace(/([^\x00-\x80]|\w)/g, "<span class='letter8'>$&</span>");
-
-			// Wrap every letter from text9 in a span
-			var textWrapper9 = document.querySelector('.placeName .letters9');
-			textWrapper9.innerHTML = textWrapper9.textContent.replace(/([^\x00-\x80]|\w)/g, "<span class='letter9'>$&</span>");
-
-			// Wrap every letter from text10 in a span
-			var textWrapper10 = document.querySelector('.placeName .letters10');
-			textWrapper10.innerHTML = textWrapper10.textContent.replace(/([^\x00-\x80]|\w)/g, "<span class='letter10'>$&</span>");
-
 			//planet disappears if a planet besides itself is active
 			document.addEventListener("click", function(event){
 
@@ -594,21 +554,7 @@
 				 			targets: "#small",
 				 			style: toggle[1] ? "animation: none" : "animation: small 4.5s ease-in-out 4 alternate; transform-origin: center;"
 				 		}, "-=1500"
-				 		)
-				 		//make text appear
-				 		.add({
-				 			targets: '#text1 .letter1',
-				 			color: toggle[1] ? "#91050300" : "#910503",
-				 			textShadow: toggle[1] ? "0px 0px #91050300" : "0px 0px #910503"
-				 		}, "-=1500")
-						.add({
-						    targets: '#text1 .letter1',
-						    opacity: toggle[1] ? 0 : [0,1],
-						    easing: "easeOutExpo",
-						    duration: 600,
-						    offset: '-=775',
-						    delay: (el, i) => 34 * (i+1)
-						}, "-=1500");
+				 		);
 
 			 		toggle[1] = !toggle[1];
 			 		active = !active;
@@ -641,22 +587,7 @@
 				 			targets: ".eye-motion",
 				 			d: [{value: toggle[2] ? asleep : awake}]
 				 		}, "-=500"
-				 		)
-
-				 		//make text appear
-				 		.add({
-				 			targets: '#text2 .letter2',
-				 			color: toggle[2] ? "#91050300" : "#910503",
-				 			textShadow: toggle[2] ? "0px 0px #91050300" : "0px 0px #910503"
-				 		}, "-=1500")
-						.add({
-						    targets: '#text2 .letter2',
-						    opacity: toggle[2] ? 0 : [0,1],
-						    easing: "easeOutExpo",
-						    duration: 600,
-						    offset: '-=775',
-						    delay: (el, i) => 34 * (i+1)
-						}, "-=1500");
+				 		);
 
 					toggle[2] =!toggle[2];
 					active = !active;
@@ -690,21 +621,7 @@
 				 			targets: ".eye-motion",
 				 			d: [{value: toggle[3] ? asleep : awake}]
 				 		}, "-=500"
-				 		)
-				 		//make text appear
-				 		.add({
-				 			targets: '#text3 .letter3',
-				 			color: toggle[3] ? "#91050300" : "#910503",
-				 			textShadow: toggle[3] ? "0px 0px #91050300" : "0px 0px #910503"
-				 		}, "-=1500")
-						.add({
-						    targets: '#text3 .letter3',
-						    opacity: toggle[3] ? 0 : [0,1],
-						    easing: "easeOutExpo",
-						    duration: 600,
-						    offset: '-=775',
-						    delay: (el, i) => 34 * (i+1)
-						}, "-=1500");
+				 		);
 
 					toggle[3] =!toggle[3];
 					active = !active;
@@ -738,21 +655,7 @@
 				 			targets: ".eye-motion",
 				 			d: [{value: toggle[4] ? asleep : awake}]
 				 		}, "-=500"
-				 		)
-				 		//make text appear
-				 		.add({
-				 			targets: '#text4 .letter4',
-				 			color: toggle[4] ? "#91050300" : "#910503",
-				 			textShadow: toggle[4] ? "0px 0px #91050300" : "0px 0px #910503"
-				 		}, "-=1500")
-						.add({
-						    targets: '#text4 .letter4',
-						    opacity: toggle[4] ? 0 : [0,1],
-						    easing: "easeOutExpo",
-						    duration: 600,
-						    offset: '-=775',
-						    delay: (el, i) => 34 * (i+1)
-						}, "-=1500");
+				 		);
 
 					toggle[4] =!toggle[4];
 					active = !active;
@@ -786,21 +689,7 @@
 				 			targets: ".eye-motion",
 				 			d: [{value: toggle[5] ? asleep : awake}]
 				 		}, "-=500"
-				 		)
-				 		//make text appear
-				 		.add({
-				 			targets: '#text5 .letter5',
-				 			color: toggle[5] ? "#91050300" : "#910503",
-				 			textShadow: toggle[5] ? "0px 0px #91050300" : "0px 0px #910503"
-				 		}, "-=1500")
-						.add({
-						    targets: '#text5 .letter5',
-						    opacity: toggle[5] ? 0 : [0,1],
-						    easing: "easeOutExpo",
-						    duration: 600,
-						    offset: '-=775',
-						    delay: (el, i) => 34 * (i+1)
-						}, "-=1500");
+				 		);
 
 					toggle[5] =!toggle[5];
 					active = !active;
@@ -834,21 +723,7 @@
 				 			targets: ".eye-motion",
 				 			d: [{value: toggle[6] ? asleep : awake}]
 				 		}, "-=500"
-				 		)
-				 		//make text appear
-				 		.add({
-				 			targets: '#text6 .letter6',
-				 			color: toggle[6] ? "#91050300" : "#910503",
-				 			textShadow: toggle[6] ? "0px 0px #91050300" : "0px 0px #910503"
-				 		}, "-=1500")
-						.add({
-						    targets: '#text6 .letter6',
-						    opacity: toggle[6] ? 0 : [0,1],
-						    easing: "easeOutExpo",
-						    duration: 600,
-						    offset: '-=775',
-						    delay: (el, i) => 34 * (i+1)
-						}, "-=1500");
+				 		);
 
 					toggle[6] =!toggle[6];
 					active = !active;
@@ -883,21 +758,7 @@
 				 			targets: ".eye-motion",
 				 			d: [{value: toggle[7] ? asleep : awake}]
 				 		}, "-=500"
-				 		)
-				 		//make text appear
-				 		.add({
-				 			targets: '#text7 .letter7',
-				 			color: toggle[7] ? "#91050300" : "#910503",
-				 			textShadow: toggle[7] ? "0px 0px #91050300" : "0px 0px #910503"
-				 		}, "-=1500")
-						.add({
-						    targets: '#text7 .letter7',
-						    opacity: toggle[7] ? 0 : [0,1],
-						    easing: "easeOutExpo",
-						    duration: 600,
-						    offset: '-=775',
-						    delay: (el, i) => 34 * (i+1)
-						}, "-=1500");
+				 		);
 
 					toggle[7] =!toggle[7];
 					active = !active;
@@ -932,21 +793,7 @@
 				 			targets: ".eye-motion",
 				 			d: [{value: toggle[8] ? asleep : awake}]
 				 		}, "-=500"
-				 		)
-				 		//make text appear
-				 		.add({
-				 			targets: '#text8 .letter8',
-				 			color: toggle[8] ? "#91050300" : "#910503",
-				 			textShadow: toggle[8] ? "0px 0px #91050300" : "0px 0px #910503"
-				 		}, "-=1500")
-						.add({
-						    targets: '#text8 .letter8',
-						    opacity: toggle[8] ? 0 : [0,1],
-						    easing: "easeOutExpo",
-						    duration: 600,
-						    offset: '-=775',
-						    delay: (el, i) => 34 * (i+1)
-						}, "-=1500");
+				 		);
 
 					toggle[8] =!toggle[8];
 					active = !active;
@@ -981,21 +828,7 @@
 				 			targets: ".eye-motion",
 				 			d: [{value: toggle[9] ? asleep : awake}]
 				 		}, "-=500"
-				 		)
-				 		//make text appear
-				 		.add({
-				 			targets: '#text9 .letter9',
-				 			color: toggle[9] ? "#91050300" : "#910503",
-				 			textShadow: toggle[9] ? "0px 0px #91050300" : "0px 0px #910503"
-				 		}, "-=1500")
-						.add({
-						    targets: '#text9 .letter9',
-						    opacity: toggle[9] ? 0 : [0,1],
-						    easing: "easeOutExpo",
-						    duration: 600,
-						    offset: '-=775',
-						    delay: (el, i) => 34 * (i+1)
-						}, "-=1500");
+				 		);
 
 					toggle[9] =!toggle[9];
 					active = !active;
@@ -1030,21 +863,7 @@
 				 			targets: ".eye-motion",
 				 			d: [{value: toggle[10] ? asleep : awake}]
 				 		}, "-=500"
-				 		)
-				 		//make text appear
-				 		.add({
-				 			targets: '#text10 .letter10',
-				 			color: toggle[10] ? "#91050300" : "#910503",
-				 			textShadow: toggle[10] ? "0px 0px #91050300" : "0px 0px #910503"
-				 		}, "-=1500")
-						.add({
-						    targets: '#text10 .letter10',
-						    opacity: toggle[10] ? 0 : [0,1],
-						    easing: "easeOutExpo",
-						    duration: 600,
-						    offset: '-=775',
-						    delay: (el, i) => 34 * (i+1)
-						}, "-=1500");
+				 		);
 
 					toggle[10] =!toggle[10];
 					active = !active;
