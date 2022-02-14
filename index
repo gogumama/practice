@@ -1,0 +1,99 @@
+<head>
+	<link rel="shortcut icon" href="favicon.ico" />
+	<title>Places To Go</title>
+	<style>
+		body {
+				background: linear-gradient(#e66465, #9198e5 100%);
+				padding: 0px;
+				margin: 40px;
+				overflow-x: hidden;
+			}
+		svg {
+			width: 100%;
+			transform: scale(1.5);
+		}
+		h1 {
+			font-family: helvetica;
+			color: white;
+			font-size: 3em;
+		}
+		h2 {
+			font-family: helvetica;
+			color: white;
+			font-size: 2em;
+		}
+		p {
+			font-family: helvetica;
+			color: white;
+			font-size: 1em;
+		}
+		.container {
+			width: 75%;
+			padding-top: 42.1875%;
+			position: relative;
+			overflow: hidden;
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+			float: top;
+
+		}
+		.vid {
+			position: absolute;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			width: 100%;
+			height: 100%;
+		}
+		.words {
+			text-align: center;
+		}
+		.mixy {
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+			float: top;
+		}
+		#everything {
+			position: absolute;
+			top: 0;
+			width: 100%;
+			align-items: center;
+			padding: 0px;
+			left: 0;
+		}
+	</style>
+</head>
+<body>
+		<div class="words">
+			<h1>
+				<i>PLACES TO GO</i>
+			</h1>
+			<h2>
+				<i>A LOVE BROADCAST — FOR MUTUAL AID!</i>
+			</h2>
+		</div>
+
+		<div class="container">
+			<iframe class="vid" width="75%" height="auto" src="https://www.youtube.com/embed/videoseries?list=PL24-plEzxhq5Wj_dac_idF93k9H8YKCrG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		</div>
+		<iframe class="mixy" width="75%" height="auto" src="https://www.mixcloud.com/widget/iframe/?hide_cover=1&feed=%2FPLACES2GO%2Fplaces-to-go-presents-a-love-broadcast-for-mutual-aid%2F" frameborder="0" ></iframe>
+		<div class="words">
+			<b>
+			<p>
+				Donate to our mutual aid fund!<br>
+				Venmo @jisu_ or cashapp $jisusheen.
+			</p>
+			
+			</b>
+				<br>
+			<i>
+			<p>
+				We are a QPOC artist collective based in New Haven CT, working on new infrastructures for mental health and art. We were recently awarded $32,000 from The Community Foundation for Greater New Haven, with the Arts Council of Greater New Haven as a fiscal sponsor. This has allowed us to make new plans throughout 2022 and 2023! One of these plans is a mutual aid fund to help other artists get through unjust and difficult situations. We are working within the context of late-stage capitalism and a multi-year pandemic whose full effects may only be seen years or generations later. We are motivated by a need to prepare and live at the same time. For too long, artists have had to depend on an outdated infrastructure for support & resources. Access to this system is limited by the racism, sexism, classism, & homophobia it was born in. So we are building something new. We started utilizing our mutual aid fund at the end of 2021, and we created the love broadcast to replenish & build the fund for this year. you can venmo @jisu_ or cashapp $jisusheen to contribute. 100% of all donations will go to mutual aid!
+			</p>
+			</i>
+			<br><br><br>
+		</div>
+	</body>
