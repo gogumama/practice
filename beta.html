@@ -2,10 +2,16 @@
 <html lang="en">
 	<head>
 		<link rel="shortcut icon" href="favicon.ico" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap" rel="stylesheet">
+
 		<meta charset = "UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
 		<title>Places To Go</title>
+
 		<style>
 			* {
 				margin: 0;
@@ -40,8 +46,7 @@
 
 			/*This is why there's a pink band on the bottom. Because the position is absolute :(. Fix later.*/
 			.placeName {
-				font-family: sans-serif;
-				font-style: italic;
+				font-family: 'Shrikhand', cursive;
 				font-size: 2vw;
 				position: absolute;
 				left: 300px;
@@ -215,7 +220,7 @@
 	      	</svg>
 
 
-	      	<text id = "text1" class="placeName" style="color: #91050300; text-shadow: 0px 0px #91050300;">
+	      	<text id = "text1" class="placeName" style="color: #91050300; text-shadow: 2px 2px #91050300;">
  			 	<span class="text-wrapper1">
     			<span class="letters1">
     					&ndash; a future you could fall in love with
@@ -485,7 +490,7 @@
 				 		.add({
 				 			targets: '#text1 .letter1',
 				 			color: toggle[1] ? "#91050300" : "#910503",
-				 			textShadow: toggle[1] ? "0px 0px #91050300" : "0px 0px #910503"
+				 			textShadow: toggle[1] ? "2px 2px #91050300" : "2px 2px #ff9f19"
 				 		}, "-=1500")
 						.add({
 						    targets: '#text1 .letter1',
@@ -543,7 +548,7 @@
 				 		.add({
 				 			targets: '#text2 .letter2',
 				 			color: toggle[2] ? "#91050300" : "#910503",
-				 			textShadow: toggle[2] ? "0px 0px #91050300" : "0px 0px #910503"
+				 			textShadow: toggle[2] ? "2px 2px #91050300" : "2px 2px #ff9f19"
 				 		}, "-=1500")
 						.add({
 						    targets: '#text2 .letter2',
@@ -601,7 +606,7 @@
 				 		.add({
 				 			targets: '#text3 .letter3',
 				 			color: toggle[3] ? "#91050300" : "#910503",
-				 			textShadow: toggle[3] ? "0px 0px #91050300" : "0px 0px #910503"
+				 			textShadow: toggle[3] ? "2px 2px #91050300" : "2px 2px #ff9f19"
 				 		}, "-=1500")
 						.add({
 						    targets: '#text3 .letter3',
@@ -659,7 +664,7 @@
 				 		.add({
 				 			targets: '#text4 .letter4',
 				 			color: toggle[4] ? "#91050300" : "#910503",
-				 			textShadow: toggle[4] ? "0px 0px #91050300" : "0px 0px #910503"
+				 			textShadow: toggle[4] ? "2px 2px #91050300" : "2px 2px #ff9f19"
 				 		}, "-=1500")
 						.add({
 						    targets: '#text4 .letter4',
@@ -717,7 +722,7 @@
 				 		.add({
 				 			targets: '#text5 .letter5',
 				 			color: toggle[5] ? "#91050300" : "#910503",
-				 			textShadow: toggle[5] ? "0px 0px #91050300" : "0px 0px #910503"
+				 			textShadow: toggle[5] ? "2px 2px #91050300" : "2px 2px #ff9f19"
 				 		}, "-=1500")
 						.add({
 						    targets: '#text5 .letter5',
@@ -775,7 +780,7 @@
 				 		.add({
 				 			targets: '#text6 .letter6',
 				 			color: toggle[6] ? "#91050300" : "#910503",
-				 			textShadow: toggle[6] ? "0px 0px #91050300" : "0px 0px #910503"
+				 			textShadow: toggle[6] ? "2px 2px #91050300" : "2px 2px #ff9f19"
 				 		}, "-=1500")
 						.add({
 						    targets: '#text6 .letter6',
@@ -834,7 +839,7 @@
 				 		.add({
 				 			targets: '#text7 .letter7',
 				 			color: toggle[7] ? "#91050300" : "#910503",
-				 			textShadow: toggle[7] ? "0px 0px #91050300" : "0px 0px #910503"
+				 			textShadow: toggle[7] ? "2px 2px #91050300" : "2px 2px #ff9f19"
 				 		}, "-=1500")
 						.add({
 						    targets: '#text7 .letter7',
@@ -893,7 +898,7 @@
 				 		.add({
 				 			targets: '#text8 .letter8',
 				 			color: toggle[8] ? "#91050300" : "#910503",
-				 			textShadow: toggle[8] ? "0px 0px #91050300" : "0px 0px #910503"
+				 			textShadow: toggle[8] ? "2px 2px #91050300" : "2px 2px #ff9f19"
 				 		}, "-=1500")
 						.add({
 						    targets: '#text8 .letter8',
@@ -952,7 +957,7 @@
 				 		.add({
 				 			targets: '#text9 .letter9',
 				 			color: toggle[9] ? "#91050300" : "#910503",
-				 			textShadow: toggle[9] ? "0px 0px #91050300" : "0px 0px #910503"
+				 			textShadow: toggle[9] ? "2px 2px #91050300" : "2px 2px #ff9f19"
 				 		}, "-=1500")
 						.add({
 						    targets: '#text9 .letter9',
@@ -1011,7 +1016,7 @@
 				 		.add({
 				 			targets: '#text10 .letter10',
 				 			color: toggle[10] ? "#91050300" : "#910503",
-				 			textShadow: toggle[10] ? "0px 0px #91050300" : "0px 0px #910503"
+				 			textShadow: toggle[10] ? "2px 2px #91050300" : "2px 2px #ff9f19"
 				 		}, "-=1500")
 						.add({
 						    targets: '#text10 .letter10',
