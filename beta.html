@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<link rel="shortcut icon" href="favicon.ico" />
+		<meta charset = "UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Places To Go</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			@media screen and (max-width: 800px) {
+  			
+  			section {
+  				transform: scale(0.55, 0.55);
+  				position: relative;
+    			left: -170px;
+    			top: -100px;
+  			}
+			}
+
+			body {
+				background: linear-gradient(#e66465, #9198e5 100%);
+				height: 100%;
+				font-family: sans-serif;
+			}
+
+			section {
+				width: 100%;
+				height: 100%;
+			}
+
+			svg {
+				cursor: pointer;
+			}
+
+			#rocketship {
+				width: 100px;
+				top: -90px;
+				left: 670px;
+				position: relative;
+				z-index: 2;
+			}
+
+			@keyframes rectangle{
+				from{
+					transform: rotateZ(0deg)
+				}
+				to{
+					transform: rotateZ(20deg)
+				}
+			}
+
+			@keyframes big{
+				from{
+					transform: rotateZ(0deg)
+				}
+				to{
+					transform: rotateZ(-15deg)
+				}
+			}
+
+			@keyframes small{
+				from{
+					transform: rotateZ(0deg)
+				}
+				to{
+					transform: rotateZ(50deg)
+				}
+			}
+
+			/*This is why there's a pink band on the bottom. Because the position is absolute :(. Fix later.*/
+			.placeName {
+				font-family: arial;
+				font-style: italic;
+				font-size: 1.4em;
+				position: absolute;
+				left: 300px;
+				top: 550px;
+				white-space: nowrap;
+				}
+
+		</style>
+
+	</head>
+
+
+	<body>
+		<section>
+			<svg id="stars" width="1700" height="600" viewBox="0 0 500 700" fill="none" style="transform: scale(1.6)">
+				<g transform="translate(-300, 160)">
+					<g transform="translate(20,20) scale(2)"><path class ="star1" d="M7.5 0C7.5 1.3666 7.5 2.57848 7.49187 3.65308C7.47678 11.1945 7.65076 11.9363 11.4134 11.9977C12.0132 11.9925 12.7041 12 13.5 12C12.7041 12 12.0132 12.0075 11.4134 11.9977C7.11495 12.035 7.5 12.7244 7.5 21.5C7.06147 13.168 8.16139 12.1436 3.04131 12.0177C2.31792 12.0195 1.47716 12 0.5 12C1.48358 12 2.32356 12 3.04131 12.0177C6.95525 12.0078 7.43344 11.3738 7.49187 3.65308C7.49402 2.57916 7.5 1.36736 7.5 0Z" fill="white"/></g>
+
+					<g transform="translate(140,250)"><path class="star2" d="M7.5 0C7.5 1.3666 7.5 2.57848 7.49187 3.65308C7.47678 11.1945 7.65076 11.9363 11.4134 11.9977C12.0132 11.9925 12.7041 12 13.5 12C12.7041 12 12.0132 12.0075 11.4134 11.9977C7.11495 12.035 7.5 12.7244 7.5 21.5C7.06147 13.168 8.16139 12.1436 3.04131 12.0177C2.31792 12.0195 1.47716 12 0.5 12C1.48358 12 2.32356 12 3.04131 12.0177C6.95525 12.0078 7.43344 11.3738 7.49187 3.65308C7.49402 2.57916 7.5 1.36736 7.5 0Z" fill="white"/></g>
+
+					<g transform="translate(300,5) scale (1.5)"><path class="star3" d="M7.5 0C7.5 1.3666 7.5 2.57848 7.49187 3.65308C7.47678 11.1945 7.65076 11.9363 11.4134 11.9977C12.0132 11.9925 12.7041 12 13.5 12C12.7041 12 12.0132 12.0075 11.4134 11.9977C7.11495 12.035 7.5 12.7244 7.5 21.5C7.06147 13.168 8.16139 12.1436 3.04131 12.0177C2.31792 12.0195 1.47716 12 0.5 12C1.48358 12 2.32356 12 3.04131 12.0177C6.95525 12.0078 7.43344 11.3738 7.49187 3.65308C7.49402 2.57916 7.5 1.36736 7.5 0Z" fill="white"/></g>
+
+					<g transform="translate(50,300) scale (2.1)"><path class="star4" d="M7.5 0C7.5 1.3666 7.5 2.57848 7.49187 3.65308C7.47678 11.1945 7.65076 11.9363 11.4134 11.9977C12.0132 11.9925 12.7041 12 13.5 12C12.7041 12 12.0132 12.0075 11.4134 11.9977C7.11495 12.035 7.5 12.7244 7.5 21.5C7.06147 13.168 8.16139 12.1436 3.04131 12.0177C2.31792 12.0195 1.47716 12 0.5 12C1.48358 12 2.32356 12 3.04131 12.0177C6.95525 12.0078 7.43344 11.3738 7.49187 3.65308C7.49402 2.57916 7.5 1.36736 7.5 0Z" fill="white"/></g>
+
+					<g transform="translate(450,60) scale (1.7)"><path class="star5" d="M7.5 0C7.5 1.3666 7.5 2.57848 7.49187 3.65308C7.47678 11.1945 7.65076 11.9363 11.4134 11.9977C12.0132 11.9925 12.7041 12 13.5 12C12.7041 12 12.0132 12.0075 11.4134 11.9977C7.11495 12.035 7.5 12.7244 7.5 21.5C7.06147 13.168 8.16139 12.1436 3.04131 12.0177C2.31792 12.0195 1.47716 12 0.5 12C1.48358 12 2.32356 12 3.04131 12.0177C6.95525 12.0078 7.43344 11.3738 7.49187 3.65308C7.49402 2.57916 7.5 1.36736 7.5 0Z" fill="white"/></g>
+
+					<g transform="translate(500,300) scale (0.7)"><path class="star6" d="M7.5 0C7.5 1.3666 7.5 2.57848 7.49187 3.65308C7.47678 11.1945 7.65076 11.9363 11.4134 11.9977C12.0132 11.9925 12.7041 12 13.5 12C12.7041 12 12.0132 12.0075 11.4134 11.9977C7.11495 12.035 7.5 12.7244 7.5 21.5C7.06147 13.168 8.16139 12.1436 3.04131 12.0177C2.31792 12.0195 1.47716 12 0.5 12C1.48358 12 2.32356 12 3.04131 12.0177C6.95525 12.0078 7.43344 11.3738 7.49187 3.65308C7.49402 2.57916 7.5 1.36736 7.5 0Z" fill="white"/></g>
+
+					<g transform="translate(520,270) scale (1.9)"><path class="star7" d="M7.5 0C7.5 1.3666 7.5 2.57848 7.49187 3.65308C7.47678 11.1945 7.65076 11.9363 11.4134 11.9977C12.0132 11.9925 12.7041 12 13.5 12C12.7041 12 12.0132 12.0075 11.4134 11.9977C7.11495 12.035 7.5 12.7244 7.5 21.5C7.06147 13.168 8.16139 12.1436 3.04131 12.0177C2.31792 12.0195 1.47716 12 0.5 12C1.48358 12 2.32356 12 3.04131 12.0177C6.95525 12.0078 7.43344 11.3738 7.49187 3.65308C7.49402 2.57916 7.5 1.36736 7.5 0Z" fill="white"/></g>
+
+					<g transform="translate(570,60) scale (0.9)"><path class="star8" d="M7.5 0C7.5 1.3666 7.5 2.57848 7.49187 3.65308C7.47678 11.1945 7.65076 11.9363 11.4134 11.9977C12.0132 11.9925 12.7041 12 13.5 12C12.7041 12 12.0132 12.0075 11.4134 11.9977C7.11495 12.035 7.5 12.7244 7.5 21.5C7.06147 13.168 8.16139 12.1436 3.04131 12.0177C2.31792 12.0195 1.47716 12 0.5 12C1.48358 12 2.32356 12 3.04131 12.0177C6.95525 12.0078 7.43344 11.3738 7.49187 3.65308C7.49402 2.57916 7.5 1.36736 7.5 0Z" fill="white"/></g>
+				</g>
+			</svg>
+
+			<a 
+				id = "rocket-button"
+				href="https://www.wikipedia.org">
+				<img
+					id = "rocketship"
+					src = "/images/rocketship.png"
+					style = "visibility: hidden"
+				/>
+			</a>
+
+			<svg id="eyelid" width="1700" height="500" viewBox="0 0 130 800" fill="none" style="transform: scale(2) translate(-280px, -100px)" xmlns="http://www.w3.org/2000/svg">
+				<defs>
+					<!--gradient library-->
+    				<linearGradient id="grad1" x1="0%" y1="0%" x2="0%" y2="100%">
+      				<stop offset="0%" style="stop-color:#93269C;stop-opacity:1" />
+      				<stop offset="100%" style="stop-color:#68abfc;stop-opacity:1" />
+    				</linearGradient>
+
+    				<linearGradient id="grad2" x1="0%" y1="0%" x2="0%" y2="100%">
+      				<stop offset="0%" style="stop-color:#FAEB89;stop-opacity:1" />
+      				<stop offset="100%" style="stop-color:#fa9a2d;stop-opacity:1" />
+    				</linearGradient>
+
+    				<!--texture library-->
+    				<pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
+					<use href="#image0" transform="translate(0,-0.4) scale(0.008)"/>
+					</pattern>
+					<image id="image0" width="220" height="220" href="bedge-grunge.png"/>
+
+    				<pattern id="pattern1" patternContentUnits="objectBoundingBox" width="1" height="1">
+					<use href="#image1" transform="translate(0,-0.4) scale(0.01)"/>
+					</pattern>
+					<image id="image1" width="220" height="220" href="asfalt-dark.png"/>
+
+					<pattern id="pattern2" patternContentUnits="objectBoundingBox" width="1" height="1">
+					<use href="#image2" transform="translate(0,0) scale(0.01)"/>
+					</pattern>
+					<image id="image2" width="315" height="315" href="soft-wallpaper.png"/>
+
+					<!--place images library-->
+					<pattern id="place0" patternContentUnits="objectBoundingBox" width="1" height="1">
+					<use href="#background0" transform="translate(0,0) scale(0.008)" />
+					</pattern>
+					<image id="background0" width="100%" href="desert-background.png"/>
+
+  				</defs>
+
+				<g transform="translate(-1,17.4)"><path class = "eye" d="M1 99.9998C190.6 -80.0002 378 24.9998 448 99.9998C379 160 200 259 1 99.9998Z" fill="white" stroke="#910503" stroke-width="2"/></g>
+
+				<g transform="translate(310,200)">
+					<path id = "eyeball" class = "planet eyeball" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="#962c0e"/>
+					<path id = "eyeballNoise" class = "planet-noise eyeball" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="url(#pattern2)"/>
+				</g>
+
+				<g transform="translate(350,184)">
+					<path id = "eyeball2" class = "planet eyeball2" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="#dfa1ed"/>
+					<path id = "eyeball2noise" class = "planet-noise eyeball2" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="url(#pattern2)"/>
+				</g>
+
+				<g transform="translate(384,165)">
+					<path id = "eyeball3" class = "planet eyeball3" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="#384a20"/>
+					<path id = "eyeball3noise" class = "planet-noise eyeball3" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="url(#pattern2)"/>
+				</g>
+
+				<g transform="translate(265,211)">
+					<path id = "eyeball4" class = "planet eyeball4" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="#5450d4"/>
+					<path id = "eyeball4noise" class = "planet-noise eyeball4" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="url(#pattern2)"/>
+				</g>
+
+				<g transform="translate(223,216)">
+					<path id = "eyeball5" class = "planet eyeball5" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="#751d72"/>
+					<path id = "eyeball5noise" class = "planet-noise eyeball5" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="url(#pattern2)"/>
+				</g>
+
+				<g transform="translate(180,214.5)">
+					<path id = "eyeball6" class = "planet eyeball6" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="#e3bc30"/>
+					<path id = "eyeball6noise" class = "planet-noise eyeball6" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="url(#pattern2)"/>
+				</g>
+
+				<g transform="translate(140,207)">
+					<path id = "eyeball7" class = "planet eyeball7" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="#ebe4a4"/>
+					<path id = "eyeball7noise" class = "planet-noise eyeball7" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="url(#pattern2)"/>
+				</g>
+
+				<g transform="translate(103,196)">
+					<path id = "eyeball8" class = "planet eyeball8" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="#57250a"/>
+					<path id = "eyeball8noise" class = "planet-noise eyeball8" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="url(#pattern2)"/>
+				</g>
+
+				<g transform="translate(67,180)">
+					<path id = "eyeball9" class = "planet eyeball9" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="#7a0540"/>
+					<path id = "eyeball9noise" class = "planet-noise eyeball9" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="url(#pattern2)"/>
+				</g>
+
+				<g transform="translate(36,161)">
+					<path id = "eyeball10" class = "planet eyeball10" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="#055e53"/>
+					<path id = "eyeball10noise" class = "planet-noise eyeball10" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="url(#pattern2)"/>
+				</g>
+
+				<g transform="translate(297,210)"><path id = "planetRings1" d="M12.5 0.5C-33 0.5 76.5 10.1905 33.5 1.99999C54.5 5.99999 -7.99999 1.99999 12.5 0.5Z" stroke="#93269C"/></g>
+
+				<g transform="translate(175,60)
+								scale(0.4 0.4)">
+
+					<path id = "big" class="rectangle" d="M1 1H139V238H1V1Z" stroke="none" stroke-width="7" fill="none"/>
+
+					<path id = "medium" class="rectangle" d="M1 172L1 1H96L96 172H1Z" stroke="none" stroke-width="7" fill="none"/>
+
+					<path id = "small" class="rectangle" d="M1 123L1 1H62L62 123H1Z" stroke="none" stroke-width="7" fill="none"/>
+
+				</g>
+
+				<g transform="translate(0,2)">
+					<path class = "eye-motion" d="M0 115.387C200 -100 377 40.3873 447 115.387C378 175.387 199 274.388 0 115.387Z" fill="url(#grad1)" stroke="#910503" stroke-width="2"/>
+					<!--texture-->
+					<path id = "eye-motion" class = "eye-motion" d="M0 115.387C200 -100 377 40.3873 447 115.387C378 175.387 199 274.388 0 115.387Z" fill="url(#pattern0)"/>
+				</g>
+
+	      	</svg>
+
+	      	<text id = "text1" class="placeName" style="color: #91050300; text-shadow: 0px 0px #91050300;">
+ 			 	<span class="text-wrapper1">
+    			<span class="letters1">
+    					&ndash; inside your earliest happy memory
+    			</span>
+  				</span>
+			</text>
+
+			<text id = "text2" class="placeName" style="color: #91050300; text-shadow: 0px 0px #91050300;">
+ 			 	<span class="text-wrapper2">
+    			<span class="letters2">
+    					&ndash; deeper into a close relationship
+    			</span>
+  				</span>
+			</text>
+
+			<text id = "text3" class="placeName" style="color: #91050300; text-shadow: 0px 0px #91050300;">
+ 			 	<span class="text-wrapper3">
+    			<span class="letters3">
+    					&ndash; deeper into a close relationship
+    			</span>
+  				</span>
+			</text>
+
+			<text id = "text4" class="placeName" style="color: #91050300; text-shadow: 0px 0px #91050300;">
+ 			 	<span class="text-wrapper4">
+    			<span class="letters4">
+    					&ndash; deeper into a close relationship
+    			</span>
+  				</span>
+			</text>
+
+			<text id = "text5" class="placeName" style="color: #91050300; text-shadow: 0px 0px #91050300;">
+ 			 	<span class="text-wrapper5">
+    			<span class="letters5">
+    					&ndash; deeper into a close relationship
+    			</span>
+  				</span>
+			</text>
+
+			<text id = "text6" class="placeName" style="color: #91050300; text-shadow: 0px 0px #91050300;">
+ 			 	<span class="text-wrapper6">
+    			<span class="letters6">
+    					&ndash; deeper into a close relationship
+    			</span>
+  				</span>
+			</text>
+
+			<text id = "text7" class="placeName" style="color: #91050300; text-shadow: 0px 0px #91050300;">
+ 			 	<span class="text-wrapper7">
+    			<span class="letters7">
+    					&ndash; deeper into a close relationship
+    			</span>
+  				</span>
+			</text>
+
+			<text id = "text8" class="placeName" style="color: #91050300; text-shadow: 0px 0px #91050300;">
+ 			 	<span class="text-wrapper8">
+    			<span class="letters8">
+    					&ndash; deeper into a close relationship
+    			</span>
+  				</span>
+			</text>
+
+			<text id = "text9" class="placeName" style="color: #91050300; text-shadow: 0px 0px #91050300;">
+ 			 	<span class="text-wrapper9">
+    			<span class="letters9">
+    					&ndash; deeper into a close relationship
+    			</span>
+  				</span>
+			</text>
+
+			<text id = "text10" class="placeName" style="color: #91050300; text-shadow: 0px 0px #91050300;">
+ 			 	<span class="text-wrapper10">
+    			<span class="letters10">
+    					&ndash; deeper into a close relationship
+    			</span>
+  				</span>
+			</text>
+
+			<!--audio player 1-->
+			<audio id="audio1" loop>
+  				<source src="Feel Good.mp3" type="audio/mp3"/>
+  				Sorry, the audio isn't working! Email jisusheen at gmail dot com to let her know.
+			</audio>
+
+			<audio id="audio2" loop>
+  				<source src="Guru Says.m4a" type="audio/mp4"/>
+  				Sorry, the audio isn't working! Email jisusheen at gmail dot com to let her know.
+			</audio>
+
+			<audio id="audio3" loop>
+  				<source src="float.mp3" type="audio/mp3"/>
+  				Sorry, the audio isn't working! Email jisusheen at gmail dot com to let her know.
+			</audio>
+
+			<audio id="audio4" loop>
+  				<source src="Hu$h.mp3" type="audio/mp3"/>
+  				Sorry, the audio isn't working! Email jisusheen at gmail dot com to let her know.
+			</audio>
+
+			<audio id="audio5" loop>
+  				<source src="No $auce Plz (2017).mp3" type="audio/mp3"/>
+  				Sorry, the audio isn't working! Email jisusheen at gmail dot com to let her know.
+			</audio>
+
+			<audio id="audio6" loop>
+  				<source src="Scuba Dancing.mp3" type="audio/mp3"/>
+  				Sorry, the audio isn't working! Email jisusheen at gmail dot com to let her know.
+			</audio>
+
+			<audio id="audio7" loop>
+  				<source src="Seasalt 2.mp3" type="audio/mp3"/>
+  				Sorry, the audio isn't working! Email jisusheen at gmail dot com to let her know.
+			</audio>
+
+			<audio id="audio8" loop>
+  				<source src="Staying In.mp3" type="audio/mp3"/>
+  				Sorry, the audio isn't working! Email jisusheen at gmail dot com to let her know.
+			</audio>
+
+			<audio id="audio9" loop>
+  				<source src="Track 8ghty.mp3" type="audio/mp3"/>
+  				Sorry, the audio isn't working! Email jisusheen at gmail dot com to let her know.
+			</audio>
+
+			<audio id="audio10" loop>
+  				<source src="Windows.mp3" type="audio/mp3"/>
+  				Sorry, the audio isn't working! Email jisusheen at gmail dot com to let her know.
+			</audio>
+
+		</section>
+
+		<script src="anime.min.js"></script>
+		<script src="zepto.js"></script>
+		<script src="app.min.js"></script>
+		<script>
+
+			const planet = "M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z"
+			const iris = "M188 94C188 145.915 145.915 188 94 188C42.0852 188 0 145.915 0 94C0 42.0852 42.0852 0 94 0C145.915 0 188 42.0852 188 94Z"
+
+			const awake = "M0 115.387C200 -99.9999 377 40.3874 447 115.387C353 50 223 -68 0 115.387Z"
+			const asleep = "M0 115.387C200 -100 377 40.3873 447 115.387C378 175.387 199 274.388 0 115.387Z"
+
+			const eyeMotion = document.querySelector(".eye-motion");
+			const idEyeMotion = document.querySelector("#eye-motion");
+			const eyeballNoise = document.querySelector("#eyeballNoise");
+			const eyeball2noise = document.querySelector("#eyeball2noise");
+			const eyeball3noise = document.querySelector("#eyeball3noise");
+			const eyeball4noise = document.querySelector("#eyeball4noise");
+			const eyeball5noise = document.querySelector("#eyeball5noise");
+			const eyeball6noise = document.querySelector("#eyeball6noise");
+			const eyeball7noise = document.querySelector("#eyeball7noise");
+			const eyeball8noise = document.querySelector("#eyeball8noise");
+			const eyeball9noise = document.querySelector("#eyeball9noise");
+			const eyeball10noise = document.querySelector("#eyeball10noise");
+
+			const eyeball = document.querySelector("#eyeball");
+			const eyeball2 = document.querySelector("#eyeball2");
+			const eyeball3 = document.querySelector("#eyeball3");
+			const eyeball4 = document.querySelector("#eyeball4");
+			const eyeball5 = document.querySelector("#eyeball5");
+			const eyeball6 = document.querySelector("#eyeball6");
+			const eyeball7 = document.querySelector("#eyeball7");
+			const eyeball8 = document.querySelector("#eyeball8");
+			const eyeball9 = document.querySelector("#eyeball9");
+			const eyeball10 = document.querySelector("#eyeball10");
+
+			const planetRings1 = document.querySelector("#planetRings1");
+
+			let active = false;
+
+			var color = ["black", "#962c0e", "#dfa1ed", "#384a20", "#5450d4", "#751d72", "#e3bc30", "#ebe4a4", "#57250a", "#7a0540", "#055e53"];
+
+			let toggle = [false, false, false, false, false, false, false, false, false, false, false];
+
+			const rocketButton = document.querySelector("#rocket-button");
+			const rocketship = document.querySelector("#rocketship");
+
+			// Wrap every letter from text1 in a span
+			var textWrapper1 = document.querySelector('.placeName .letters1');
+			textWrapper1.innerHTML = textWrapper1.textContent.replace(/([^\x00-\x80]|\w)/g, "<span class='letter1'>$&</span>");
+
+			// Wrap every letter from text2 in a span
+			var textWrapper2 = document.querySelector('.placeName .letters2');
+			textWrapper2.innerHTML = textWrapper2.textContent.replace(/([^\x00-\x80]|\w)/g, "<span class='letter2'>$&</span>");
+
+			// Wrap every letter from text3 in a span
+			var textWrapper3 = document.querySelector('.placeName .letters3');
+			textWrapper3.innerHTML = textWrapper3.textContent.replace(/([^\x00-\x80]|\w)/g, "<span class='letter3'>$&</span>");
+
+			// Wrap every letter from text4 in a span
+			var textWrapper4 = document.querySelector('.placeName .letters4');
+			textWrapper4.innerHTML = textWrapper4.textContent.replace(/([^\x00-\x80]|\w)/g, "<span class='letter4'>$&</span>");
+
+			// Wrap every letter from text5 in a span
+			var textWrapper5 = document.querySelector('.placeName .letters5');
+			textWrapper5.innerHTML = textWrapper5.textContent.replace(/([^\x00-\x80]|\w)/g, "<span class='letter5'>$&</span>");
+
+			// Wrap every letter from text6 in a span
+			var textWrapper6 = document.querySelector('.placeName .letters6');
+			textWrapper6.innerHTML = textWrapper6.textContent.replace(/([^\x00-\x80]|\w)/g, "<span class='letter6'>$&</span>");
+
+			// Wrap every letter from text7 in a span
+			var textWrapper7 = document.querySelector('.placeName .letters7');
+			textWrapper7.innerHTML = textWrapper7.textContent.replace(/([^\x00-\x80]|\w)/g, "<span class='letter7'>$&</span>");
+
+			// Wrap every letter from text8 in a span
+			var textWrapper8 = document.querySelector('.placeName .letters8');
+			textWrapper8.innerHTML = textWrapper8.textContent.replace(/([^\x00-\x80]|\w)/g, "<span class='letter8'>$&</span>");
+
+			// Wrap every letter from text9 in a span
+			var textWrapper9 = document.querySelector('.placeName .letters9');
+			textWrapper9.innerHTML = textWrapper9.textContent.replace(/([^\x00-\x80]|\w)/g, "<span class='letter9'>$&</span>");
+
+			// Wrap every letter from text10 in a span
+			var textWrapper10 = document.querySelector('.placeName .letters10');
+			textWrapper10.innerHTML = textWrapper10.textContent.replace(/([^\x00-\x80]|\w)/g, "<span class='letter10'>$&</span>");
+
+			//planet disappears if a planet besides itself is active
+			document.addEventListener("click", function(event){
+
+				if(event.target.matches("#eye-motion")){
+					const timeline0 = anime.timeline({
+					duration: 750,
+					easing: "easeOutExpo"
+				});
+				timeline0
+					.add({
+						targets: ".eye-motion",
+						d: [{value: toggle[0] ? asleep : awake}],
+					});
+				toggle[0] = !toggle[0];
+				}
+
+				else if(event.target.matches("#eyeballNoise")){
+					//play and pause audio
+				    if (toggle[1]) {
+				    	document.querySelector("#audio1").pause();
+				    }
+				    else {
+				    	document.querySelector("#audio1").play();
+				    }
+
+					const timeline = anime.timeline({
+						duration : 750,
+						easing : "easeOutExpo"
+					});
+					//add different animations to the timeline
+					timeline
+						//planet becomes a bigger circle
+						.add({
+							targets: ".eyeball",
+							d: [{value: toggle[1] ? planet : iris}]
+							//can add a comma and another morph if you want
+						}, "-=100")
+						//iris goes on a rotating path to the eye
+						.add({
+							targets: ".eyeball",
+							rotate: toggle[1] ? 0 : 180,
+
+						}, "-=700"
+						)
+						//eye opens
+						.add({
+				 			targets: ".eye-motion",
+				 			d: [{value: toggle[1] ? asleep : awake}]
+				 		}, "-=500"
+				 		)
+				 		//make animation appear
+				 		.add({
+				 			targets: ".rectangle",
+				 			stroke: toggle[1] ? "none" : "url(#grad2)",
+				 			style: toggle[1] ? "animation: none" : "animation: rectangle 3s ease-in-out 6 alternate; transform-origin: center;"
+				 		}, "-=1500"
+				 		)
+				 		.add({
+				 			targets: "#big",
+				 			style: toggle[1] ? "animation: none" : "animation: big 9s ease-in-out 2 alternate; transform-origin: center;"
+				 		}, "-=1500"
+				 		)
+				 		.add({
+				 			targets: "#small",
+				 			style: toggle[1] ? "animation: none" : "animation: small 4.5s ease-in-out 4 alternate; transform-origin: center;"
+				 		}, "-=1500"
+				 		)
+				 		//make text appear
+				 		.add({
+				 			targets: '#text1 .letter1',
+				 			color: toggle[1] ? "#91050300" : "#910503",
+				 			textShadow: toggle[1] ? "0px 0px #91050300" : "0px 0px #910503"
+				 		}, "-=1500")
+						.add({
+						    targets: '#text1 .letter1',
+						    opacity: toggle[1] ? 0 : [0,1],
+						    easing: "easeOutExpo",
+						    duration: 600,
+						    offset: '-=775',
+						    delay: (el, i) => 34 * (i+1)
+						}, "-=1500")
+						//background changes color
+						.add({
+							targets: "body",
+							style: toggle[1] ? "background: linear-gradient(#e66465, #9198e5)" : "background: linear-gradient(#C57AFF, #A7C3F9)"
+						}, "-=2000");
+
+			 		toggle[1] = !toggle[1];
+			 		active = !active;
+
+			 		//rocket now links to the Place
+			 		rocketButton.setAttribute("href", "http://placestogo.art/desert");
+				}
+
+				else if(event.target.matches("#eyeball2noise")){
+					//play and pause audio
+				    if (toggle[2]) {
+				    	document.querySelector("#audio2").pause();
+				    }
+				    else {
+				    	document.querySelector("#audio2").play();
+				    }
+
+					const timeline2 = anime.timeline({
+						duration : 750,
+						easing : "easeOutExpo"
+					});
+					timeline2
+						//planet becomes a bigger circle
+						.add({
+							targets: ".eyeball2",
+							d: [{value: toggle[2] ? planet : iris}],
+							//can add a comma and another morph if you want
+						})
+						//iris goes on a rotating path to the eye
+						.add({
+							targets: ".eyeball2",
+							rotate: toggle[2] ? 0 : 170,
+						}, "-=700"
+						)
+						//eye opens
+						.add({
+				 			targets: ".eye-motion",
+				 			d: [{value: toggle[2] ? asleep : awake}]
+				 		}, "-=500"
+				 		)
+
+				 		//make text appear
+				 		.add({
+				 			targets: '#text2 .letter2',
+				 			color: toggle[2] ? "#91050300" : "#910503",
+				 			textShadow: toggle[2] ? "0px 0px #91050300" : "0px 0px #910503"
+				 		}, "-=1500")
+						.add({
+						    targets: '#text2 .letter2',
+						    opacity: toggle[2] ? 0 : [0,1],
+						    easing: "easeOutExpo",
+						    duration: 600,
+						    offset: '-=775',
+						    delay: (el, i) => 34 * (i+1)
+						}, "-=1500")
+						//background changes color
+						.add({
+							targets: "body",
+							style: toggle[2] ? "background: linear-gradient(#e66465, #9198e5)" : "background: linear-gradient(#F9CADE, #C4DF92)"
+						}, "-=2000");
+
+					toggle[2] =!toggle[2];
+					active = !active;
+
+					//rocket now links to the Place
+					rocketButton.setAttribute("href", "http://wikipedia.org");
+				}
+
+				else if(event.target.matches("#eyeball3noise")){
+					//play and pause audio
+				    if (toggle[3]) {
+				    	document.querySelector("#audio3").pause();
+				    }
+				    else {
+				    	document.querySelector("#audio3").play();
+				    }
+
+					const timeline3 = anime.timeline({
+						duration : 750,
+						easing : "easeOutExpo"
+					});
+					timeline3
+						//planet becomes a bigger circle
+						.add({
+							targets: ".eyeball3",
+							d: [{value: toggle[3] ? planet : iris}],
+							//can add a comma and another morph if you want
+						})
+						//iris goes on a rotating path to the eye
+						.add({
+							targets: ".eyeball3",
+							rotate: toggle[3] ? 0 : 167,
+							translateX: toggle[3] ? 0 : 50
+						}, "-=700"
+						)
+						//eye opens
+						.add({
+				 			targets: ".eye-motion",
+				 			d: [{value: toggle[3] ? asleep : awake}]
+				 		}, "-=500"
+				 		)
+				 		//make text appear
+				 		.add({
+				 			targets: '#text3 .letter3',
+				 			color: toggle[3] ? "#91050300" : "#910503",
+				 			textShadow: toggle[3] ? "0px 0px #91050300" : "0px 0px #910503"
+				 		}, "-=1500")
+						.add({
+						    targets: '#text3 .letter3',
+						    opacity: toggle[3] ? 0 : [0,1],
+						    easing: "easeOutExpo",
+						    duration: 600,
+						    offset: '-=775',
+						    delay: (el, i) => 34 * (i+1)
+						}, "-=1500")
+						//background changes color
+						.add({
+							targets: "body",
+							style: toggle[3] ? "background: linear-gradient(#e66465, #9198e5)" : "background: linear-gradient(#D7EBEB, #FFCBFD)"
+						}, "-=2000");
+
+					toggle[3] =!toggle[3];
+					active = !active;
+
+					//rocket now links to the Place
+					rocketButton.setAttribute("href", "http://wikipedia.org");
+				}
+
+				else if(event.target.matches("#eyeball4noise")){
+					//play and pause audio
+				    if (toggle[4]) {
+				    	document.querySelector("#audio4").pause();
+				    }
+				    else {
+				    	document.querySelector("#audio4").play();
+				    }
+
+					const timeline4 = anime.timeline({
+						duration : 750,
+						easing : "easeOutExpo"
+					});
+					timeline4
+						//planet becomes a bigger circle
+						.add({
+							targets: ".eyeball4",
+							d: [{value: toggle[4] ? planet : iris}],
+							//can add a comma and another morph if you want
+						})
+						//iris goes on a rotating path to the eye
+						.add({
+							targets: ".eyeball4",
+							rotate: toggle[4] ? 0 : 191,
+							translateX: toggle[4] ? 0 : -30
+						}, "-=700"
+						)
+						//eye opens
+						.add({
+				 			targets: ".eye-motion",
+				 			d: [{value: toggle[4] ? asleep : awake}]
+				 		}, "-=500"
+				 		)
+				 		//make text appear
+				 		.add({
+				 			targets: '#text4 .letter4',
+				 			color: toggle[4] ? "#91050300" : "#910503",
+				 			textShadow: toggle[4] ? "0px 0px #91050300" : "0px 0px #910503"
+				 		}, "-=1500")
+						.add({
+						    targets: '#text4 .letter4',
+						    opacity: toggle[4] ? 0 : [0,1],
+						    easing: "easeOutExpo",
+						    duration: 600,
+						    offset: '-=775',
+						    delay: (el, i) => 34 * (i+1)
+						}, "-=1500")
+						//background changes color
+						.add({
+							targets: "body",
+							style: toggle[4] ? "background: linear-gradient(#e66465, #9198e5)" : "background: linear-gradient(#B3FDE7, #FBEBBB)"
+						}, "-=2000");
+
+					toggle[4] =!toggle[4];
+					active = !active;
+
+					//rocket now links to the Place
+					rocketButton.setAttribute("href", "http://wikipedia.org");
+				}
+
+				else if(event.target.matches("#eyeball5noise")){
+					//play and pause audio
+				    if (toggle[5]) {
+				    	document.querySelector("#audio5").pause();
+				    }
+				    else {
+				    	document.querySelector("#audio5").play();
+				    }
+
+					const timeline5 = anime.timeline({
+						duration : 750,
+						easing : "easeOutExpo"
+					});
+					timeline5
+						//planet becomes a bigger circle
+						.add({
+							targets: ".eyeball5",
+							d: [{value: toggle[5] ? planet : iris}],
+							//can add a comma and another morph if you want
+						})
+						//iris goes on a rotating path to the eye
+						.add({
+							targets: ".eyeball5",
+							rotate: toggle[5] ? 0 : -140,
+							translateX: toggle[5] ? 0 : -30
+						}, "-=700"
+						)
+						//eye opens
+						.add({
+				 			targets: ".eye-motion",
+				 			d: [{value: toggle[5] ? asleep : awake}]
+				 		}, "-=500"
+				 		)
+				 		//make text appear
+				 		.add({
+				 			targets: '#text5 .letter5',
+				 			color: toggle[5] ? "#91050300" : "#910503",
+				 			textShadow: toggle[5] ? "0px 0px #91050300" : "0px 0px #910503"
+				 		}, "-=1500")
+						.add({
+						    targets: '#text5 .letter5',
+						    opacity: toggle[5] ? 0 : [0,1],
+						    easing: "easeOutExpo",
+						    duration: 600,
+						    offset: '-=775',
+						    delay: (el, i) => 34 * (i+1)
+						}, "-=1500")
+						//background changes color
+						.add({
+							targets: "body",
+							style: toggle[5] ? "background: linear-gradient(#e66465, #9198e5)" : "background: linear-gradient(#E2B5F8, #F7CEA3)"
+						}, "-=2000");
+
+					toggle[5] =!toggle[5];
+					active = !active;
+
+					//rocket now links to the Place
+					rocketButton.setAttribute("href", "http://wikipedia.org");
+				}
+
+				else if(event.target.matches("#eyeball6noise")){
+					//play and pause audio
+				    if (toggle[6]) {
+				    	document.querySelector("#audio6").pause();
+				    }
+				    else {
+				    	document.querySelector("#audio6").play();
+				    }
+
+					const timeline6 = anime.timeline({
+						duration : 750,
+						easing : "easeOutExpo"
+					});
+					timeline6
+						//planet becomes a bigger circle
+						.add({
+							targets: ".eyeball6",
+							d: [{value: toggle[6] ? planet : iris}],
+							//can add a comma and another morph if you want
+						})
+						//iris goes on a rotating path to the eye
+						.add({
+							targets: ".eyeball6",
+							rotate: toggle[6] ? 0 : -130,
+							translateX: toggle[6] ? 0 : -30
+						}, "-=700"
+						)
+						//eye opens
+						.add({
+				 			targets: ".eye-motion",
+				 			d: [{value: toggle[6] ? asleep : awake}]
+				 		}, "-=500"
+				 		)
+				 		//make text appear
+				 		.add({
+				 			targets: '#text6 .letter6',
+				 			color: toggle[6] ? "#91050300" : "#910503",
+				 			textShadow: toggle[6] ? "0px 0px #91050300" : "0px 0px #910503"
+				 		}, "-=1500")
+						.add({
+						    targets: '#text6 .letter6',
+						    opacity: toggle[6] ? 0 : [0,1],
+						    easing: "easeOutExpo",
+						    duration: 600,
+						    offset: '-=775',
+						    delay: (el, i) => 34 * (i+1)
+						}, "-=1500")
+						//background changes color
+						.add({
+							targets: "body",
+							style: toggle[6] ? "background: linear-gradient(#e66465, #9198e5)" : "background: linear-gradient(#7D7CF9, #F8BBB6)"
+						}, "-=2000");
+
+					toggle[6] =!toggle[6];
+					active = !active;
+
+					//rocket now links to the Place
+					rocketButton.setAttribute("href", "http://wikipedia.org");
+				}
+
+				else if(event.target.matches("#eyeball7noise")){
+					//play and pause audio
+				    if (toggle[7]) {
+				    	document.querySelector("#audio7").pause();
+				    }
+				    else {
+				    	document.querySelector("#audio7").play();
+				    }
+
+					const timeline7 = anime.timeline({
+						duration : 750,
+						easing : "easeOutExpo"
+					});
+					timeline7
+						//planet becomes a bigger circle
+						.add({
+							targets: ".eyeball7",
+							d: [{value: toggle[7] ? planet : iris}],
+							//can add a comma and another morph if you want
+						})
+						//iris goes on a rotating path to the eye
+						.add({
+							targets: ".eyeball7",
+							rotate: toggle[7] ? 0 : -140,
+							translateX: toggle[7] ? 0 : -100,
+							translateY: toggle[7] ? 0 : 50
+						}, "-=700"
+						)
+						//eye opens
+						.add({
+				 			targets: ".eye-motion",
+				 			d: [{value: toggle[7] ? asleep : awake}]
+				 		}, "-=500"
+				 		)
+				 		//make text appear
+				 		.add({
+				 			targets: '#text7 .letter7',
+				 			color: toggle[7] ? "#91050300" : "#910503",
+				 			textShadow: toggle[7] ? "0px 0px #91050300" : "0px 0px #910503"
+				 		}, "-=1500")
+						.add({
+						    targets: '#text7 .letter7',
+						    opacity: toggle[7] ? 0 : [0,1],
+						    easing: "easeOutExpo",
+						    duration: 600,
+						    offset: '-=775',
+						    delay: (el, i) => 34 * (i+1)
+						}, "-=1500")
+						//background changes color
+						.add({
+							targets: "body",
+							style: toggle[7] ? "background: linear-gradient(#e66465, #9198e5)" : "background: linear-gradient(#6F7BF7, #9BF8F4)"
+						}, "-=2000");
+
+					toggle[7] =!toggle[7];
+					active = !active;
+
+					//rocket now links to the Place
+					rocketButton.setAttribute("href", "http://wikipedia.org");
+				}
+
+				else if(event.target.matches("#eyeball8noise")){
+					//play and pause audio
+				    if (toggle[8]) {
+				    	document.querySelector("#audio8").pause();
+				    }
+				    else {
+				    	document.querySelector("#audio8").play();
+				    }
+
+					const timeline8 = anime.timeline({
+						duration : 750,
+						easing : "easeOutExpo"
+					});
+					timeline8
+						//planet becomes a bigger circle
+						.add({
+							targets: ".eyeball8",
+							d: [{value: toggle[8] ? planet : iris}],
+							//can add a comma and another morph if you want
+						})
+						//iris goes on a rotating path to the eye
+						.add({
+							targets: ".eyeball8",
+							rotate: toggle[8] ? 0 : -133,
+							translateX: toggle[8] ? 0 : -100,
+							translateY: toggle[8] ? 0 : 50
+						}, "-=700"
+						)
+						//eye opens
+						.add({
+				 			targets: ".eye-motion",
+				 			d: [{value: toggle[8] ? asleep : awake}]
+				 		}, "-=500"
+				 		)
+				 		//make text appear
+				 		.add({
+				 			targets: '#text8 .letter8',
+				 			color: toggle[8] ? "#91050300" : "#910503",
+				 			textShadow: toggle[8] ? "0px 0px #91050300" : "0px 0px #910503"
+				 		}, "-=1500")
+						.add({
+						    targets: '#text8 .letter8',
+						    opacity: toggle[8] ? 0 : [0,1],
+						    easing: "easeOutExpo",
+						    duration: 600,
+						    offset: '-=775',
+						    delay: (el, i) => 34 * (i+1)
+						}, "-=1500")
+						//background changes color
+						.add({
+							targets: "body",
+							style: toggle[8] ? "background: linear-gradient(#e66465, #9198e5)" : "background: linear-gradient(#f492f0, #f9c58d)"
+						}, "-=2000");
+
+					toggle[8] =!toggle[8];
+					active = !active;
+
+					//rocket now links to the Place
+					rocketButton.setAttribute("href", "http://wikipedia.org");
+				}
+
+				else if(event.target.matches("#eyeball9noise")){
+					//play and pause audio
+				    if (toggle[9]) {
+				    	document.querySelector("#audio9").pause();
+				    }
+				    else {
+				    	document.querySelector("#audio9").play();
+				    }
+
+					const timeline9 = anime.timeline({
+						duration : 750,
+						easing : "easeOutExpo"
+					});
+					timeline9
+						//planet becomes a bigger circle
+						.add({
+							targets: ".eyeball9",
+							d: [{value: toggle[9] ? planet : iris}],
+							//can add a comma and another morph if you want
+						})
+						//iris goes on a rotating path to the eye
+						.add({
+							targets: ".eyeball9",
+							rotate: toggle[9] ? 0 : -147,
+							translateX: toggle[9] ? 0 : -180,
+							translateY: toggle[9] ? 0 : 50
+						}, "-=700"
+						)
+						//eye opens
+						.add({
+				 			targets: ".eye-motion",
+				 			d: [{value: toggle[9] ? asleep : awake}]
+				 		}, "-=500"
+				 		)
+				 		//make text appear
+				 		.add({
+				 			targets: '#text9 .letter9',
+				 			color: toggle[9] ? "#91050300" : "#910503",
+				 			textShadow: toggle[9] ? "0px 0px #91050300" : "0px 0px #910503"
+				 		}, "-=1500")
+						.add({
+						    targets: '#text9 .letter9',
+						    opacity: toggle[9] ? 0 : [0,1],
+						    easing: "easeOutExpo",
+						    duration: 600,
+						    offset: '-=775',
+						    delay: (el, i) => 34 * (i+1)
+						}, "-=1500")
+						//background changes color
+						.add({
+							targets: "body",
+							style: toggle[9] ? "background: linear-gradient(#e66465, #9198e5)" : "background: linear-gradient(#F9F3C4, #8FFFAD)"
+						}, "-=2000");
+
+					toggle[9] =!toggle[9];
+					active = !active;
+
+					//rocket now links to the Place
+					rocketButton.setAttribute("href", "http://wikipedia.org");
+				}
+
+				else if(event.target.matches("#eyeball10noise")){
+					//play and pause audio
+				    if (toggle[10]) {
+				    	document.querySelector("#audio10").pause();
+				    }
+				    else {
+				    	document.querySelector("#audio10").play();
+				    }
+
+					const timeline10 = anime.timeline({
+						duration : 750,
+						easing : "easeOutExpo"
+					});
+					timeline10
+						//planet becomes a bigger circle
+						.add({
+							targets: ".eyeball10",
+							d: [{value: toggle[10] ? planet : iris}],
+							//can add a comma and another morph if you want
+						})
+						//iris goes on a rotating path to the eye
+						.add({
+							targets: ".eyeball10",
+							rotate: toggle[10] ? 0 : -149,
+							translateX: toggle[10] ? 0 : -220,
+							translateY: toggle[10] ? 0 : 50
+						}, "-=700"
+						)
+						//eye opens
+						.add({
+				 			targets: ".eye-motion",
+				 			d: [{value: toggle[10] ? asleep : awake}]
+				 		}, "-=500"
+				 		)
+				 		//make text appear
+				 		.add({
+				 			targets: '#text10 .letter10',
+				 			color: toggle[10] ? "#91050300" : "#910503",
+				 			textShadow: toggle[10] ? "0px 0px #91050300" : "0px 0px #910503"
+				 		}, "-=1500")
+						.add({
+						    targets: '#text10 .letter10',
+						    opacity: toggle[10] ? 0 : [0,1],
+						    easing: "easeOutExpo",
+						    duration: 600,
+						    offset: '-=775',
+						    delay: (el, i) => 34 * (i+1)
+						}, "-=1500")
+						//background changes color
+						.add({
+							targets: "body",
+							style: toggle[10] ? "background: linear-gradient(#e66465, #9198e5)" : "background: linear-gradient(#594EF4, #CFAEF2)"
+						}, "-=2000");
+
+					toggle[10] =!toggle[10];
+					active = !active;
+
+					//rocket now links to the Place
+					rocketButton.setAttribute("href", "http://wikipedia.org");
+				}
+
+				var planets = document.getElementsByClassName("planet");
+				var planetNoises = document.getElementsByClassName("planet-noise");
+
+				/* planet disappears if another planet is active */
+				for (var i = 0; i < planets.length; i++) {
+        			if(active && !toggle[i+1]){
+						planets[i].setAttribute("fill", "none");
+						planetNoises[i].setAttribute("fill", "none");
+					}
+					else{
+						planets[i].setAttribute("fill", color[i+1]);
+						planetNoises[i].setAttribute("fill", "url(#pattern2)");
+					}
+      			};
+				if(active){ // if some planet is active
+					rocketship.style.visibility = "visible"; // rocketship appears
+					planetRings1.setAttribute("stroke", "none"); // planet 1's rings disappear
+				}
+				else { // if no planet is active
+					rocketship.style.visibility = "hidden"; // rocketship disappears
+					planetRings1.setAttribute("stroke", "#93269C");
+				}
+			});
+
+
+		</script>
+	</body>
