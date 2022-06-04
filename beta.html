@@ -49,13 +49,51 @@
 				white-space: nowrap;
 				}
 
+			/* (A) FIXED WRAPPER */
+			.hwrap {
+			  overflow: hidden; /* HIDE SCROLL BAR */
+			  background: none;
+			  transform: translateY(200px);
+			}
+			 
+			/* (B) MOVING TICKER WRAPPER */
+			.hmove { display: flex; }
+
+			/* (C) ITEMS - INTO A LONG HORIZONTAL ROW */
+			.hitem {
+			  flex-shrink: 0;
+			  width: 100%;
+			  box-sizing: border-box;
+			  padding: 10px;
+			  text-align: center;
+			  font-family: sans-serif;
+			  font-size: 5vw;
+			  font-weight: 600;
+			}
+			 
+			/* (D) ANIMATION - MOVE ITEMS FROM RIGHT TO LEFT */
+			/* 4 ITEMS -400%, CHANGE THIS IF YOU ADD/REMOVE ITEMS */
+			@keyframes tickerh {
+			  0% { transform: translate3d(100%, 0, 0); }
+			  100% { transform: translate3d(-300%, 0, 0); }
+			}
+			.hmove { animation: tickerh linear 30s infinite; }
+			.hmove:hover { animation-play-state: paused; }
+
 		</style>
 
 	</head>
 
 
 	<body>
-		<section width="100%">
+
+		<section>
+			<div class="hwrap"><div class="hmove">
+			  <div class="hitem"><b><i>PLACES TO GO: BETA.</i></b></div>
+			  <div class="hitem"><b><i>CLICK THE PLANETS FOR PROMPTS.</i></b></div>
+			  <div class="hitem"><b><i>CLICK THE IRIS TO GO BACK.</i></b></div>
+			</div></div>
+			</div>
 			<svg id="stars" width="1700" height="600" viewBox="0 0 500 700" fill="none" style="transform: scale(1.6)">
 				<g transform="translate(-300, 160)">
 					<g transform="translate(20,20) scale(2)"><path class ="star1" d="M7.5 0C7.5 1.3666 7.5 2.57848 7.49187 3.65308C7.47678 11.1945 7.65076 11.9363 11.4134 11.9977C12.0132 11.9925 12.7041 12 13.5 12C12.7041 12 12.0132 12.0075 11.4134 11.9977C7.11495 12.035 7.5 12.7244 7.5 21.5C7.06147 13.168 8.16139 12.1436 3.04131 12.0177C2.31792 12.0195 1.47716 12 0.5 12C1.48358 12 2.32356 12 3.04131 12.0177C6.95525 12.0078 7.43344 11.3738 7.49187 3.65308C7.49402 2.57916 7.5 1.36736 7.5 0Z" fill="white"/></g>
@@ -174,6 +212,7 @@
 				</g>
 
 	      	</svg>
+
 
 	      	<text id = "text1" class="placeName" style="color: #91050300; text-shadow: 0px 0px #91050300;">
  			 	<span class="text-wrapper1">
