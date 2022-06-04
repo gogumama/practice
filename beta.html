@@ -481,23 +481,6 @@
 				 			d: [{value: toggle[1] ? asleep : awake}]
 				 		}, "-=500"
 				 		)
-				 		//make animation appear
-				 		.add({
-				 			targets: ".rectangle",
-				 			stroke: toggle[1] ? "none" : "url(#grad2)",
-				 			style: toggle[1] ? "animation: none" : "animation: rectangle 3s ease-in-out 6 alternate; transform-origin: center;"
-				 		}, "-=1500"
-				 		)
-				 		.add({
-				 			targets: "#big",
-				 			style: toggle[1] ? "animation: none" : "animation: big 9s ease-in-out 2 alternate; transform-origin: center;"
-				 		}, "-=1500"
-				 		)
-				 		.add({
-				 			targets: "#small",
-				 			style: toggle[1] ? "animation: none" : "animation: small 4.5s ease-in-out 4 alternate; transform-origin: center;"
-				 		}, "-=1500"
-				 		)
 				 		//make text appear
 				 		.add({
 				 			targets: '#text1 .letter1',
