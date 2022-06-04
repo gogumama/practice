@@ -38,14 +38,6 @@
 				cursor: pointer;
 			}
 
-			#rocketship {
-				width: 100px;
-				top: -90px;
-				left: 670px;
-				position: relative;
-				z-index: 2;
-			}
-
 			/*This is why there's a pink band on the bottom. Because the position is absolute :(. Fix later.*/
 			.placeName {
 				font-family: arial;
@@ -83,16 +75,6 @@
 					<g transform="translate(570,60) scale (0.9)"><path class="star8" d="M7.5 0C7.5 1.3666 7.5 2.57848 7.49187 3.65308C7.47678 11.1945 7.65076 11.9363 11.4134 11.9977C12.0132 11.9925 12.7041 12 13.5 12C12.7041 12 12.0132 12.0075 11.4134 11.9977C7.11495 12.035 7.5 12.7244 7.5 21.5C7.06147 13.168 8.16139 12.1436 3.04131 12.0177C2.31792 12.0195 1.47716 12 0.5 12C1.48358 12 2.32356 12 3.04131 12.0177C6.95525 12.0078 7.43344 11.3738 7.49187 3.65308C7.49402 2.57916 7.5 1.36736 7.5 0Z" fill="white"/></g>
 				</g>
 			</svg>
-
-			<a 
-				id = "rocket-button"
-				href="https://www.wikipedia.org">
-				<img
-					id = "rocketship"
-					src = "/images/rocketship.png"
-					style = "visibility: hidden"
-				/>
-			</a>
 
 			<svg id="eyelid" width="1700" height="500" viewBox="0 0 130 800" fill="none" style="transform: scale(2) translate(-240px, -100px)" xmlns="http://www.w3.org/2000/svg">
 				<defs>
@@ -369,9 +351,6 @@
 
 			let toggle = [false, false, false, false, false, false, false, false, false, false, false];
 
-			const rocketButton = document.querySelector("#rocket-button");
-			const rocketship = document.querySelector("#rocketship");
-
 			// Wrap every letter from text1 in a span
 			var textWrapper1 = document.querySelector('.placeName .letters1');
 			textWrapper1.innerHTML = textWrapper1.textContent.replace(/([^\x00-\x80]|\w)/g, "<span class='letter1'>$&</span>");
@@ -502,8 +481,6 @@
 			 		toggle[1] = !toggle[1];
 			 		active = !active;
 
-			 		//rocket now links to the Place
-			 		rocketButton.setAttribute("href", "http://placestogo.art/desert");
 				}
 
 				else if(event.target.matches("#eyeball2noise")){
@@ -562,8 +539,6 @@
 					toggle[2] =!toggle[2];
 					active = !active;
 
-					//rocket now links to the Place
-					rocketButton.setAttribute("href", "http://wikipedia.org");
 				}
 
 				else if(event.target.matches("#eyeball3noise")){
@@ -622,8 +597,6 @@
 					toggle[3] =!toggle[3];
 					active = !active;
 
-					//rocket now links to the Place
-					rocketButton.setAttribute("href", "http://wikipedia.org");
 				}
 
 				else if(event.target.matches("#eyeball4noise")){
@@ -682,8 +655,6 @@
 					toggle[4] =!toggle[4];
 					active = !active;
 
-					//rocket now links to the Place
-					rocketButton.setAttribute("href", "http://wikipedia.org");
 				}
 
 				else if(event.target.matches("#eyeball5noise")){
@@ -742,8 +713,6 @@
 					toggle[5] =!toggle[5];
 					active = !active;
 
-					//rocket now links to the Place
-					rocketButton.setAttribute("href", "http://wikipedia.org");
 				}
 
 				else if(event.target.matches("#eyeball6noise")){
@@ -802,8 +771,6 @@
 					toggle[6] =!toggle[6];
 					active = !active;
 
-					//rocket now links to the Place
-					rocketButton.setAttribute("href", "http://wikipedia.org");
 				}
 
 				else if(event.target.matches("#eyeball7noise")){
@@ -863,8 +830,6 @@
 					toggle[7] =!toggle[7];
 					active = !active;
 
-					//rocket now links to the Place
-					rocketButton.setAttribute("href", "http://wikipedia.org");
 				}
 
 				else if(event.target.matches("#eyeball8noise")){
@@ -924,8 +889,6 @@
 					toggle[8] =!toggle[8];
 					active = !active;
 
-					//rocket now links to the Place
-					rocketButton.setAttribute("href", "http://wikipedia.org");
 				}
 
 				else if(event.target.matches("#eyeball9noise")){
@@ -985,8 +948,6 @@
 					toggle[9] =!toggle[9];
 					active = !active;
 
-					//rocket now links to the Place
-					rocketButton.setAttribute("href", "http://wikipedia.org");
 				}
 
 				else if(event.target.matches("#eyeball10noise")){
@@ -1046,8 +1007,6 @@
 					toggle[10] =!toggle[10];
 					active = !active;
 
-					//rocket now links to the Place
-					rocketButton.setAttribute("href", "http://wikipedia.org");
 				}
 
 				var planets = document.getElementsByClassName("planet");
@@ -1065,11 +1024,9 @@
 					}
       			};
 				if(active){ // if some planet is active
-					rocketship.style.visibility = "visible"; // rocketship appears
 					planetRings1.setAttribute("stroke", "none"); // planet 1's rings disappear
 				}
 				else { // if no planet is active
-					rocketship.style.visibility = "hidden"; // rocketship disappears
 					planetRings1.setAttribute("stroke", "#93269C");
 				}
 			});
