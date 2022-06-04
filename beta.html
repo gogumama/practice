@@ -46,33 +46,6 @@
 				z-index: 2;
 			}
 
-			@keyframes rectangle{
-				from{
-					transform: rotateZ(0deg)
-				}
-				to{
-					transform: rotateZ(20deg)
-				}
-			}
-
-			@keyframes big{
-				from{
-					transform: rotateZ(0deg)
-				}
-				to{
-					transform: rotateZ(-15deg)
-				}
-			}
-
-			@keyframes small{
-				from{
-					transform: rotateZ(0deg)
-				}
-				to{
-					transform: rotateZ(50deg)
-				}
-			}
-
 			/*This is why there's a pink band on the bottom. Because the position is absolute :(. Fix later.*/
 			.placeName {
 				font-family: arial;
@@ -211,17 +184,6 @@
 				</g>
 
 				<g transform="translate(297,210)"><path id = "planetRings1" d="M12.5 0.5C-33 0.5 76.5 10.1905 33.5 1.99999C54.5 5.99999 -7.99999 1.99999 12.5 0.5Z" stroke="#93269C"/></g>
-
-				<g transform="translate(175,60)
-								scale(0.4 0.4)">
-
-					<path id = "big" class="rectangle" d="M1 1H139V238H1V1Z" stroke="none" stroke-width="7" fill="none"/>
-
-					<path id = "medium" class="rectangle" d="M1 172L1 1H96L96 172H1Z" stroke="none" stroke-width="7" fill="none"/>
-
-					<path id = "small" class="rectangle" d="M1 123L1 1H62L62 123H1Z" stroke="none" stroke-width="7" fill="none"/>
-
-				</g>
 
 				<g transform="translate(0,2)">
 					<path class = "eye-motion" d="M0 115.387C200 -100 377 40.3873 447 115.387C378 175.387 199 274.388 0 115.387Z" fill="url(#grad1)" stroke="#910503" stroke-width="2"/>
