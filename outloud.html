@@ -1,0 +1,235 @@
+<head><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@200&family=Shrikhand&display=swap" rel="stylesheet">
+	<style>
+		p, h1, h2, h3 {
+			font-family: 'Shrikhand', cursive;
+		}
+		h3 {
+			color: darkbrown;
+		}
+		a {
+			text-decoration: underline;
+		}
+		a:hover {
+			color: #e18375;
+		}
+		body {
+			background: linear-gradient(pink, lightpink);
+		}
+		.button {
+			padding: 16px 32px;
+			text-align: center;
+			transition-duration: 0.4s;
+			cursor: pointer;
+			margin: 4px 0px;
+			font-family: 'Kanit', sans-serif;
+		}
+		.unclicked {
+			background-color: white;
+			color: #e18375;
+			border: 2px solid #e18375;
+		}
+		.unclicked:hover {
+			background-color: #e8aea5;
+			color: white;
+			position: relative;
+			z-index: 3;
+		}
+		.clicked {
+			background-color: #e18375!important;
+			color: white!important;
+		}
+		#submit-button {
+			padding: 16px 32px;
+			text-align: center;
+			cursor: pointer;
+			background-color: #50612f;
+			color: white;
+			border: 2px solid #50612f;
+			box-shadow: 4px 4px #e18375;
+			font-family: 'Kanit', sans-serif;
+		}
+		#submit-button:active {
+		  box-shadow: 0px 0px #e18375;
+		  transform: translateY(4px) translateX(4px);
+		}
+		.tooltip {
+		    display:inline-block;
+		    position:relative;
+		    text-align:left;
+		    height: 40px;
+		}
+		#results-div{
+			position: relative;
+			left: 50%;
+			margin-left: -300px;
+			width: 600px;
+			visibility: hidden;
+		}
+		#clear{
+			padding: 6px 10px;
+			text-align: center;
+			cursor: pointer;
+			background-color: white;
+			color: black;
+			border: 2px solid black;
+			font-size: 12px;
+			font-family: 'Kanit', sans-serif;
+		}
+		#clear:hover {
+			background-color: black;
+			color: white;
+		}
+		@media only screen and (max-width: 600px) {
+			#results-div {
+				margin-left: -160px!important;
+				width: 320px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<button id="clear"><b>clear all</b></button>
+	</div>
+	<h3 style="text-align: center">On 9:30pm on a Friday, you can find me:</h3>
+	<div style="text-align: center">
+		<div class="tooltip">
+   			<button class="unclicked button" data-status="unselected"><b>curled up at home</b></button>
+		</div>
+		<div class="tooltip">
+			<button class="unclicked button" data-status="unselected"><b>making bad decisions</b></button>
+		</div>
+		<div class="tooltip">
+			<button class="unclicked button" data-status="unselected"><b>adhering to my 7-part plan for the night</b></button>
+		</div>
+		<div class="tooltip">
+			<button class="unclicked button" data-status="unselected"><b>asleep</b></button>
+		</div>
+	</div>
+	<br>
+	<h3 style="text-align: center">On road trips I am:</h3>
+	<div style="text-align: center">
+		<div class="tooltip">
+			<button class="unclicked button" data-status="unselected"><b>the one with the snacks</b></button>
+		</div>
+		<div class="tooltip">
+			<button class="unclicked button" data-status="unselected"><b>the one on the aux</b></button>
+		</div>
+		<div class="tooltip">
+			<button class="unclicked button" data-status="unselected"><b>the driver</b></button>
+		</div>
+		<div class="tooltip">
+			<button class="unclicked button" data-status="unselected"><b>the one who always needs to pee</b></button>
+		</div>
+		<br><br><br><br><br>
+		<button id="submit-button"><b>Done</b></button>
+	</div>
+	<br><br>
+	<div id="results-div">
+		<h3 id="results-title">Give by:</h3>
+		<p id="results"></p>
+	</div>
+
+	<script>
+		var buttons = document.getElementsByClassName("button");
+		var submitButton = document.getElementById("submit-button");
+		var clearButton = document.getElementById("clear");
+
+		for(var i=0; i < buttons.length; i++) {
+			buttons[i].addEventListener("click", changeBackground);
+		}
+		function changeBackground(e) {
+			var clickOn = "clicked";
+			var arr = e.currentTarget.className.split(" ");
+			if(e.currentTarget.getAttribute('data-status') == "unselected"){
+				if (arr.indexOf(clickOn) == -1) {
+					e.currentTarget.className += " " + clickOn;
+				}
+				e.currentTarget.setAttribute('data-status', "selected");
+			}
+			else{
+				e.currentTarget.className = "unclicked button";
+				e.currentTarget.setAttribute('data-status', "unselected");
+			}
+		}
+
+		var resources = new Set();
+		submitButton.addEventListener("click", showResources);
+		function showResources(){
+			var settings = [];
+			resources.clear();
+			for (var i = 0; i < buttons.length; i++){
+				if(buttons[i].getAttribute('data-status') == "selected"){
+					settings.push(buttons[i]);
+				}
+			}
+			if(settings.includes(buttons[0])){
+				var str = "<li>Donating to Qommunity</li>";
+				var lnk = str.link("http://wikipedia.org");
+				resources.add(lnk);
+			}
+			if(settings.includes(buttons[1])){
+				var str = "<li>Helping with bills</li>";
+				var lnk = str.link("http://wikipedia.org");
+				resources.add(lnk);
+			}
+			if(settings.includes(buttons[2])){
+				var str = "<li>Contributing to the flower fund</li>";
+				var lnk = str.link("http://wikipedia.org");
+				resources.add(lnk);
+			}
+			if(settings.includes(buttons[3])){
+				var str = "<li>Reposting</li>";
+				var lnk = str.link("http://wikipedia.org");
+				resources.add(lnk);
+			}
+			if(settings.includes(buttons[4])){
+				var str = "<li>Telling a friend</li>";
+				var lnk = str.link("http://wikipedia.org");
+				resources.add(lnk);
+			}
+			if(settings.includes(buttons[5])){
+				var str = "<li>Helping with gas</li>";
+				var lnk = str.link("http://wikipedia.org");
+				resources.add(lnk);
+			}
+			if(settings.includes(buttons[6])){
+				var str = "<li>Helping with groceries</li>";
+				var lnk = str.link("http://wikipedia.org");
+				resources.add(lnk);
+			}
+			if(settings.includes(buttons[7])){ //technical assistance
+				var str = "<li>Helping with organizer pay</li>";
+				var lnk = str.link("https://www.resetco.org/");
+				resources.add(lnk);
+				var str1 = "<li>Contributing to the general fund</li>";
+				var lnk1 = str1.link("http://wikipedia.org");
+				resources.add(lnk1);
+			}
+			if(settings.includes(buttons[8])){ //mentorship
+				var str = "<li>Getting involved</li>";
+				var lnk = str.link("https://www.resetco.org/");
+				resources.add(lnk);
+			}
+			document.getElementById("results").innerHTML = Array.from(resources).join("");
+			if(resources.size > 0){
+				document.getElementById("results-div").style.visibility = "visible";
+			}
+			else{
+				document.getElementById("results-div").style.visibility = "hidden";
+			}
+		}
+		clearButton.addEventListener("click", clearAll);
+		function clearAll(){
+			for(var i=0; i < buttons.length; i++) {
+				buttons[i].className = "unclicked button";
+				buttons[i].setAttribute('data-status', "unselected");
+			}
+			document.getElementById("results-div").style.visibility = "hidden";
+			resources.clear();
+			document.getElementById("results").innerHTML = Array.from(resources).join("");
+		}
+	</script>
+</body>
